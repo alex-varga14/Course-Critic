@@ -1,13 +1,13 @@
-
-//iimport necessary modules
+// import necessary modules
 // Express; building REST api
 // cors provides Express midware to enable options
+// CORS (Cross Origin Resource Sharing)
 const express = require("express");
 const cors = require("cors");
 
 // Create an Express app
 const app = express();
-// set Origin
+// set Origin -- URL of the frontend
 var corsOptions = {
   origin: "http://localhost:8081"
 };
@@ -23,9 +23,9 @@ const db = require("./app/models");
 
 db.sequelize.sync();
 // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and re-sync db.");
+});
 
 // simple route for GET
 app.get("/", (req, res) => {

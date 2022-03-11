@@ -4,10 +4,16 @@
       <router-link to="/" class="navbar-brand">CourseCritic</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
+          <router-link to="/home" class="nav-link">Home</router-link>
+        </li>
+        <li class="nav-item">
           <router-link to="/courses" class="nav-link">Course</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/add" class="nav-link">Add</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/login" class="nav-link" margin-right="auto">Login</router-link>
         </li>
       </div>
     </nav>
@@ -29,6 +35,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: #141041;
 }
 </style>

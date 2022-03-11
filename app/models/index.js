@@ -1,9 +1,9 @@
-const dbConfig = require("../config/db.config.js");
+const dbConfig = require("../config/config.js");
+const Sequelize  = require("sequelize");
 
-const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
-  port: 8080,
+  port: 3306,
   dialect: dbConfig.dialect,
   operatorsAliases: 0,
   pool: {
@@ -16,5 +16,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.courses = require("./cc.model.js")(sequelize, Sequelize);
+db.courses = require("../models/course.model.js")(sequelize, Sequelize);
+
 module.exports = db;
