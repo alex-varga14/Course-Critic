@@ -1,31 +1,54 @@
+//var Rating = require("../models/rating.model");
+
 module.exports = (sequelize, Sequelize) => {
-  const Course = sequelize.define("course", {
-    title: {
-      type: Sequelize.STRING
+  const Course = sequelize.define("Course", {
+      ID: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      Title: {
+        type: Sequelize.STRING
+      },
+      Description: {
+        type: Sequelize.STRING
+      },
+      Faculty: {
+        type: Sequelize.STRING
+      },
+      CourseCode: {
+        type: Sequelize.STRING
+      },
+      CourseNo: {
+        type: Sequelize.INTEGER
+      },
+      Semester: {
+        type: Sequelize.STRING
+      },
+      Suggested: {
+        type: Sequelize.BOOLEAN
+      }
     },
-    description: {
-      type: Sequelize.STRING
-    },
-    code: {
-      type: Sequelize.STRING
-    },
-    id: {
-      type: Sequelize.STRING,
-      primaryKey : true
-    },
-    rating: {
-      type: Sequelize.STRING
-    },
-    reviews: {
-      type: Sequelize.STRING
-    },
-    suggested_courses: {
-      type: Sequelize.STRING
-    },
-    active: {
-      type: Sequelize.BOOLEAN
+    {
+      timestamps: false
     }
-  });
+  );
+
+  Course.associate = function(models){
+    Course.hasMany(models.Rating, {foreignKey: {
+        name: 'CourseID',
+        allowNull: false
+      },
+      onDelete: 'cascade'
+    });
+    Course.hasMany(models.Review, {foreignKey: {
+        name: 'CourseID',
+        allowNull: false
+      },
+      onDelete: 'cascade'
+    });
+  };
+
   return Course;
 };
 

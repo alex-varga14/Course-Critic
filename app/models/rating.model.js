@@ -1,27 +1,31 @@
 module.exports = (sequelize, Sequelize) => {
-  const Rating = sequelize.define("rating", {
-    comment: {
-      type: Sequelize.STRING
+  const Rating = sequelize.define("Rating", {
+      ID: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      Enjoyment: {
+        type: Sequelize.INTEGER
+      },
+      Difficulty: {
+        type: Sequelize.INTEGER
+      },
+      Workload: {
+        type: Sequelize.INTEGER
+      },
+      CourseID: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Courses',
+          key: 'ID'
+        }
+      }
     },
-    username: {
-      type: Sequelize.STRING
-    },
-    helpful_analytic: {
-      type: Sequelize.INTEGER
-    },
-    date: {
-      type: Sequelize.DATE
-    },
-    sem_taken: {
-      type: Sequelize.STRING
-    },
-    prof: {
-      type: Sequelize.STRING
-    },
-    course_id: {
-      type: Sequelize.STRING,
-      primaryKey : true
+    {
+      timestamps: false
     }
-  });
+  );
+  
   return Rating;
 };

@@ -17,5 +17,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.courses = require("../models/course.model.js")(sequelize, Sequelize);
+db.admins = require("../models/admin.model.js")(sequelize, Sequelize);
+db.ratings = require("../models/rating.model.js")(sequelize, Sequelize);
+db.reviews = require("../models/review.model.js")(sequelize, Sequelize);
 
 module.exports = db;
