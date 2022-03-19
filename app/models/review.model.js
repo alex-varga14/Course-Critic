@@ -33,5 +33,12 @@ module.exports = (sequelize, Sequelize) => {
     }
   );
   
+  Review.associate = function(models){
+    Review.hasOne(models.Rating, {foreignKey: {
+        name: 'ReviewID'
+      }
+    });
+  };
+
   return Review;
 };

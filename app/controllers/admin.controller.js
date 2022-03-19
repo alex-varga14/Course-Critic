@@ -27,7 +27,7 @@ exports.createAdmin = (req, res) => {
     .catch(err => {
         res.status(500).send({
             message:
-                err.message || "Some error occurred while creating the Course."
+                err.message || "Some error occurred while creating the Review."
         });
     });
 };

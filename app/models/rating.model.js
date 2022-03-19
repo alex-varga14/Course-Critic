@@ -20,6 +20,13 @@ module.exports = (sequelize, Sequelize) => {
           model: 'Courses',
           key: 'ID'
         }
+      },
+      ReviewID: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Reviews',
+          key: 'ID'
+        }
       }
     },
     {
