@@ -1,6 +1,8 @@
 module.exports = app => {
   const courses = require("../controllers/course.controller.js");
   const admins = require("../controllers/admin.controller.js");
+  const reviews = require("../controllers/review.controller.js");
+  const ratings = require("../controllers/rating.controller.js");
 
   var router = require("express").Router();
 
@@ -46,5 +48,33 @@ module.exports = app => {
   // Get Admin by Username and Password
   router.get("/admins/:username/:password", admins.login);
 
+  // Create a Review
+  router.post("/reviews", reviews.createReview);
+
+  // Update a Review
+  router.put("/reviews/:id", reviews.updateReview);
+
+  // Delete a Review
+  router.delete("/reviews/:id", reviews.deleteReview);
+
+  // Get Reviews by Course
+  router.get("/reviews/courseID/:courseID", reviews.findReviewbyCourse);
+
+  // Create a Rating
+  router.post("/ratings", ratings.createRating);
+
+  // Update a Rating
+  router.put("/ratings/:id", ratings.updateRating);
+
+  // Delete a Rating
+  router.delete("/ratings/:id", ratings.deleteRating);
+
+  // Get Ratings by Course
+  router.get("/ratings/courseID/:courseID", ratings.findRatingbyCourse);
+
+  // Get Rating by Review
+  router.get("/ratings/reviewID/:reviewID", ratings.findRatingbyReview);
+
+  // Set base route for the endpoints
   app.use('/api', router);
 };
