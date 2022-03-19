@@ -1,5 +1,8 @@
 <template>
-  <div class="submit-form">
+  <div class="submit-form title">
+    <div class="title-big">
+      Suggest A Course
+    </div>
     <div v-if="!submitted">
       <div class="form-group">
         <label for="title">Title</label>
@@ -73,6 +76,20 @@ export default {
 .submit-form {
   max-width: 300px;
   margin: auto;
+}
+
+.title {
+  font-weight: 50;
+  color: #000000;
+}
+
+.title-big {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 60px;
+  color: #000000;
+  margin-bottom: 16px;
+  margin-top: 56px;
 }
 </style>
 <!-- This component calls 3 CourseDataService methods-->

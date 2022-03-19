@@ -1,6 +1,5 @@
 <template>
   <div class="page-container" id="home">
-
     <section class="section-app-face children-center grid-cover-container">
       <div class="image-1" />
       <div class="grid-cover-content children-center">
@@ -15,12 +14,12 @@
         <div class="row-box-1">
           <router-link to="/courses">
             <div class="card button-like card-1"><span class="font">Courses</span>
-            <img class="icon" src="../assets/icons/button-icon-right.svg" /></div>
+            </div>
           </router-link>
 
           <a href="https://www.ratemyprofessors.com/" rel="nofollow noopener noreferrer" target="_blank">
             <div class="card button-like card-2 forsted-glass teal">
-              <span class="font">RateMyProf</span><img class="icon" src="../assets/icons/gitbook.svg" />
+              <span class="font">RateMyProf</span>
             </div>
           </a>
         </div>
@@ -93,15 +92,6 @@
                 href="https://google.com"
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                >Help</a
-              >
-            </li>
-            <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
                 >Contact Us</a
               >
             </li>
@@ -129,16 +119,7 @@
                 href="https://google.com"
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                >Add Course</a
-              >
-            </li>
-            <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Suggest Course</a
+                >Suggest A Course</a
               >
             </li>
           </ul>
@@ -156,7 +137,7 @@
                 href="https://google.com"
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                >Discord</a
+                >Site Guidelines</a
               >
             </li>
             <li>
@@ -165,14 +146,12 @@
                 href="https://google.com"
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                >FAQ</a
+                >Terms and Conditions</a
               >
             </li>
           </ul>
         </div>
       </div>
-
-      <img class="foot-logo" src="../assets/cc-full-logo-png.png" width="422" height="394" />
     </footer>
   </div>
 </template>
@@ -188,10 +167,10 @@ export default {
 
 <style>
 .ant-popover-arrow {
-  border-color: #0c0926 !important;
+  border-color: #FFFFFF !important;
 }
 .ant-popover-inner-content {
-  background-color: #0c0926 !important;
+  background-color: #FFFFFF !important;
 }
 </style>
 <style scoped>
@@ -306,6 +285,7 @@ export default {
 .title-text .text {
   font-size: 20px;
   line-height: 27px;
+  color: #000000;
 }
 
 .grid-cover-container {
@@ -319,21 +299,9 @@ export default {
 }
 
 .page-container {
-  --text-primary: hsl(0, 0%, 100%);
-  --text-secondary: hsl(222deg, 100%, 84%);
+  --text-primary: #000000;
+  --text-secondary: hsl(35deg, 100%, 75%);
   --text-secondary-light: #c4d6ff;
-}
-
-.home-navbar {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 50px 165px;
-  justify-content: space-between;
-  z-index: 1;
-  margin-right: 200px;
 }
 
 .section-app-face {
@@ -343,7 +311,7 @@ export default {
   position: relative;
 }
 .section-app-face .image-1 {
-  background-image: url('../assets/background/index_background.svg');
+  background-image: url('../assets/background/cc-svg-logo.svg');
   background-repeat: no-repeat;
   height: 100%;
   width: 744px;
@@ -367,7 +335,7 @@ export default {
 .section-app-face .defi-text {
   font-weight: 700;
   color: transparent;
-  background: radial-gradient(circle at top right, #39d0d8, #2b6aff);
+  background: radial-gradient(circle at top right, #e8b338, #f2800f);
   background-clip: text;
 }
 .section-app-face .row-box-1 {
@@ -379,7 +347,7 @@ export default {
 .section-app-face .row-box-1 .card-1 {
   border-radius: 12px;
   color: white;
-  background: linear-gradient(245.22deg, #da2eef 35%, #2b6aff 65.17%, #39d0d8 92.1%);
+  background: linear-gradient(245.22deg, #fc2808 35%, #ed871a 65.17%, #f7f143 92.1%);
   background-position: 1% 50%;
   background-size: 150% 150%;
   transition: 500ms;
@@ -415,55 +383,9 @@ export default {
   color: var(--text-secondary);
   margin-bottom: 4px;
 }
-.section-app-face .row-box-2 .card .value {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--text-primary);
-}
-.section-app-face .row-box-2 .card .value-sign {
-  font-size: 16px;
-}
-.section-app-face .row-box-2 .card .value-number {
-  font-size: 22px;
-  letter-spacing: 2px;
-}
-
-.pop-links {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.pop-links .link {
-  padding: 8px;
-  color: #c4d6ff;
-}
-.pop-links .link:not(:last-child) {
-  box-shadow: 0 1px 0 rgba(196, 214, 255, 0.1);
-}
-.pop-links .link:hover {
-  color: white;
-}
-
-.section-partners {
-  margin-bottom: 100px;
-}
-.section-partners .boards {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 0 228px;
-}
-.section-partners .boards > * {
-  flex-grow: 0;
-}
 
 .page-footer {
   position: relative;
-  background-image: url('../assets/background/index_footer_background.webp'),
-    linear-gradient(transparent 30%, #141041 30%, #141041);
   background-size: 100% 600px, 100% 100%;
   display: flow-root;
 }
@@ -585,7 +507,6 @@ export default {
 }
 
 .section-features.\-2 .image-3 {
-  background: url('../assets/background/index_background3.webp');
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -613,9 +534,6 @@ export default {
 
 @media (max-width: 1128px) {
   /* is tablet */
-  .home-navbar {
-    padding: 50px 58px;
-  }
 
   .section-app-face {
     margin-top: 116px;
@@ -644,14 +562,6 @@ export default {
     font-weight: 300;
     font-size: 12px;
     line-height: 15px;
-  }
-  .section-app-face .row-box-2 .card .value-sign {
-    font-weight: 300;
-    font-size: 12px;
-  }
-  .section-app-face .row-box-2 .card .value-number {
-    font-weight: 300;
-    font-size: 18px;
   }
 
   .page-footer {
@@ -715,12 +625,6 @@ export default {
     line-height: 20px;
   }
 
-  .home-navbar {
-    justify-content: center;
-  }
-  .home-navbar > *:nth-child(2n) {
-    display: none;
-  }
   .section-app-face {
     margin-top: 116px;
     height: unset;
@@ -760,34 +664,9 @@ export default {
     font-size: 8px;
     line-height: 10px;
   }
-  .section-app-face .row-box-2 .card .value {
-    line-height: 0;
-  }
-  .section-app-face .row-box-2 .card .value-sign {
-    font-size: 8px;
-    line-height: 10px;
-  }
-  .section-app-face .row-box-2 .card .value-number {
-    font-size: 12px;
-    line-height: 15px;
-  }
-  .section-app-face .solana-logo {
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%) scale(0.8);
-    bottom: -32px;
-  }
 
   .page-footer .links-group {
     gap: 56px;
-  }
-  .section-partners .boards {
-    width: unset;
-    justify-content: unset;
-    padding: unset;
-    flex-direction: column;
-    gap: 40px;
   }
 
   .section-features .feature-title {
