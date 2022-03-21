@@ -63,6 +63,9 @@ module.exports = app => {
   // Get Reviews by Course
   router.get("/reviews/courseID/:courseID", reviews.findReviewbyCourse);
 
+  // Get Reviews & associated Rating by Course
+  router.get("/reviews/ratings/:courseID", reviews.getReviewAndRating);
+
   // Create a Rating
   router.post("/ratings", ratings.createRating);
 

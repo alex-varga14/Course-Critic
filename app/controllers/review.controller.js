@@ -1,4 +1,5 @@
 const req = require("express/lib/request");
+const { sequelize } = require("../models");
 const db = require("../models");
 const Review = db.reviews;
 const Op = db.Sequelize.Op;
@@ -133,6 +134,27 @@ exports.findReviewbyCourse = (req, res) => {
         res.status(500).send({
             message:
             err.message || "Some error occurred while retrieving Reviews by CourseID."
+        });
+    });
+};
+
+// Get Reviews & associated Rating by Course
+exports.getReviewAndRating = (req, res) => {
+    const courseID = req.params.courseID;
+
+    sequelize.query(
+        "SELECT Reviews.ID, Reviews.Comment, Reviews.Instructor, Reviews.Semester, Reviews.Date, Reviews.HelpfulCount, Ratings.Enjoyment, Ratings.Difficulty, Ratings.Workload " +
+        "FROM Reviews, Ratings WHERE Reviews.CourseID = " + courseID + " AND Ratings.CourseID = " + courseID + " AND Reviews.ID = Ratings.ReviewID;", {
+            type: sequelize.QueryTypes.SELECT
+        }
+    )
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occured while retrieving courses with aggregates."
         });
     });
 };
