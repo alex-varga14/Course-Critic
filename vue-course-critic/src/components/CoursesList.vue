@@ -61,28 +61,24 @@
         <tr>
           <th scope="col">Course Code</th>
           <th scope="col">Title</th>
-          <th scope="col">Overall Rating</th>
+          <th scope="col">Average Difficulty</th>
+          <th scope="col">Average Enjoyment</th>
+          <th scope="col">Average Workload</th>
           <th scope="col">Reviews</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">SENG401</th>
-          <td>Software Architecture</td>
-          <td>4.0</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <th scope="row">SENG438</th>
-          <td>Software Reliability and Testing</td>
-          <td>2.0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th scope="row">SENG471</th>
-          <td>Requirements Engineering</td>
-          <td>-5.0</td>
-          <td>5</td>
+        <tr v-for="aggregatecourses in aggregatecourses" v-bind:key="aggregatecourses">
+          <td>{{aggregatecourses.CourseCode+" "+aggregatecourses.CourseNo}}
+          </td>
+          <td>{{aggregatecourses.Title}}</td>
+          <td>{{aggregatecourses.Difficulty}}</td>
+          <td>{{aggregatecourses.Enjoyment}}</td>
+          <td>{{aggregatecourses.Workload}}</td>
+          <td>{{aggregatecourses.NumReviews}}</td>
+          <button type="button" class="btn btn-primary" @click="update(aggregatecourses.ID)">
+            View Reviews
+          </button>
         </tr>
       </tbody>
     </table>
@@ -153,9 +149,10 @@ name: "courses-list",
 data() {
   return {
       courses: [],
+      aggregatecourses:[],
       currentCourse: null,
       currentIndex: -1,
-      title: ""
+      title: "",
     };
   },
   methods: {
@@ -168,6 +165,19 @@ data() {
         .catch(e => {
           console.log(e);
         });
+    },
+    retrieveAggregateCourses(){
+      CourseDataService.getCourseAggregateInfo()
+      .then(response => {
+        this.aggregatecourses= response.data;
+        console.log(response.data);
+      })
+      .catch(e => {
+          console.log(e);
+        });
+    },
+    update(data){
+      console.log(data);
     },
     refreshList() {
       this.retrieveCourses();
@@ -203,6 +213,7 @@ data() {
   },
   mounted() {
     this.retrieveCourses();
+    this.retrieveAggregateCourses();
   }
 };
 </script>

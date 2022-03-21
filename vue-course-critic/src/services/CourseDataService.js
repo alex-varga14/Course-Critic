@@ -2,7 +2,10 @@
 import http from "../http-common";
 class CourseDataService {
   getAll() {
-    return http.get("/courses");
+    return http.get("http://localhost:8080/api/courses");
+  }
+  getCourseAggregateInfo(){
+    return http.get("http://localhost:8080/api/courses/get/all/aggregates")
   }
   get(id) {
     return http.get(`/courses/${id}`);

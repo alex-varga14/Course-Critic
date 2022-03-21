@@ -245,7 +245,9 @@ exports.findCoursebyCodeandNo = (req, res) => {
 exports.getCourseAndAggregates = (req, res) => {
   
   sequelize.query(
-    'SELECT Courses.ID, Courses.Title, Courses.Description, Courses.Faculty, Courses.CourseCode, Courses.CourseNo, AVG(Ratings.Enjoyment), AVG(Ratings.Difficulty), AVG(Ratings.Workload), COUNT(DISTINCT(Reviews.ID)) FROM Courses LEFT OUTER JOIN Ratings ON Ratings.CourseID = Courses.ID LEFT OUTER JOIN Reviews ON Reviews.CourseID = Courses.ID WHERE Suggested = false GROUP BY Courses.ID;'
+    'SELECT Courses.ID, Courses.Title, Courses.Description, Courses.Faculty, Courses.CourseCode, Courses.CourseNo, AVG(Ratings.Enjoyment) as Enjoyment, AVG(Ratings.Difficulty) as Difficulty, AVG(Ratings.Workload) as Workload, COUNT(DISTINCT(Reviews.ID)) as NumReviews FROM Courses LEFT OUTER JOIN Ratings ON Ratings.CourseID = Courses.ID LEFT OUTER JOIN Reviews ON Reviews.CourseID = Courses.ID WHERE Suggested = false GROUP BY Courses.ID;', {
+      type: sequelize.QueryTypes.SELECT
+    }
   )
   .then(data => {
     res.send(data);
