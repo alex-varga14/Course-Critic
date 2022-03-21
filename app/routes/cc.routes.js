@@ -30,6 +30,9 @@ module.exports = app => {
   // Retrieve Courses by CourseCode and CourseNo
   router.get("/courses/:courseCode/:courseNo", courses.findCoursebyCodeandNo);
 
+  // Retrieve Courses with Aggregates
+  router.get("/courses/get/all/aggregates", courses.getCourseAndAggregates);
+
   // Update a Course with id
   router.put("/courses/:id", courses.update);
 

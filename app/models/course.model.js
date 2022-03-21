@@ -1,4 +1,5 @@
 //var Rating = require("../models/rating.model");
+const db = require("../models");
 
 module.exports = (sequelize, Sequelize) => {
   const Course = sequelize.define("Course", {
@@ -21,9 +22,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       CourseNo: {
         type: Sequelize.INTEGER
-      },
-      Semester: {
-        type: Sequelize.STRING
       },
       Suggested: {
         type: Sequelize.BOOLEAN
@@ -48,6 +46,20 @@ module.exports = (sequelize, Sequelize) => {
       onDelete: 'cascade'
     });
   };
+  // Course.hasMany(Sequelize.model.ratings, {foreignKey: {
+  //     name: 'CourseID',
+  //     allowNull: false
+  //   },
+  //   onDelete: 'cascade'
+  // });
+
+  // Course.hasMany(db.reviews, {foreignKey: {
+  //     name: 'CourseID',
+  //     allowNull: false
+  //   },
+  //   onDelete: 'cascade'
+  // });
+
 
   return Course;
 };

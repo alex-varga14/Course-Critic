@@ -38,6 +38,11 @@ module.exports = (sequelize, Sequelize) => {
         name: 'ReviewID'
       }
     });
+
+    Review.belongsTo(models.Course, {foreignKey: {
+        name: 'CourseID'
+      }
+    });
   };
 
   return Review;

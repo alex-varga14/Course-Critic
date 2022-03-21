@@ -33,6 +33,17 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false
     }
   );
+
+  Rating.associate = function(models){
+    Rating.belongsTo(models.course, {foreignKey: {
+        name: 'CourseID'
+      }
+    });
+    Rating.belongsTo(models.review, {foreignKey: {
+        name: 'ReviewID'
+      }
+    });
+  };
   
   return Rating;
 };
