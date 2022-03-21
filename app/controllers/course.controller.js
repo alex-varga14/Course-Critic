@@ -1,5 +1,7 @@
 const req = require("express/lib/request");
+const { sequelize } = require("../models");
 const db = require("../models");
+const ratingModel = require("../models/rating.model");
 const Course = db.courses;
 const Op = db.Sequelize.Op;
 
@@ -235,6 +237,23 @@ exports.findCoursebyCodeandNo = (req, res) => {
     res.status(500).send({
       message:
         err.message || "Some error occured while retrieving courses by course code and course number."
+    });
+  });
+};
+
+// Get all Courses, as well as average Ratings and # of Reviews
+exports.getCourseAndAggregates = (req, res) => {
+  
+  sequelize.query(
+    'SELECT Courses.ID, Courses.Title, Courses.Description, Courses.Faculty, Courses.CourseCode, Courses.CourseNo, AVG(Ratings.Enjoyment), AVG(Ratings.Difficulty), AVG(Ratings.Workload), COUNT(DISTINCT(Reviews.ID)) FROM Courses LEFT OUTER JOIN Ratings ON Ratings.CourseID = Courses.ID LEFT OUTER JOIN Reviews ON Reviews.CourseID = Courses.ID WHERE Suggested = false GROUP BY Courses.ID;'
+  )
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occured while retrieving courses with aggregates."
     });
   });
 };
