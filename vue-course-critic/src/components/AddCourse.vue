@@ -7,7 +7,7 @@
       Suggest A Course
     </div>
 
-<!------------------ COURSE TITLE ------------------------->
+<!--       COURSE TITLE       -->
       <div class="form-group title-container">
         <label for="title">Course Title</label>
         <input
@@ -24,7 +24,7 @@
 
     <div id="inline">
 
-<!---------- FACULTY ----------------------->
+<!--         FACULTY         -->
         <div class="form-group faculty-container">
           <label for="faculty">Faculty</label>
           <input
@@ -38,7 +38,7 @@
           />
         </div>
 
-<!----------- COURSE CODE -------------->
+<!--        COURSE CODE         -->
         <div class="form-group coursecode-container">
           <label for="coursecode">Course Code</label>
           <input
@@ -52,7 +52,7 @@
           />
         </div>
 
-<!----------- COURSE NUMBER -------------->
+<!--        COURSE NUMBER          -->
         <div class="form-group courseno-container">
           <label for="courseno">Course Number</label>
           <input
@@ -68,7 +68,7 @@
 
       </div>
 
-<!---------- COURSE DESCRIPTION -------------->
+<!--      COURSE DESCRIPTION          -->
       <div class="form-group desc-container">
         <label for="description">Description</label>
         <textarea
@@ -81,16 +81,16 @@
         </textarea>
       </div>
 
-<!---------- SUBMIT BUTTON -------------->
+<!--           SUBMIT BUTTON          -->
       <button @click="saveCourse" class="btn btn-success submit-btn text-center">Submit</button>
 
-<!------------- MESSAGE  ---------------->
+<!--            MESSAGE               -->
       <div class="message">
         <p class="text-center"> Suggested courses are submitted to be reviewed by Course Critic administrators</p>
       </div>
     </div>
 
-<!------------- SUBMITTED ----------------->
+<!--            SUBMITTED            -->
     <div v-else>
       <h4 class ="title-big text-center">Course Submitted!</h4>
       <div class ="message">
