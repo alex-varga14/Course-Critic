@@ -7,60 +7,31 @@
           UCalgary Course List
         </div>
         <div class="list" >
-          <div class="col-md-8">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Search by Course"
-                v-model="title"/>
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button"
-                  @click="searchTitle"
-                >
-                  Search
-                </button>
-              </div>
-            </div>
+          <div class="col-md-8" >
+            
+             
+            
           </div>
-          <div class="col-md-6">
-            <h4>Course List</h4>
-            <ul class="list-group">
-              <li class="list-group-item"
-                :class="{ active: index == currentIndex }"
-                v-for="(course, index) in courses"
-                :key="index"
-                @click="setActiveCourse(course, index)"
-              >
-                {{ course.title }}
-              </li>
-            </ul>
-            <button class="m-3 btn btn-sm btn-danger" @click="removeAllCourses">
-              Remove All
-            </button>
-        </div>
-        <div class="col-md-6">
-          <div v-if="currentCourse">
-            <h4>Course</h4>
-            <div>
-              <label><strong>Title:</strong></label> {{ currentCourse.title }}
-            </div>
-            <div>
-              <label><strong>Description:</strong></label> {{ currentCourse.description }}
-            </div>
-            <div>
-              <label><strong>Status:</strong></label> {{ currentCourse.published ? "Published" : "Pending" }}
-            </div>
-            <router-link :to="'/courses/' + currentCourse.id" class="badge badge-warning">Edit</router-link>
-          </div>
-        </div>
       </div>
      </div>
     </section>
 
-    <section class="section-features -2 children-center grid-cover-container">
-      <table class="table">
+    
+      <input type="text" class="form-control" placeholder="Search by Course Code" style="width:600px height:500p"
+        id="code filter" v-on:input="filterCode" />
+      <input type="text" class="form-control" placeholder="Search by Course Number" style="width:600px height:500p"
+      id="number filter" v-on:input="filterCode" />
+      <input type="text" class="form-control" placeholder="Search by Title" style="width:600px height:500p"
+      id="title filter" v-on:input="filterCode" />
+      <input type="text" class="form-control" placeholder="Search by Faculty" style="width:600px height:500p"
+      id="faculty filter" v-on:input="filterCode" />
+      <table class="table" id="formtable">
       <thead>
-        <tr>
+        <tr id="header">
           <th scope="col">Course Code</th>
+          <th scope="col">Course Number</th>
           <th scope="col">Title</th>
+          <th scope="col">Faculty</th>
           <th scope="col">Average Difficulty</th>
           <th scope="col">Average Enjoyment</th>
           <th scope="col">Average Workload</th>
@@ -68,21 +39,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="aggregatecourses in aggregatecourses" v-bind:key="aggregatecourses">
-          <td>{{aggregatecourses.CourseCode+" "+aggregatecourses.CourseNo}}
-          </td>
+        <tr v-for="aggregatecourses in aggregatecourses" v-bind:key="aggregatecourses" id="rows">
+          <td id="code">{{aggregatecourses.CourseCode}}</td>
+          <td>{{aggregatecourses.CourseNo}}</td>
           <td>{{aggregatecourses.Title}}</td>
+          <td>{{aggregatecourses.Faculty}}</td>
           <td>{{aggregatecourses.Difficulty}}</td>
           <td>{{aggregatecourses.Enjoyment}}</td>
           <td>{{aggregatecourses.Workload}}</td>
           <td>{{aggregatecourses.NumReviews}}</td>
-          <button type="button" class="btn btn-primary" @click="update(aggregatecourses.ID)">
+          <button type=" button "  class="btn " @click="update(aggregatecourses.ID)">
             View Reviews
           </button>
         </tr>
       </tbody>
     </table>
-    </section>
+    
   </div>
 </template>
 
@@ -178,6 +150,7 @@ data() {
     },
     update(data){
       console.log(data);
+      this.$router.push('/courses');
     },
     refreshList() {
       this.retrieveCourses();
@@ -198,18 +171,71 @@ data() {
           console.log(e);
         });
     },
-
-    searchTitle() {
-      CourseDataService.findByTitle(this.title)
-        .then(response => {
-          this.courses = response.data;
-          this.setActiveCourse(null);
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
+    filterCode: function(){
+    var text, table, tableRows, td, i, txtValue,tdTwo,textTwo;
+    var tdThree, textThree, tdFour, textFour;
+    text = document.getElementById("code filter").value;
+    textTwo = document.getElementById("number filter").value;
+    textThree = document.getElementById("title filter").value;
+    textFour = document.getElementById("faculty filter").value;
+    table = document.getElementById("formtable");
+    tableRows = table.getElementsByTagName("tr");
+    for (i = 0; i < tableRows.length; i++) {
+      td = tableRows[i].getElementsByTagName("td")[0];
+      tdTwo =tableRows[i].getElementsByTagName("td")[1];
+      tdThree =tableRows[i].getElementsByTagName("td")[2];
+      tdFour =tableRows[i].getElementsByTagName("td")[3];
+      if (td) {
+        txtValue = td.textContent;
+          if (txtValue.indexOf(text) > -1) {
+            tableRows[i].style.display = "";
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        if (tdTwo) {
+          txtValue = tdTwo.textContent;
+          if (txtValue.indexOf(textTwo) > -1) {
+            if(tableRows[i].style.display!="none"){
+              tableRows[i].style.display = "";
+            }
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        if (tdThree) {
+          txtValue = tdThree.textContent;
+          if (txtValue.indexOf(textThree) > -1) {
+            if(tableRows[i].style.display!="none"){
+              tableRows[i].style.display = "";
+            }
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        if (tdFour) {
+          txtValue = tdFour.textContent;
+          if (txtValue.indexOf(textFour) > -1) {
+            if(tableRows[i].style.display!="none"){
+              tableRows[i].style.display = "";
+            }
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+      }
+    },
+  searchTitle() {
+    CourseDataService.findByTitle(this.title)
+      .then(response => {
+        this.courses = response.data;
+        this.setActiveCourse(null);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  },
   },
   mounted() {
     this.retrieveCourses();
