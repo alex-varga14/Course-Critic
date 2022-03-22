@@ -1,4 +1,5 @@
 const req = require("express/lib/request");
+const { sequelize } = require("../models");
 const db = require("../models");
 const Rating = db.ratings;
 const Op = db.Sequelize.Op;
@@ -124,6 +125,26 @@ exports.findRatingbyReview = (req, res) => {
         res.status(500).send({
             message:
             err.message || "Some error occurred while retrieving Ratings by ReviewID."
+        });
+    });
+};
+
+// Get Average Ratings for a Course
+exports.findAverageRatings = (req, res) => {
+    const courseID = req.params.courseID;
+
+    sequelize.query(
+        "SELECT AVG(Enjoyment) as avgEnjoyment, AVG(Difficulty) as avgDifficulty, AVG(Workload) as avgWorkload FROM Ratings WHERE CourseID = " + courseID + ";", {
+            type: sequelize.QueryTypes.SELECT
+        }
+    )
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occured while retrieving average ratings."
         });
     });
 };

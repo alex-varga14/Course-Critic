@@ -78,6 +78,9 @@ module.exports = app => {
   // Get Ratings by Course
   router.get("/ratings/courseID/:courseID", ratings.findRatingbyCourse);
 
+  // Get Average Ratings by Course
+  router.get("/ratings/avg/:courseID", ratings.findAverageRatings);
+
   // Get Rating by Review
   router.get("/ratings/reviewID/:reviewID", ratings.findRatingbyReview);
 
