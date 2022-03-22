@@ -8,7 +8,7 @@ class CourseDataService {
     return http.get("http://localhost:8080/api/courses/get/all/aggregates")
   }
   get(id) {
-    return http.get(`http://localhost:8080/api/courses/${id}`);
+    return http.get(`/courses/${id}`);
   }
   create(data) {
     return http.post("/courses", data);
