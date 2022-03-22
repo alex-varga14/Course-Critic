@@ -23,7 +23,8 @@ const db = require("./app/models");
 
 //db.sequelize.sync();
 // drop the table if it already exists
-db.sequelize.sync({ force: true }).then(() => {
+// drop param { force: true } from sync() - sync({ force: true })
+db.sequelize.sync().then(() => {
   console.log("Drop and re-sync db.");
 });
 
@@ -36,7 +37,7 @@ app.get("/", (req, res) => {
 //   res.sendFile(path + "index.html");
 // });
 
-//require("./app/routes/cc.routes")(app)
+require("./app/routes/cc.routes")(app)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

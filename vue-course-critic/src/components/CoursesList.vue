@@ -8,15 +8,15 @@
         </div>
         <div class="list" >
           <div class="col-md-8" >
-            
-             
-            
+
+
+
           </div>
       </div>
      </div>
     </section>
 
-    
+
       <input type="text" class="form-control" placeholder="Search by Course Code" style="width:600px height:500p"
         id="code filter" v-on:input="filterCode" />
       <input type="text" class="form-control" placeholder="Search by Course Number" style="width:600px height:500p"
@@ -48,13 +48,18 @@
           <td>{{aggregatecourses.Enjoyment}}</td>
           <td>{{aggregatecourses.Workload}}</td>
           <td>{{aggregatecourses.NumReviews}}</td>
-          <button type=" button "  class="btn " @click="update(aggregatecourses.ID)">
+          <router-link :to="'/courses/' + aggregatecourses.ID">
+          <!-- <button type=" button "  class="btn " @click="update(aggregatecourses.ID)">
+            View Reviews
+          </button> -->
+          <button type=" button "  class="btn " >
             View Reviews
           </button>
+        </router-link>
         </tr>
       </tbody>
     </table>
-    
+
   </div>
 </template>
 
