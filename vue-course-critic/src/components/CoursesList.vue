@@ -48,14 +48,14 @@
           <td>{{aggregatecourses.Enjoyment}}</td>
           <td>{{aggregatecourses.Workload}}</td>
           <td>{{aggregatecourses.NumReviews}}</td>
-          <router-link :to="'/courses/' + aggregatecourses.ID">
-          <!-- <button type=" button "  class="btn " @click="update(aggregatecourses.ID)">
-            View Reviews
-          </button> -->
-          <button type=" button "  class="btn " >
+
+          <button type=" button "  class="btn " @click="update(aggregatecourses.ID)">
             View Reviews
           </button>
-        </router-link>
+          <!-- <button type=" button "  class="btn " >
+            View Reviews
+          </button> -->
+        <!-- </router-link> -->
         </tr>
       </tbody>
     </table>

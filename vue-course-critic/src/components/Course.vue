@@ -134,8 +134,8 @@
 
 <script>
 import CourseDataService from "../services/CourseDataService";
-import RatingDataService from "../services/RatingDataService";
-import ReviewDataService from "../services/ReviewDataService";
+// import RatingDataService from "../services/RatingDataService";
+// import ReviewDataService from "../services/ReviewDataService";
 
 export default {
   name: "course",
@@ -155,16 +155,17 @@ export default {
           console.log(e);
         });
     },
-    newRating() {
-      RatingDataService.get(id)
-        .then(response => {
-          this.currentCourse = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
+
+    // newRating() {
+    //   RatingDataService.get(id)
+    //     .then(response => {
+    //       this.currentCourse = response.data;
+    //       console.log(response.data);
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // }
 
   },
   mounted() {
