@@ -177,8 +177,9 @@ data() {
         });
     },
     update(data){
-      console.log(data);
-      this.$router.push('/courses');
+      this.$router.push({name: "courses",
+      params: { data }
+      });
     },
     refreshList() {
       this.retrieveCourses();

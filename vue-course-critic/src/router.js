@@ -12,9 +12,12 @@ const routes =  [
     component: () => import("./components/CoursesList")
   },
   {
-    path: "/courses/:id",
-    name: "course-details",
-    component: () => import("./components/Course")
+    path: "/courses",
+    name: "courses",
+    component: () => import("./components/Course"),
+    meta: {
+      auth: true
+  }
   },
   {
     path: "/add",
