@@ -1,38 +1,132 @@
 <template>
-  <div class="page-container" id="login">
-    <section class="section-app-face children-center grid-cover-container">
-      <div class="grid-cover-content children-center">
-        <div class="title">
+  <div class="page-container page" id="login">
+        <div class="title text-center">
           Administration Login
         </div>
-        <form>
-          <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div v-if="invalid&&submitted">
+        <div class="invalid text-center">
+          The username or password you have entered is incorrect. Please try again
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <button type="submit" v-on:click="retry" class="btn btn-success submit-btn">Retry Login</button>
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+        <form v-else>
+          <div id="inline">
+            <div class="form-group username">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name ="Username" id="username" v-model=Admin.username>
+          </div>
+          <div class="form-group password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="Password" id="password" v-model=Admin.password >
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        
+        <button type="submit" v-on:click="login" class="btn btn-success submit-btn">Login</button>
     </form>
-     </div>
-    </section>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'login'
-}
+  import AdminDataService from "../services/AdminDataService";
+    export default {
+        name: 'attempt-login',
+        data() {
+            return {
+                Admin: [],
+                invalid: true,
+                submitted: false
+            };
+        },
+        mounted(){
+          if(this.submitted&&!this.invalid)
+            this.$router.push({name: "Home"});
+        },
+        methods: {
+            login() {
+              this.submitted=true;
+              
+              //call request from AdminDataService
+              AdminDataService.authenticate(this.Admin.username, this.Admin.password)
+                .then( response => {
+                    //empty response->invalid info
+                  if(response.data.length == 0){
+                    this.Admin = response.data;
+                    console.log(response.data);
+                    this.invalid = true;
+                  }
+                  //valid credentials->forward to admin course list page
+                  else{
+                    this.invalid=false;
+                    this.$router.push({name: "Home"});
+                  }
+                })
+                .catch(e => {
+                  console.log(e);
+                });
+            },
+
+            retry(){
+              this.submitted=false;
+            }
+        }
+    }
 </script>
 
 <style>
+.page{
+  margin-top: 30px;
+  margin-left: 190px;
+  width: 70%;
+  border: 1px solid black;
+}
+
+.title{
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 60px;
+  color: #000000;
+  width: auto;
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-right: -30px;
+  margin-left: -30px;
+}
+
+#inline{
+  width:100%;
+  height:auto;
+  background-color:white;
+  display:flex;
+  margin-bottom: 40px;
+}
+
+.username{
+  margin-left: 230px;
+  color: black;
+}
+
+.password{
+  margin-left: 100px;
+  color: black;
+}
+
+.submit-btn{
+  width: 200px;
+  margin-left: 370px;
+  margin-bottom: 30px;
+}
+
+.invalid{
+  width: 30%;
+  background: #ffcccb;
+  color: black;
+  border: 1px dotted red;
+  font-size: 20px;
+  margin-left: 330px;
+  margin-bottom: 40px;
+}
+
 .ant-popover-arrow {
   border-color: #0c0926 !important;
 }
@@ -40,69 +134,4 @@ export default {
   background-color: #0c0926 !important;
 }
 </style>
-<style scoped>
-/* utilities */
 
-.children-center {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: 1fr;
-}
-.children-center,
-.children-text-center > * {
-  text-align: center;
-}
-.children-center,
-.children-flex-content-center > * {
-  justify-content: center;
-}
-
-.grid-cover-container {
-  place-items: center;
-  display: grid;
-}
-.grid-cover-container > * {
-  max-width: 100%;
-  grid-area: 1 / 1;
-  overflow: auto;
-}
-
-.section-app-face {
-  margin-top: 80px;
-  margin-bottom: 72px;
-  height: 804px;
-  position: relative;
-}
-
-.section-app-face .title {
-  font-weight: 300;
-  font-size: 64px;
-  line-height: 60px;
-  color: #000000;
-  margin-bottom: 16px;
-  margin-top: 56px;
-}
-
-@media (max-width: 1128px) {
-  /* is tablet */
-
-  .section-app-face {
-    margin-top: 116px;
-    height: 720px;
-  }
-
-  .section-app-face .title {
-    font-size: 48px;
-    line-height: 44px;
-  }
-}
-
-@media (max-width: 768px) {
-  /* is phone */
-  .section-app-face {
-    margin-top: 116px;
-    height: unset;
-  }
-}
-</style>
