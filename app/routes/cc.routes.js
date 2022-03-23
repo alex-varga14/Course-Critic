@@ -42,6 +42,9 @@ module.exports = app => {
   // Delete all Courses
   router.delete("/courses", courses.deleteAll);
 
+  // Set Suggested to False
+  router.put("/courses/suggested/:id", courses.setSuggestedFalse);
+
   // Create an Admin
   router.post("/admins", admins.createAdmin);
 

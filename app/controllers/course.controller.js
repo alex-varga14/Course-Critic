@@ -259,3 +259,25 @@ exports.getCourseAndAggregates = (req, res) => {
     });
   });
 };
+
+// Set Suggested to False
+exports.setSuggestedFalse = (req, res) => {
+  const courseID = req.params.id;
+
+  sequelize.query(
+    'UPDATE Courses SET Suggested = False WHERE ID = ' + courseID + ';', {
+      type: sequelize.QueryTypes.UPDATE
+    }
+  )
+  .then(num => {
+    res.send({
+      message: "Course was updated successfully."
+    })
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: "Error updating Course with id = " + id
+    });
+  });
+
+};
