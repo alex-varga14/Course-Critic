@@ -16,15 +16,43 @@
      </div>
     </section>
 
-    
-      <input type="text" class="form-control" placeholder="Search by Course Code" style="width:600px height:500p"
-        id="code filter" v-on:input="filterCode" />
-      <input type="text" class="form-control" placeholder="Search by Course Number" style="width:600px height:500p"
-      id="number filter" v-on:input="filterCode" />
-      <input type="text" class="form-control" placeholder="Search by Title" style="width:600px height:500p"
-      id="title filter" v-on:input="filterCode" />
-      <input type="text" class="form-control" placeholder="Search by Faculty" style="width:600px height:500p"
-      id="faculty filter" v-on:input="filterCode" />
+   <div id="inline1">
+    <div class="info-box">
+      <p> Course Critic offers an assortment functionsfor filtering through courses. 
+        You can filter the course list by Course Code, Course Number, Faculty or with the name
+          the course! </p>
+    </div>
+
+    <div class="filters-left">
+      
+        <label for="title filter">Course Title</label>
+      <div class="title-filter">
+        <input type="text" class="form-control" placeholder="Software Architecture" style="width:600px height:500p"
+        id="title filter" v-on:input="filterCode" />
+      </div>
+     
+        <label for="faculty filter">Faculty</label>
+      <div class="faculty-filter">
+        <input type="text" class="form-control" placeholder="Software Engineering" style="width:600px height:500p"
+        id="faculty filter" v-on:input="filterCode" />
+      </div>
+    </div>
+
+    <div class="filters-right">
+      
+        <label for="code filter">Course Code</label>
+      <div class="code-filter">
+        <input type="text" class="form-control" placeholder="SENG" style="width:600px height:500p"
+          id="code filter" v-on:input="filterCode" />
+      </div>
+     
+        <label for="number filter">Course Number</label>
+      <div class="number-filter">
+        <input type="text" class="form-control" placeholder="401" style="width:600px height:500p"
+        id="number filter" v-on:input="filterCode" />
+      </div>
+    </div>
+  </div>
       <table class="table" id="formtable">
       <thead>
         <tr id="header">
@@ -44,11 +72,11 @@
           <td>{{aggregatecourses.CourseNo}}</td>
           <td>{{aggregatecourses.Title}}</td>
           <td>{{aggregatecourses.Faculty}}</td>
-          <td>{{aggregatecourses.Difficulty}}</td>
+          <td class="text-center">{{aggregatecourses.Difficulty}}</td>
           <td>{{aggregatecourses.Enjoyment}}</td>
           <td>{{aggregatecourses.Workload}}</td>
           <td>{{aggregatecourses.NumReviews}}</td>
-          <button type=" button "  class="btn " @click="update(aggregatecourses.ID)">
+          <button type=" button "  class="btn view-btn" @click="update(aggregatecourses.ID)">
             View Reviews
           </button>
         </tr>
@@ -244,11 +272,67 @@ data() {
 };
 </script>
 <style>
+.title{
+  font-weight: 300;
+  font-size: 40px;
+}
+
 .list {
   text-align: left;
   max-width: 750px;
   margin: auto;
 }
+
+#inline1{
+  border: 1px dotted grey;
+  border-radius: 15px;
+  width: 60%;
+  background-color:white;
+  display:flex;
+  margin-left: 255px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.info-box{
+  width: 30%;
+  margin-left: 30px;
+  margin-right: 150px;
+}
+
+.filters-left{
+  margin-left: -110px;
+}
+
+.filters-right{
+  margin-left: 70px;
+}
+
+.title-filter{
+  margin-bottom: 20px;
+}
+
+.code-filter{
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.number-filter{
+  width: 40%;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.view-btn{
+  border: 1px solid grey;
+  height: 70px;
+  background: blue;
+}
+
 .ant-popover-arrow {
   border-color: #0c0926 !important;
 }
@@ -285,19 +369,19 @@ data() {
 }
 
 .section-app-face {
-  margin-top: 80px;
-  margin-bottom: 72px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   height: 100px;
   position: relative;
 }
 
 .section-app-face .title {
   font-weight: 300;
-  font-size: 32px;
+  font-size: 40px;
   line-height: 60px;
   color: #000000;
   margin-bottom: 16px;
-  margin-top: 56px;
+  margin-top: 0px;
 }
 
 @media (max-width: 1128px) {
