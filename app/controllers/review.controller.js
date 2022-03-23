@@ -158,3 +158,24 @@ exports.getReviewAndRating = (req, res) => {
         });
     });
 };
+
+exports.updateHelpful = (req, res) => {
+    const hCount = req.params.helpfulCount;
+    const revID = req.params.id;
+
+    sequelize.query(
+        "UPDATE Reviews SET HelpfulCount = " + hCount + " WHERE ID = " + revID + ";", {
+            type: sequelize.QueryTypes.UPDATE
+        }
+    )
+    .then(num => {
+    res.send({
+            message: "Review was updated successfully."
+        })
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error updating Review with id = " + revID
+        });
+    });
+};

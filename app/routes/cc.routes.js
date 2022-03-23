@@ -60,6 +60,9 @@ module.exports = app => {
   // Update a Review
   router.put("/reviews/:id", reviews.updateReview);
 
+  // Update Review HelpfulCount
+  router.put("/reviews/:id/:helpfulCount", reviews.updateHelpful);
+
   // Delete a Review
   router.delete("/reviews/:id", reviews.deleteReview);
 
