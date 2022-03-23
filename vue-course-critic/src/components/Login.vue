@@ -19,7 +19,7 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button @click="loginAdmin" type="submit" class="btn btn-primary"><router-link to="/adminhome" class="dropdown-item" href="#">Log In</router-link></button>
     </form>
      </div>
     </section>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'login'
+  name: 'login',
 }
 </script>
 
