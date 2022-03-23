@@ -4,7 +4,10 @@ class ReviewDataService {
     return http.get("http://localhost:8080/api/reviews");
   }
   create(data) {
-    return http.post("/review", data);
+    return http.post("http://localhost:8080/api/reviews", data);
+  }
+  getCourseReviews(id){
+    return http.get("http://localhost:8080/api/reviews/courseID/" + id);
   }
   
 }

@@ -1,3 +1,4 @@
+USE testdb;
 INSERT INTO Courses(Title, Description, Faculty, CourseCode, CourseNo, Suggested)
 VALUES('Computer Networks', 'Principles and practice in modern telecommunications, computer communications and networks', 'Computer Science', 'CPSC', '441', false);
 

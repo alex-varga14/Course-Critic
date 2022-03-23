@@ -5,10 +5,13 @@ class CourseDataService {
     return http.get("http://localhost:8080/api/courses");
   }
   getCourseAggregateInfo(){
-    return http.get("http://localhost:8080/api/courses/get/all/aggregates")
+    return http.get("http://localhost:8080/api/courses/get/all/aggregates");
   }
+  // get(data) {
+  //   return http.get("http://localhost:8080/api/courses/"+ data);
+  // }
   get(id) {
-    return http.get(`/courses/${id}`);
+    return http.get("http://localhost:8080/api/courses/" + id);
   }
   create(data) {
     return http.post("/courses", data);

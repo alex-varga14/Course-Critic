@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #141041;">
-      <!-- <nav class="navbar navbar-expand navbar-dark bg-dark"> -->
     <div class="container-fluid">
         <router-link to="/" class="navbar-brand" >Course Critic</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,11 +11,6 @@
                 <li class="nav-item">
                       <router-link to="/home" class="nav-link active" aria-current="page" href="#">About</router-link>
                 </li>
-                <!--
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                -->
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
@@ -27,7 +21,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><router-link to="/login" class="dropdown-item" href="#">Sign Up/Log In</router-link></li>
+                        <li><router-link to="/login" class="dropdown-item" href="#">Admin Log In</router-link></li>
                     </ul>
                 </li>
             </ul>
@@ -39,6 +33,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "app"
@@ -53,5 +48,4 @@ export default {
   color: #FFFFFF;
   background-color: #FFFFFF;
 }
-
 </style>

@@ -8,7 +8,7 @@
           Critique of <span class="defi-text">Courses</span>
         </div>
         <div class="subtitle">
-          Peer-to-Peer <b>review</b>. Honest <b>ratings</b>. {{ '\n' }} Accurate <b>workloads</b>.
+          Peer-to-Peer <b>review</b>. Honest <b>ratings</b>. {{ '\n' }} <span class="red-yel">Accurate</span> <b>workloads</b>.
         </div>
 
         <div class="row-box-1">
@@ -26,8 +26,7 @@
      </div>
     </section>
 
-    <section class="section-features -2 children-center grid-cover-container">
-      <div class="image-3" />
+    <section class="section-app-face2 section-features -2 children-center grid-cover-container">
       <div class="content">
         <div class="title-text">
           <div class="line" />
@@ -41,7 +40,7 @@
             </div>
             <div class="feature-title">Ratings</div>
             <div class="feature-description">
-
+                  Rate Courses with Ease.
             </div>
           </div>
 
@@ -51,7 +50,7 @@
             </div>
             <div class="feature-title">Reviews</div>
             <div class="feature-description">
-
+                View and Leave Candid Reviews.
             </div>
           </div>
 
@@ -61,7 +60,7 @@
             </div>
             <div class="feature-title">Discussion</div>
             <div class="feature-description">
-
+                  Discussion Coming Soon...
             </div>
           </div>
         </div>
@@ -78,49 +77,25 @@
           </div>
           <ul class="links">
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >About</a
-              >
+              <router-link to="/">About</router-link>
             </li>
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Contact Us</a
-              >
+              <router-link to="/contact">Contact Us</router-link>
             </li>
           </ul>
         </div>
 
-        <div class="group protocol">
+        <div class="group">
           <div class="title-text">
             <div class="text">GET STARTED</div>
             <div class="line" />
           </div>
           <ul class="links">
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >View Courses</a
-              >
+              <router-link to="/courselist">View Courses</router-link>
             </li>
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Suggest A Course</a
-              >
+              <router-link to="/add">Suggest Courses</router-link>
             </li>
           </ul>
         </div>
@@ -132,22 +107,10 @@
           </div>
           <ul class="links">
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Site Guidelines</a
-              >
+              <router-link to="/guidelines">Site Guidelines</router-link>
             </li>
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Terms and Conditions</a
-              >
+              <router-link to="/terms">Terms and Conditions</router-link>
             </li>
           </ul>
         </div>
@@ -165,14 +128,6 @@ export default {
 }
 </script>
 
-<style>
-.ant-popover-arrow {
-  border-color: #FFFFFF !important;
-}
-.ant-popover-inner-content {
-  background-color: #FFFFFF !important;
-}
-</style>
 <style scoped>
 /* utilities */
 .card {
@@ -186,25 +141,6 @@ export default {
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
-}
-.button-like:active {
-  filter: brightness(0.75);
-  transform: scale(0.95);
-}
-.button-like:hover {
-  filter: brightness(0.85);
-}
-.button-like .font {
-  display: inline-block;
-}
-.clickable {
-  cursor: pointer;
-}
-
-.icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
 }
 
 .forsted-glass {
@@ -229,9 +165,9 @@ export default {
 }
 .forsted-glass.buriedlightsmoke,
 .forsted-glass.lightsmoke {
-  --border-color: hsl(0, 0%, 100%);
-  --bg-board-color: hsl(0, 0%, 100%, 0.08);
-  --bg-board-color-2: hsl(0, 0%, 100%, 0);
+ --border-color: hsl(36, 87%, 65%);
+  --bg-board-color: rgba(221, 44, 21, 0.767);
+  --bg-board-color-2: rgb(175, 96, 5);
   --text-color: hsl(0, 0%, 100%);
   --blur-size: 1.5px;
   --border-radius: 20px;
@@ -240,19 +176,12 @@ export default {
 .forsted-glass.buriedlightsmoke {
   --blur-size: 6px;
 }
-.forsted-glass.smoke {
-  --border-color: hsl(0, 0%, 100%);
-  --bg-board-color: hsl(0, 0%, 100%, 0.12);
-  --bg-board-color-2: hsl(0, 0%, 100%, 0);
-  --text-color: hsl(0, 0%, 100%);
-  --blur-size: 2.3px;
-  --border-radius: 20px;
-}
+
 .forsted-glass.teal {
-  --border-color: hsl(165, 87%, 65%);
-  --bg-board-color: hsl(183, 67%, 54%, 0.2);
-  --bg-board-color-2: hsl(183, 67%, 54%, 0);
-  --text-color: hsl(183, 67%, 54%);
+  --border-color: hsl(36, 87%, 65%);
+  --bg-board-color: rgba(221, 44, 21, 0.767);
+  --bg-board-color-2: rgb(175, 96, 5);
+  --text-color: #FFFFFF;
   --blur-size: 6px;
   --border-radius: 12px;
 }
@@ -280,7 +209,7 @@ export default {
   width: 40px;
   height: 1px;
   border-radius: 2px;
-  background: radial-gradient(39.84% 47.5% at 96.82% 58.33%, #39d0d8 0%, #2b6aff 100%);
+  background: radial-gradient(39.84% 47.5% at 96.82% 58.33%, #d8c839 0%, #f19010 100%);
 }
 .title-text .text {
   font-size: 20px;
@@ -301,7 +230,6 @@ export default {
 .page-container {
   --text-primary: #000000;
   --text-secondary: hsl(35deg, 100%, 75%);
-  --text-secondary-light: #c4d6ff;
 }
 
 .section-app-face {
@@ -310,6 +238,14 @@ export default {
   height: 804px;
   position: relative;
 }
+
+.section-app-face2 {
+  margin-top: 80px;
+  margin-bottom: 72px;
+  height: 402px;
+  position: relative;
+}
+
 .section-app-face .image-1 {
   background-image: url('../assets/background/cc-svg-logo.svg');
   background-repeat: no-repeat;
@@ -329,9 +265,23 @@ export default {
   font-weight: normal;
   font-size: 22px;
   line-height: 30px;
-  color: var(--text-secondary);
+  color: transparent;
+  background: radial-gradient(circle at top right, #e87938, #f20f0f);
+  background-clip: text;
   margin-bottom: 24px;
 }
+ .section-app-face .red-yel {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+  color: transparent;
+  background: radial-gradient(circle at top right, #f20f0f, #f2d00f);
+  background-clip: text;
+  margin-bottom: 24px;
+
+   }
+
 .section-app-face .defi-text {
   font-weight: 700;
   color: transparent;
@@ -357,16 +307,7 @@ export default {
   color: white;
   background-position: 99% 50%;
 }
-.section-app-face .row-box-1 .card-1 .icon {
-  width: 4px;
-  height: 12px;
-  margin-left: 6px;
-}
-.section-app-face .row-box-1 .card-2 .icon {
-  width: 14px;
-  height: 14px;
-  margin-left: 8px;
-}
+
 .section-app-face .row-box-2 {
   display: grid;
   grid-auto-flow: column;
@@ -386,12 +327,11 @@ export default {
 
 .page-footer {
   position: relative;
-  background-size: 100% 600px, 100% 100%;
   display: flow-root;
 }
 .page-footer .links-group {
   width: 100%;
-  padding: 200px 4% 0;
+  padding: 100px 4% 0;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -427,14 +367,7 @@ export default {
 .page-footer .group .links .link:hover {
   color: white;
 }
-.page-footer .group .links .icon-like {
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: grid;
-  place-content: center;
-}
+
 .page-footer .foot-logo {
   margin: 16px auto 64px;
   display: block;
@@ -467,10 +400,7 @@ export default {
   padding: 24px 50px;
   flex: 1 0 120px;
 }
-.section-features .boards > .card > .card.icon-like {
-  padding: 12px;
-  margin-bottom: 12px;
-}
+
 .section-features .boards > .card > .feature-title {
   font-weight: 600;
   margin-bottom: 8px;
@@ -484,8 +414,6 @@ export default {
   min-height: 506px;
   overflow: hidden;
   border-radius: 100px;
-  background: radial-gradient(at center top, transparent 20%, hsl(245, 60%, 16%, 0.2)),
-    url('../assets/background/index_background2_lights.webp'), #1b1659;
   box-shadow: 8px 8px 10px rgba(20, 16, 65, 0.05), -8px -8px 10px rgba(197, 191, 255, 0.05),
     inset 0 6px 20px rgba(197, 191, 255, 0.2), inset 0 -1px 25px rgba(197, 191, 255, 0.1);
   background-size: 100% 100%;
@@ -499,12 +427,6 @@ export default {
   grid-template-rows: auto auto 1fr auto;
 }
 
-.section-features.\-1 .image-2 {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(245.22deg, #da2eef 7.97%, #2b6aff 49.17%, #39d0d8 92.1%);
-  mask-image: url('../assets/background/index_background2.svg');
-}
 
 .section-features.\-2 .image-3 {
   background-size: 100% 100%;
@@ -568,9 +490,7 @@ export default {
     background-size: 200vw 600px, 100% 100%;
     text-align: center;
   }
-  .page-footer .links-group .group.community {
-    flex-basis: 100vw;
-  }
+  
   .page-footer .links-group .title-text .line {
     margin: 0 auto;
   }
@@ -591,23 +511,13 @@ export default {
     justify-content: center;
   }
 
-  .section-features.\-1 {
-    margin: 0 24px;
-    padding: 64px 40px;
-    border-radius: 60px;
-    background: radial-gradient(at center top, transparent 20%, hsl(245, 60%, 16%, 0.2)),
-      url('../assets/background/index_background2_lights_tablet.webp'), #1b1659;
-    background-size: 100% 100%;
-  }
+  
   .section-features.\-1 .boards {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
   .section-features.\-2 .boards {
     grid-template-columns: 1fr;
-  }
-  .section-features.\-2 .image-3 {
-    background-image: url('../assets/background/index_background3_tablet.webp');
   }
 }
 
@@ -678,13 +588,6 @@ export default {
     line-height: 16px;
   }
 
-  .section-features.\-1 {
-    border-radius: 40px;
-    background: radial-gradient(at center top, transparent 20%, hsl(245, 60%, 16%, 0.2)),
-      url('../assets/background/index_background2_lights_mobile.webp'), #1b1659;
-    background-size: 100% 100%;
-    padding: 56px 20px;
-  }
   .section-features.\-1 .boards {
     grid-template-columns: 1fr;
   }
@@ -694,9 +597,7 @@ export default {
   .section-features.\-2 .content {
     padding: 0 20px;
   }
-  .section-features.\-2 .image-3 {
-    background-image: url('../assets/background/index_background3_mobile.webp');
-  }
+  
   .section-features.\-2 .feature-description {
     font-size: 14px;
     line-height: 20px;

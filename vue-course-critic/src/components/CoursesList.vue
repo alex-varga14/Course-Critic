@@ -8,9 +8,9 @@
         </div>
         <div class="list" >
           <div class="col-md-8" >
-            
-             
-            
+
+
+
           </div>
       </div>
      </div>
@@ -18,19 +18,19 @@
 
    <div id="inline1">
     <div class="info-box">
-      <p> Course Critic offers an assortment functionsfor filtering through courses. 
+      <p> Course Critic offers an assortment functions for filtering through courses.
         You can filter the course list by Course Code, Course Number, Faculty or with the name
           the course! </p>
     </div>
 
     <div class="filters-left">
-      
+
         <label for="title filter">Course Title</label>
       <div class="title-filter">
         <input type="text" class="form-control" placeholder="Software Architecture" style="width:600px height:500p"
         id="title filter" v-on:input="filterCode" />
       </div>
-     
+
         <label for="faculty filter">Faculty</label>
       <div class="faculty-filter">
         <input type="text" class="form-control" placeholder="Software Engineering" style="width:600px height:500p"
@@ -39,13 +39,13 @@
     </div>
 
     <div class="filters-right">
-      
+
         <label for="code filter">Course Code</label>
       <div class="code-filter">
         <input type="text" class="form-control" placeholder="SENG" style="width:600px height:500p"
           id="code filter" v-on:input="filterCode" />
       </div>
-     
+
         <label for="number filter">Course Number</label>
       <div class="number-filter">
         <input type="text" class="form-control" placeholder="401" style="width:600px height:500p"
@@ -82,65 +82,10 @@
         </tr>
       </tbody>
     </table>
-    
+
   </div>
 </template>
 
-
-<!--
-<template>
-  <div class="list" >
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search by title"
-          v-model="title"/>
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button"
-            @click="searchTitle"
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h4>Course List</h4>
-      <ul class="list-group">
-        <li class="list-group-item"
-          :class="{ active: index == currentIndex }"
-          v-for="(course, index) in courses"
-          :key="index"
-          @click="setActiveCourse(course, index)"
-        >
-          {{ course.title }}
-        </li>
-      </ul>
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllCourses">
-        Remove All
-      </button>
-  </div>
-  <div class="col-md-6">
-    <div v-if="currentCourse">
-      <h4>Course</h4>
-      <div>
-        <label><strong>Title:</strong></label> {{ currentCourse.title }}
-      </div>
-      <div>
-        <label><strong>Description:</strong></label> {{ currentCourse.description }}
-      </div>
-      <div>
-        <label><strong>Status:</strong></label> {{ currentCourse.published ? "Published" : "Pending" }}
-      </div>
-      <router-link :to="'/courses/' + currentCourse.id" class="badge badge-warning">Edit</router-link>
-    </div>
-    <div v-else>
-      <br />
-      <p>Please click on a Course...</p>
-    </div>
-  </div>
-</div>
-</template>
--->
 
 <script>
 import CourseDataService from "../services/CourseDataService";
@@ -178,7 +123,7 @@ data() {
     },
     update(data){
       this.$router.push({name: "courses",
-      params: { data }
+        params: { data }
       });
     },
     refreshList() {

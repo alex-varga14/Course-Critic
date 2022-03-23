@@ -17,7 +17,7 @@ const routes =  [
     component: () => import("./components/Course"),
     meta: {
       auth: true
-  }
+    }
   },
   {
     path: "/add",
@@ -28,7 +28,27 @@ const routes =  [
     path: "/login",
     name: "login",
     component: () => import("./components/Login")
+  },
+  {
+    path: "/terms",
+    name: "terms",
+    component: () => import("./components/Terms")
+  },
+  {
+    path: "/guidelines",
+    name: "guidelines",
+    component: () => import("./components/Guidelines")
+  },
+  {
+    path: "/contact",
+    name: "contact",
+    component: () => import("./components/Contact")
   }
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: () => import("./components/About")
+  // }
 ];
 const router = createRouter({
   history: createWebHistory(),
