@@ -18,9 +18,9 @@
 
    <div id="inline1">
     <div class="info-box">
-      <p> Course Critic offers an assortment functions for filtering through courses.
+      <p> Course Critic offers an assortment of functions for filtering through courses.
         You can filter the course list by Course Code, Course Number, Faculty or with the name
-          the course! </p>
+          of the course! </p>
     </div>
 
     <div class="filters-left">
