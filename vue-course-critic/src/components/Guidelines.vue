@@ -1,15 +1,24 @@
 <template>
     <div>
         <div class="guidelines text-center">
-            Cource Critic Guidelines
+            Course Critic Guidelines
         </div>
 
-        <div class="guidelines-info text-center">
+        <div class="guidelines-info">
+            <br><br>
+            <p> We at Course Critic value respect and honesty, therefore we ask all contributors to adhere
+                to our guidelines outlined below:
+            </p>
             <ul class = "guideline-text">
-                <li> <span class = "textspan"> Remember to respect everyone at all times. </span> </li>
-                <li> <span class = "textspan"> Kindly refrain from using profanities when writing reviews. </span> </li>
-                <li> <span class = "textspan"> Honesty goes a long way. Be as truthful as you can when telling your experiences! </span> </li>
-                <li> <span class = "textspan"> Professors are people too. Remember this when writing about them. </span> </li>
+                <li> Remember to respect everyone at all times. </li>
+                <li> Kindly refrain from using profanities when writing reviews. </li>
+                <li> Honesty goes a long way. Be as truthful as you can when telling your experiences! </li>
+                <li> Professors are people too. Remember this when writing about them. </li>
+                <li> If you have any comments, questions, or concerns, kindly contact us through the Contact Page provided for you. </li>
+                <li> Kindly adhere to the format for suggesting courses as outlined for you.
+                     This makes it easier for us to approve your suggestions! 
+                </li>
+
             </ul>
         </div>
     </div>
@@ -22,18 +31,13 @@ export default {
 </script>
 
 <style>
-p {
-    color: black;
-}
-
 .guideline-text {
     color: black;
 }
 
-ul {
-    display: inline-block;
+p {
+    color: black;
 }
-
 .guidelines {
     font-weight: 300;
     font-size: 40px;
