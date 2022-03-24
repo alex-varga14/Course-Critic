@@ -12,7 +12,7 @@
         </div>
 
         <div class="row-box-1">
-          <router-link to="/courselist">
+          <router-link to="/coursesAdmin">
             <div class="card button-like card-1"><span class="font">Courses</span>
             </div>
           </router-link>
@@ -22,13 +22,12 @@
               <span class="font">RateMyProf</span>
             </div>
           </a>
-          
-          <a rel="nofollow noopener noreferrer" target="_blank">
-            <div class="card button-like card-1 forsted-glass teal">
-              <span class="font"><router-link to="/approve">Approve Course</router-link></span>
+
+          <router-link to="/approve">
+            <div class="card button-like card-1"><span class="font">Approve Course</span>
             </div>
-          </a>
-          
+          </router-link>
+
           <router-link to="/login">
             <div class="card button-like card-1"><span class="font">Logout</span>
             </div>
@@ -201,6 +200,13 @@ export default {
 
 <style scoped>
 /* utilities */
+
+#AdminFont{
+    font-size: 50px;
+    color: black;
+    margin-left: 500px;
+}
+
 .card {
   padding: 12px 24px;
   border-radius: 6px;
