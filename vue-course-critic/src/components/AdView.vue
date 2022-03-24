@@ -13,7 +13,7 @@
 
         <div class="row-box-1">
           <router-link to="/coursesAdmin">
-            <div class="card button-like card-1"><span class="font">Courses</span>
+            <div class="card button-like card-1"><span class="font">Courses-Admin View</span>
             </div>
           </router-link>
 
