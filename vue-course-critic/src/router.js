@@ -24,7 +24,6 @@ const routes =  [
       auth: true
     }
   },
-  
   {
     path: "/coursesAdmin",
     name: "coursesAdmin",
