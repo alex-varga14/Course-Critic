@@ -1,0 +1,329 @@
+
+<template>
+  <div class="page-container" id="courselist">
+    <section class="section-app-face children-center grid-cover-container">
+      <div class="grid-cover-content children-center">
+        <div class="title">
+          Approve Courses
+        </div>
+        <div class="list" >
+          <div class="col-md-8" >
+
+
+
+          </div>
+      </div>
+     </div>
+    </section>
+
+   <div id="inline1">
+    <div class="info-box">
+      <p> As an Admin of Course Critic, you are able to approve or deny which courses that were suggested
+          will be seen </p>
+    </div>
+
+
+  </div>
+      <table class="table" id="formtable">
+      <thead>
+        <tr id="header">
+          <th scope="col">Course Code</th>
+          <th scope="col">Course Number</th>
+          <th scope="col">Title</th>
+          <th scope="col">Faculty</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="aggregatecourses in aggregatecourses" v-bind:key="aggregatecourses" id="rows">
+          <td id="code">{{aggregatecourses.CourseCode}}</td>
+          <td>{{aggregatecourses.CourseNo}}</td>
+          <td>{{aggregatecourses.Title}}</td>
+          <td>{{aggregatecourses.Faculty}}</td>
+          <td>{{aggregatecourses.Description}}</td>
+          <td>
+              <button @click="approve" type="submit" class="approve-course">
+                  Approve
+              </button>
+              <button @click="deny" type="submit" class="approve-course">
+                  Deny
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</template>
+
+
+<script>
+import CourseDataService from "../services/CourseDataService";
+export default {
+name: "courses-list",
+data() {
+  return {
+      courses: [],
+      aggregatecourses:[],
+      currentCourse: null,
+      currentIndex: -1,
+      title: "",
+    };
+  },
+  methods: {
+    approve(){
+        window.alert("Course Approved!");
+    },
+    deny(){
+        window.alert("Course Denied!");
+    },
+    retrieveCourses() {
+      CourseDataService.getAll()
+        .then(response => {
+          this.courses = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    retrieveSuggestedCourses(){
+      CourseDataService.getSuggested()
+      .then(response => {
+        this.aggregatecourses= response.data;
+        console.log(response.data);
+      })
+      .catch(e => {
+          console.log(e);
+        });
+    },
+    update(data){
+      this.$router.push({name: "courses",
+        params: { data }
+      });
+    },
+    refreshList() {
+      this.retrieveCourses();
+      this.currentCourse = null;
+      this.currentIndex = -1;
+    },
+    setActiveCourse(course, index) {
+      this.currentCourse = course;
+      this.currentIndex = course ? index : -1;
+    },
+    removeAllCourses() {
+      CourseDataService.deleteAll()
+      .then(response => {
+          console.log(response.data);
+          this.refreshList();
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    filterCode: function(){
+    var text, table, tableRows, td, i, txtValue,tdTwo,textTwo;
+    var tdThree, textThree, tdFour, textFour;
+    text = document.getElementById("code filter").value;
+    textTwo = document.getElementById("number filter").value;
+    textThree = document.getElementById("title filter").value;
+    textFour = document.getElementById("faculty filter").value;
+    table = document.getElementById("formtable");
+    tableRows = table.getElementsByTagName("tr");
+    for (i = 0; i < tableRows.length; i++) {
+      td = tableRows[i].getElementsByTagName("td")[0];
+      tdTwo =tableRows[i].getElementsByTagName("td")[1];
+      tdThree =tableRows[i].getElementsByTagName("td")[2];
+      tdFour =tableRows[i].getElementsByTagName("td")[3];
+      if (td) {
+        txtValue = td.textContent;
+          if (txtValue.indexOf(text) > -1) {
+            tableRows[i].style.display = "";
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        if (tdTwo) {
+          txtValue = tdTwo.textContent;
+          if (txtValue.indexOf(textTwo) > -1) {
+            if(tableRows[i].style.display!="none"){
+              tableRows[i].style.display = "";
+            }
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        if (tdThree) {
+          txtValue = tdThree.textContent;
+          if (txtValue.indexOf(textThree) > -1) {
+            if(tableRows[i].style.display!="none"){
+              tableRows[i].style.display = "";
+            }
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        if (tdFour) {
+          txtValue = tdFour.textContent;
+          if (txtValue.indexOf(textFour) > -1) {
+            if(tableRows[i].style.display!="none"){
+              tableRows[i].style.display = "";
+            }
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+      }
+    },
+  searchTitle() {
+    CourseDataService.findByTitle(this.title)
+      .then(response => {
+        this.courses = response.data;
+        this.setActiveCourse(null);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  },
+  },
+  mounted() {
+    this.retrieveCourses();
+    this.retrieveSuggestedCourses();
+  }
+};
+</script>
+<style>
+.title{
+  font-weight: 300;
+  font-size: 40px;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+#inline1{
+  border: 1px dotted grey;
+  border-radius: 15px;
+  width: 60%;
+  background-color:white;
+  display:flex;
+  margin-left: 255px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.info-box{
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.filters-left{
+  margin-left: -110px;
+}
+
+.filters-right{
+  margin-left: 70px;
+}
+
+.title-filter{
+  margin-bottom: 20px;
+}
+
+.code-filter{
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.number-filter{
+  width: 40%;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.view-btn{
+  border: 1px solid grey;
+  height: 70px;
+  background: blue;
+}
+
+.ant-popover-arrow {
+  border-color: #0c0926 !important;
+}
+.ant-popover-inner-content {
+  background-color: #0c0926 !important;
+}
+</style>
+<style scoped>
+/* utilities */
+
+.children-center {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+.children-center,
+.children-text-center > * {
+  text-align: center;
+}
+.children-center,
+.children-flex-content-center > * {
+  justify-content: center;
+}
+
+.grid-cover-container {
+  place-items: center;
+  display: grid;
+}
+.grid-cover-container > * {
+  max-width: 100%;
+  grid-area: 1 / 1;
+  overflow: auto;
+}
+
+.section-app-face {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 100px;
+  position: relative;
+}
+
+.section-app-face .title {
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 60px;
+  color: #000000;
+  margin-bottom: 16px;
+  margin-top: 0px;
+}
+
+@media (max-width: 1128px) {
+  /* is tablet */
+
+  .section-app-face {
+    margin-top: 116px;
+    height: 720px;
+  }
+
+  .section-app-face .title {
+    font-size: 48px;
+    line-height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* is phone */
+  .section-app-face {
+    margin-top: 116px;
+    height: unset;
+  }
+}
+</style>
