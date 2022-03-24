@@ -1,17 +1,17 @@
 <template>
   <div class="submit-form page">
-
+ 
   <div v-if="!submitted">
-
     <div class="title-big text-center">
       Suggest A Course
     </div>
-
+    
 <!--       COURSE TITLE       -->
       <div class="form-group title-container">
         <label for="title">Course Title</label>
         <input
           type="text"
+          onkeydown="return /[a-z ]/i.test(event.key)"
           class="form-control"
           id="title"
           required
@@ -29,6 +29,7 @@
           <label for="faculty">Faculty</label>
           <input
             type="text"
+            onkeydown="return /[a-z ]+$/i.test(event.key)"
             class="form-control"
             id="faculty"
             required
@@ -43,12 +44,14 @@
           <label for="coursecode">Course Code</label>
           <input
             type="text"
+            onkeydown=" return /[a-z]/i.test(event.key)"
             class="form-control"
             id="coursecode"
             required
             v-model="course.coursecode"
             name="coursecode"
             placeholder="CPSC"
+            maxlength="4"
           />
         </div>
 
@@ -56,14 +59,15 @@
         <div class="form-group courseno-container">
           <label for="courseno">Course Number</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
             id="courseno"
             required
             v-model="course.courseno"
             name="courseno"
             placeholder="441"
-          />
+            maxlength="3"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
         </div>
 
       </div>
@@ -103,8 +107,8 @@
       <button class="btn btn-success submit-btn text-center" @click="newCourse">Suggest Another Course</button>
     </div>
 
-    
   </div>
+
 </template>
 
 
@@ -128,6 +132,10 @@ export default {
     };
   },
   methods: {
+    newCourse() {
+      this.submitted = false;
+      this.course = {};
+    },
     saveCourse() {
       console.log("SAVING COURSE...");
       var data = {
@@ -139,28 +147,40 @@ export default {
         CourseCode: this.course.coursecode,
         Suggested: true
       };
-      CourseDataService.create(data)
+      
+      if (this.course.title == undefined || this.course.faculty == undefined || this.course.coursecode == undefined 
+        || this.course.courseno == undefined || this.course.description == undefined) {
+        alert("All fields must be filled out to suggest a new course");
+        this.newCourse();
+      }
+      else{
+        CourseDataService.create(data)
         .then(response => {
           this.course.id = response.data.id;
+          this.course = response.data;
           console.log(response.data);
           this.submitted = true;
         })
         .catch(e => {
           console.log(e);
         });
+      }
+      
     },
-
-    newCourse() {
-      this.submitted = false;
-      this.course = {};
-    }
+    
   }
 };
 </script>
 <style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .page { 
   font-weight: 50;
-  color: #000000;
+  color: black;
 }
 
 .title-big {
@@ -168,12 +188,11 @@ export default {
   font-size: 40px;
   line-height: 60px;
   color: #000000;
-  width: auto;
+  width: 130%;
   margin: auto;
   margin-bottom: 50px;
   margin-top: 30px;
-  margin-right: -30px;
-  margin-left: -30px;
+  margin-left: -50px;
 }
 
 

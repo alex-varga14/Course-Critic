@@ -3,7 +3,7 @@
   <div class="page-container" id="courselist">
     <section class="section-app-face children-center grid-cover-container">
       <div class="grid-cover-content children-center">
-        <div class="title">
+        <div class="title text-center">
           UCalgary Course List
         </div>
         <div class="list" >
@@ -48,7 +48,7 @@
 
         <label for="number filter">Course Number</label>
       <div class="number-filter">
-        <input type="text" class="form-control" placeholder="401" style="width:600px height:500p"
+        <input type="number" class="form-control" placeholder="401" style="width:600px height:500p"
         id="number filter" v-on:input="filterCode" />
       </div>
     </div>
@@ -60,10 +60,10 @@
           <th scope="col">Course Number</th>
           <th scope="col">Title</th>
           <th scope="col">Faculty</th>
-          <th scope="col">Average Difficulty</th>
-          <th scope="col">Average Enjoyment</th>
-          <th scope="col">Average Workload</th>
-          <th scope="col">Reviews</th>
+          <th class="text-center" scope="col">Average Difficulty</th>
+          <th class="text-center" scope="col">Average Enjoyment</th>
+          <th class="text-center" scope="col">Average Workload</th>
+          <th class="text-center" scope="col">Reviews</th>
         </tr>
       </thead>
       <tbody>
@@ -72,10 +72,10 @@
           <td>{{aggregatecourses.CourseNo}}</td>
           <td>{{aggregatecourses.Title}}</td>
           <td>{{aggregatecourses.Faculty}}</td>
-          <td class="text-center">{{aggregatecourses.Difficulty}}</td>
-          <td>{{aggregatecourses.Enjoyment}}</td>
-          <td>{{aggregatecourses.Workload}}</td>
-          <td>{{aggregatecourses.NumReviews}}</td>
+          <td class="text-center">{{(Math.round(aggregatecourses.Difficulty*100)/100).toFixed(2)}}</td>
+          <td class="text-center">{{(Math.round(aggregatecourses.Enjoyment*100)/100).toFixed(2)}}</td>
+          <td class="text-center">{{(Math.round(aggregatecourses.Workload*100)/100).toFixed(2)}}</td>
+          <td class="text-center"> {{aggregatecourses.NumReviews}}</td>
           <button type=" button "  class="btn view-btn" @click="update(aggregatecourses.ID)">
             View Reviews
           </button>
@@ -221,6 +221,12 @@ data() {
 .title{
   font-weight: 300;
   font-size: 40px;
+  line-height: 60px;
+  color: #000000;
+  width: auto;
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 
 .list {
@@ -232,10 +238,10 @@ data() {
 #inline1{
   border: 1px dotted grey;
   border-radius: 15px;
-  width: 60%;
+  width: 65%;
   background-color:white;
   display:flex;
-  margin-left: 255px;
+  margin-left: 240px;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 30px;
@@ -243,17 +249,19 @@ data() {
 }
 
 .info-box{
-  width: 30%;
+  color: grey;
+  width: 40%;
   margin-left: 30px;
   margin-right: 150px;
 }
 
 .filters-left{
-  margin-left: -110px;
+  margin-left: -90px;
+  width: 25%;
 }
 
 .filters-right{
-  margin-left: 70px;
+  margin-left: 100px;
 }
 
 .title-filter{
@@ -262,11 +270,17 @@ data() {
 
 .code-filter{
   margin-bottom: 20px;
-  width: 40%;
+  width: 45%;
 }
 
 .number-filter{
-  width: 40%;
+  width: 35%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 tr:nth-child(even){
@@ -286,69 +300,4 @@ tr:nth-child(even){
   background-color: #0c0926 !important;
 }
 </style>
-<style scoped>
-/* utilities */
 
-.children-center {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: 1fr;
-}
-.children-center,
-.children-text-center > * {
-  text-align: center;
-}
-.children-center,
-.children-flex-content-center > * {
-  justify-content: center;
-}
-
-.grid-cover-container {
-  place-items: center;
-  display: grid;
-}
-.grid-cover-container > * {
-  max-width: 100%;
-  grid-area: 1 / 1;
-  overflow: auto;
-}
-
-.section-app-face {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  height: 100px;
-  position: relative;
-}
-
-.section-app-face .title {
-  font-weight: 300;
-  font-size: 40px;
-  line-height: 60px;
-  color: #000000;
-  margin-bottom: 16px;
-  margin-top: 0px;
-}
-
-@media (max-width: 1128px) {
-  /* is tablet */
-
-  .section-app-face {
-    margin-top: 116px;
-    height: 720px;
-  }
-
-  .section-app-face .title {
-    font-size: 48px;
-    line-height: 44px;
-  }
-}
-
-@media (max-width: 768px) {
-  /* is phone */
-  .section-app-face {
-    margin-top: 116px;
-    height: unset;
-  }
-}
-</style>
