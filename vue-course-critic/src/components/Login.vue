@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container page" id="login">
+  <div class="page" id="login">
         <div class="title text-center">
           Administration Login
         </div>
@@ -10,6 +10,10 @@
         <button type="submit" v-on:click="retry" class="btn btn-success submit-btn">Retry Login</button>
         </div>
         <form v-else>
+          <div class="message text-center">
+              <p>Good news! Regular users don't need to create or use an account to leave reviews or 
+                search for a course. This login page is for registered site administrators only.</p>
+          </div>
           <div id="inline">
             <div class="form-group username">
             <label for="username">Username</label>
@@ -77,7 +81,6 @@
   margin-top: 30px;
   margin-left: 190px;
   width: 70%;
-  border: 1px solid black;
 }
 
 .title{
@@ -87,7 +90,7 @@
   color: #000000;
   width: auto;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   margin-top: 30px;
   margin-right: -30px;
   margin-left: -30px;
@@ -102,7 +105,7 @@
 }
 
 .username{
-  margin-left: 230px;
+  margin-left: 220px;
   color: black;
 }
 
@@ -113,18 +116,27 @@
 
 .submit-btn{
   width: 200px;
-  margin-left: 370px;
+  margin-left: 350px;
   margin-bottom: 30px;
 }
 
 .invalid{
-  width: 30%;
+  width: 50%;
   background: #ffcccb;
   color: black;
   border: 1px dotted red;
   font-size: 20px;
-  margin-left: 330px;
+  margin-left: 230px;
   margin-bottom: 40px;
+}
+
+.message{
+  width: 70%;
+  color: grey;
+  font-size: 15px;
+  margin-left: 120px;
+  margin-top: -20px;
+  margin-bottom: 30px;
 }
 
 .ant-popover-arrow {
