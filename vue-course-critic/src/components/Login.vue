@@ -43,7 +43,7 @@
         },
         mounted(){
           if(this.submitted&&!this.invalid)
-            this.$router.push({name: "Home"});
+            this.$router.push({name: "admin"});
         },
         methods: {
             login() {
@@ -61,7 +61,7 @@
                   //valid credentials->forward to admin course list page
                   else{
                     this.invalid=false;
-                    this.$router.push({name: "Home"});
+                    this.$router.push({name: "admin"});
                   }
                 })
                 .catch(e => {
