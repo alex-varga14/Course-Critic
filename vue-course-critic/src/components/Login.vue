@@ -25,7 +25,7 @@
           </div>
         </div>
         
-        <button type="submit" v-on:click="login" class="btn btn-success submit-btn">Login</button>
+        <button type="submit" class="btn btn-primary"><router-link to="/admin" class="dropdown-item" href="#">Log In</router-link></button>
     </form>
   </div>
 </template>
