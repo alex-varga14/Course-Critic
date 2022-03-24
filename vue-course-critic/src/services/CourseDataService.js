@@ -4,6 +4,9 @@ class CourseDataService {
   getAll() {
     return http.get("http://localhost:8080/api/courses");
   }
+  getSuggested() {
+    return http.get("http://localhost:8080/api/courses/suggested/1");
+  }
   getCourseAggregateInfo(){
     return http.get("http://localhost:8080/api/courses/get/all/aggregates");
   }
