@@ -47,12 +47,9 @@ p {
 }
 
 .page-container {
-    border-style: solid;
-    border-color: #808080;
-    border-radius: 10px;
     margin-top: 50px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
 </style>
