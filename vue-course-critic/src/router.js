@@ -59,12 +59,12 @@ const routes =  [
     path: "/contact",
     name: "contact",
     component: () => import("./components/Contact")
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: () => import("./components/About")
   }
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   component: () => import("./components/About")
-  // }
 ];
 const router = createRouter({
   history: createWebHistory(),
