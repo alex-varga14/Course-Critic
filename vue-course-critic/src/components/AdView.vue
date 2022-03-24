@@ -47,9 +47,7 @@
             </div>
         </a>
     </section>
-
-    <section class="section-features -2 children-center grid-cover-container">
-      <div class="image-3" />
+<section class="section-app-face2 section-features -2 children-center grid-cover-container">
       <div class="content">
         <div class="title-text">
           <div class="line" />
@@ -63,7 +61,7 @@
             </div>
             <div class="feature-title">Ratings</div>
             <div class="feature-description">
-
+                  Rate Courses with Ease.
             </div>
           </div>
 
@@ -73,7 +71,7 @@
             </div>
             <div class="feature-title">Reviews</div>
             <div class="feature-description">
-
+                View and Leave Candid Reviews.
             </div>
           </div>
 
@@ -83,20 +81,9 @@
             </div>
             <div class="feature-title">Discussion</div>
             <div class="feature-description">
-
+                  Discussion Coming Soon...
             </div>
-
           </div>
-
-       
-        <!--    <div class="card children-center forsted-glass buriedlightsmoke">
-            <div class="card icon-like forsted-glass teal">
-              <img class="icon" src="../assets/icons/best-price-swaps.svg" />
-            </div>
-            <div class="feature-title">Approve Courses</div>
-            <div class="feature-description">
-
-            </div> -->
         </div>
 
       </div>
@@ -111,49 +98,25 @@
           </div>
           <ul class="links">
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >About</a
-              >
+              <router-link to="/">About</router-link>
             </li>
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Contact Us</a
-              >
+              <router-link to="/contact">Contact Us</router-link>
             </li>
           </ul>
         </div>
 
-        <div class="group protocol">
+        <div class="group">
           <div class="title-text">
             <div class="text">GET STARTED</div>
             <div class="line" />
           </div>
           <ul class="links">
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >View Courses</a
-              >
+              <router-link to="/courselist">View Courses</router-link>
             </li>
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Suggest A Course</a
-              >
+              <router-link to="/add">Suggest Courses</router-link>
             </li>
           </ul>
         </div>
@@ -165,22 +128,10 @@
           </div>
           <ul class="links">
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Site Guidelines</a
-              >
+              <router-link to="/guidelines">Site Guidelines</router-link>
             </li>
             <li>
-              <a
-                class="link"
-                href="https://google.com"
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-                >Terms and Conditions</a
-              >
+              <router-link to="/terms">Terms and Conditions</router-link>
             </li>
           </ul>
         </div>
