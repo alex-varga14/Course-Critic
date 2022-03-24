@@ -24,6 +24,13 @@ const routes =  [
       auth: true
     }
   },
+  
+  {
+    path: "/coursesAdmin",
+    name: "coursesAdmin",
+    component: () => import("./components/AdminCourseList"),
+  },
+  
   {
     path: "/add",
     name: "add",
