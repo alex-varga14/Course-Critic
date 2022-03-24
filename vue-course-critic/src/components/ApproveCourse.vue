@@ -6,6 +6,13 @@
         <div class="title">
           Approve Courses
         </div>
+
+        
+        <router-link to="/admin">
+            <div id="AdminHome" class="admin-home-button card button-like card-1"><span class="font">Admin Home</span>
+            </div>
+          </router-link>
+
         <div class="list" >
           <div class="col-md-8" >
 
@@ -42,10 +49,10 @@
           <td>{{aggregatecourses.Faculty}}</td>
           <td>{{aggregatecourses.Description}}</td>
           <td>
-              <button @click="approve" type="submit" class="approve-course">
+              <button @click="approve" type="submit" class="approve-deny-course">
                   Approve
               </button>
-              <button @click="deny" type="submit" class="approve-course">
+              <button @click="deny" type="submit" class="approve-deny-course">
                   Deny
               </button>
           </td>
@@ -72,9 +79,11 @@ data() {
   },
   methods: {
     approve(){
+        //Place Holder
         window.alert("Course Approved!");
     },
     deny(){
+        //Place Holder
         window.alert("Course Denied!");
     },
     retrieveCourses() {
@@ -205,6 +214,26 @@ data() {
   margin: auto;
 }
 
+#AdminHome{
+  border-radius: 5px;
+  color: white;
+  background: #009B77;
+  transition: 500ms;
+  width: 200px;
+  margin-bottom: 30px
+}
+
+#AdminHome:hover{
+  border-radius: 5px;
+  color: white;
+  background: #0e6e58;
+  transition: 500ms;
+}
+
+.admin-home-button{
+    text-decoration: none;
+}
+
 #inline1{
   border: 1px dotted grey;
   border-radius: 15px;
@@ -219,8 +248,9 @@ data() {
 }
 
 .info-box{
+  text-align: cen;
   font-size: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .filters-left{
@@ -260,6 +290,16 @@ tr:nth-child(even){
 .ant-popover-inner-content {
   background-color: #0c0926 !important;
 }
+
+.approve-deny-course{
+  border-radius: 5px;
+  color: white;
+  background: #009B77;
+  transition: 500ms;
+  width: 200px;
+  margin-bottom: 10px
+}
+
 </style>
 <style scoped>
 /* utilities */
