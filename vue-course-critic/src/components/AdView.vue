@@ -28,6 +28,11 @@
               <span class="font"><router-link to="/approve">Approve Course</router-link></span>
             </div>
           </a>
+          
+          <router-link to="/login">
+            <div class="card button-like card-1"><span class="font">Logout</span>
+            </div>
+          </router-link>
 
         </div>
         
