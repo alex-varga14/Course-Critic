@@ -7,6 +7,11 @@ const routes =  [
     component: () => import("./components/Home")
   },
   {
+    path: "/admin",
+    name: "admin",
+    component: () => import("./components/AdView")
+  },
+  {
     path: "/courselist",
     name: "course-list",
     component: () => import("./components/CoursesList")
@@ -23,6 +28,11 @@ const routes =  [
     path: "/add",
     name: "add",
     component: () => import("./components/AddCourse")
+  },
+  {
+    path: "/approve",
+    name: "approve",
+    component: () => import("./components/ApproveCourse")
   },
   {
     path: "/login",
