@@ -77,7 +77,7 @@
           </div>
           <ul class="links">
             <li>
-              <router-link to="/">About</router-link>
+              <router-link to="/about">About</router-link>
             </li>
             <li>
               <router-link to="/contact">Contact Us</router-link>
