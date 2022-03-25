@@ -80,6 +80,7 @@ data() {
     };
   },
   methods: {
+  approve(id){
       window.alert("Course Review Approved!");
         CourseDataService.approveSuggested(id);
         this.$router.go();
