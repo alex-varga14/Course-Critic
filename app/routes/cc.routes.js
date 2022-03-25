@@ -66,6 +66,9 @@ module.exports = app => {
   // Delete a Review
   router.delete("/reviews/:id", reviews.deleteReview);
 
+  // Delete all Reviews by CourseID
+  router.delete("/reviews/courseID/:courseID", reviews.deleteReviewbyCourse);
+
   // Get Reviews by Course
   router.get("/reviews/courseID/:courseID", reviews.findReviewbyCourse);
 
