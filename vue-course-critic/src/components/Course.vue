@@ -549,8 +549,6 @@ export default {
                 var temp = response2.data[0];
                 this.lastRevID = temp["LAST_INSERT_ID()"];
                 console.log(temp["LAST_INSERT_ID()"]);
-                this.lastRevID = response2.data;
-                console.log(response2.data);
                 var data1 = {
                     Enjoyment: this.newReview.Enjoyment,
                     Difficulty: this.newReview.Enjoyment,
