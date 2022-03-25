@@ -66,8 +66,7 @@
 
 <script>
 import CourseDataService from "../services/CourseDataService";
-import RatingDataService from "../services/RatingDataService";
-import ReviewDataService from "../services/ReviewDataService";
+
 export default {
 name: "courses-list",
 data() {
@@ -82,73 +81,25 @@ data() {
   methods: {
     approve(id){
          window.alert("Course Review Approved!");
-        CourseDataService.approveSuggested(id);
-    },
-   deny(id){
-      window.alert("Course Review Denied!");
-       RatingDataService.delete(id)
-          .then(response => {
+        CourseDataService.approveSuggested(id)
+        .then(response =>{
           console.log(response.data);
-          ReviewDataService.delete(id)
-          .then(responseTwo => {
-            console.log(responseTwo.data);
-            CourseDataService.delete(id)
-            .then(responseThree =>{
-              console.log(responseThree.data);
-              this.$router.go();
-            })
-            .catch(e => {
-            console.log(e);
-            });
-          })
-          .catch(e => {
-            console.log(e);
-            CourseDataService.delete(id)
-            .then(responseThree =>{
-              console.log(responseThree.data);
-              this.$router.go();
-            })
-            .catch(e => {
-            console.log(e);
-            });
-          });
-        })
-        .catch(e => {
-            console.log(e);
-            ReviewDataService.delete(id)
-            .then(responseTwo => {
-              console.log(responseTwo.data);
-              CourseDataService.delete(id)
-              .then(responseThree =>{
-                console.log(responseThree.data);
-                this.$router.go();
-              })
-              .catch(e => {
-              console.log(e);
-              });
-            })
-            .catch(e => {
-              console.log(e);
-              CourseDataService.delete(id)
-              .then(responseThree =>{
-                console.log(responseThree.data);
-                this.$router.go();
-              })
-              .catch(e => {
-              console.log(e);
-              });
-            });
-        });
-    },
-    retrieveCourses() {
-      CourseDataService.getAll()
-        .then(response => {
-          this.courses = response.data;
-          console.log(response.data);
+          this.$router.go();
         })
         .catch(e => {
           console.log(e);
         });
+    },
+   deny(id){
+      window.alert("Course Review Denied!");
+      CourseDataService.delete(id)
+          .then(responseThree =>{
+          console.log(responseThree.data);
+          this.$router.go();
+        })
+      .catch(e => {
+      console.log(e);
+      });
     },
     retrieveSuggestedCourses(){
       CourseDataService.getSuggested()
@@ -165,93 +116,13 @@ data() {
         params: { data }
       });
     },
-    refreshList() {
-      this.retrieveCourses();
-      this.currentCourse = null;
-      this.currentIndex = -1;
-    },
     setActiveCourse(course, index) {
       this.currentCourse = course;
       this.currentIndex = course ? index : -1;
     },
-    removeAllCourses() {
-      CourseDataService.deleteAll()
-      .then(response => {
-          console.log(response.data);
-          this.refreshList();
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-    filterCode: function(){
-    var text, table, tableRows, td, i, txtValue,tdTwo,textTwo;
-    var tdThree, textThree, tdFour, textFour;
-    text = document.getElementById("code filter").value;
-    textTwo = document.getElementById("number filter").value;
-    textThree = document.getElementById("title filter").value;
-    textFour = document.getElementById("faculty filter").value;
-    table = document.getElementById("formtable");
-    tableRows = table.getElementsByTagName("tr");
-    for (i = 0; i < tableRows.length; i++) {
-      td = tableRows[i].getElementsByTagName("td")[0];
-      tdTwo =tableRows[i].getElementsByTagName("td")[1];
-      tdThree =tableRows[i].getElementsByTagName("td")[2];
-      tdFour =tableRows[i].getElementsByTagName("td")[3];
-      if (td) {
-        txtValue = td.textContent;
-          if (txtValue.indexOf(text) > -1) {
-            tableRows[i].style.display = "";
-          } else {
-            tableRows[i].style.display = "none";
-          }
-        }
-        if (tdTwo) {
-          txtValue = tdTwo.textContent;
-          if (txtValue.indexOf(textTwo) > -1) {
-            if(tableRows[i].style.display!="none"){
-              tableRows[i].style.display = "";
-            }
-          } else {
-            tableRows[i].style.display = "none";
-          }
-        }
-        if (tdThree) {
-          txtValue = tdThree.textContent;
-          if (txtValue.indexOf(textThree) > -1) {
-            if(tableRows[i].style.display!="none"){
-              tableRows[i].style.display = "";
-            }
-          } else {
-            tableRows[i].style.display = "none";
-          }
-        }
-        if (tdFour) {
-          txtValue = tdFour.textContent;
-          if (txtValue.indexOf(textFour) > -1) {
-            if(tableRows[i].style.display!="none"){
-              tableRows[i].style.display = "";
-            }
-          } else {
-            tableRows[i].style.display = "none";
-          }
-        }
-      }
-    },
-  searchTitle() {
-    CourseDataService.findByTitle(this.title)
-      .then(response => {
-        this.courses = response.data;
-        this.setActiveCourse(null);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  },
+    
   },
   mounted() {
-    this.retrieveCourses();
     this.retrieveSuggestedCourses();
   }
 };
