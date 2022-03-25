@@ -66,8 +66,6 @@
 
 <script>
 import CourseDataService from "../services/CourseDataService";
-import RatingDataService from "../services/RatingDataService";
-import ReviewDataService from "../services/ReviewDataService";
 export default {
 name: "courses-list",
 data() {
