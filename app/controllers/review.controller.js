@@ -179,3 +179,30 @@ exports.updateHelpful = (req, res) => {
         });
     });
 };
+
+// Delete all Reviews by CourseID
+exports.deleteReviewbyCourse = (req, res) => {
+    const courseID = req.params.courseID;
+
+    Review.destroy({
+        where: {
+            CourseID: courseID
+        }
+    })
+    .then(num => {
+        if (num == 1) {
+            res.send({
+                message: "Review was deleted successfully!"
+            });
+        } else {
+            res.send({
+                message: `Cannot delete Review with CourseID = ${id}. Maybe Review was not found!`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Could not delete Review with CourseID = " + id
+        });
+    });
+}
