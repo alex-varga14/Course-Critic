@@ -164,6 +164,7 @@
                         class="form-check-input me-2" 
                         type="checkbox" 
                         value="" 
+                        @click="plusHelpful(reviewsWRatings.HelpfulCount)"
                         id="form6Example8" 
                         unchecked />
                       </div>
@@ -548,6 +549,8 @@ export default {
                 var temp = response2.data[0];
                 this.lastRevID = temp["LAST_INSERT_ID()"];
                 console.log(temp["LAST_INSERT_ID()"]);
+                this.lastRevID = response2.data;
+                console.log(response2.data);
                 var data1 = {
                     Enjoyment: this.newReview.Enjoyment,
                     Difficulty: this.newReview.Enjoyment,
@@ -608,10 +611,9 @@ export default {
       }
     },
     plusHelpful(data) {
-      var data1 = {
-        HelpfulCount: data + 1,
-      };
-       ReviewDataService.updateHelpful(this.data, data1)
+      var HelpfulCount = data + 1;
+      console.log("HELLLLLPFUL");
+       ReviewDataService.updateHelpful(this.data, HelpfulCount)
         .then(response => {
           console.log(response.data);
         })
