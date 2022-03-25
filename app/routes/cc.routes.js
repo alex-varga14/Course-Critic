@@ -93,6 +93,9 @@ module.exports = app => {
   // Get Rating by Review
   router.get("/ratings/reviewID/:reviewID", ratings.findRatingbyReview);
 
+  //Delete all ratings by course id
+  router.delete("/ratings/courseID/:courseID", ratings.deleteRatingsCourse);
+
   // Set base route for the endpoints
   app.use('/api', router);
 };

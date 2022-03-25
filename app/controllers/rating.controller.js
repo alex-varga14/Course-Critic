@@ -148,3 +148,29 @@ exports.findAverageRatings = (req, res) => {
         });
     });
 };
+// Delete all Ratings by CourseID
+exports.deleteRatingsCourse = (req, res) => {
+    const courseID = req.params.courseID;
+
+    Rating.destroy({
+        where: {
+            CourseID: courseID
+        }
+    })
+    .then(num => {
+        if (num == 1) {
+            res.send({
+                message: "Rating was deleted successfully!"
+            });
+        } else {
+            res.send({
+                message: `Cannot delete Rating with CourseID = ${id}. Maybe Rating was not found!`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: `Could not delete Rating with CourseID = ${req.params.courseID}`
+        });
+    });
+}
