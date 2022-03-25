@@ -205,4 +205,22 @@ exports.deleteReviewbyCourse = (req, res) => {
             message: "Could not delete Review with CourseID = " + id
         });
     });
-}
+};
+
+// Get ID of last Review inserted
+exports.getLastID = (req, res) => {
+    sequelize.query(
+        "SELECT LAST_INSERT_ID();", {
+            type: sequelize.QueryTypes.SELECT
+        }
+    )
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occured while retrieving last review ID."
+        });
+    });
+};

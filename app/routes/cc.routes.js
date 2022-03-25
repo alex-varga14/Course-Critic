@@ -75,6 +75,9 @@ module.exports = app => {
   // Get Reviews & associated Rating by Course
   router.get("/reviews/ratings/:courseID", reviews.getReviewAndRating);
 
+  // Get ID of last Review inserted
+  router.get("/reviews/get/lastID", reviews.getLastID);
+
   // Create a Rating
   router.post("/ratings", ratings.createRating);
 
