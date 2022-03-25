@@ -164,13 +164,40 @@ exports.deleteRatingsCourse = (req, res) => {
             });
         } else {
             res.send({
-                message: `Cannot delete Rating with CourseID = ${id}. Maybe Rating was not found!`
+                message: `Cannot delete Rating with CourseID = ${courseID}. Maybe Rating was not found!`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
             message: `Could not delete Rating with CourseID = ${req.params.courseID}`
+        });
+    });
+};
+
+// Delete All ratings by review ID
+exports.deleterRatingbyReview = (req, res) => {
+    const reviewID = req.params.reviewID;
+
+    Rating.destroy({
+        where: {
+            ReviewID: reviewID
+        }
+    })
+    .then(num => {
+        if (num == 1) {
+            res.send({
+                message: "Rating was deleted successfully!"
+            });
+        } else {
+            res.send({
+                message: `Cannot delete Rating with ReviewID = ${reviewID}. Maybe Rating was not found!`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: `Could not delete Rating with CourseID = ${reviewID}`
         });
     });
 }

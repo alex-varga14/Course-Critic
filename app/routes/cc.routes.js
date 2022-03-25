@@ -99,6 +99,9 @@ module.exports = app => {
   //Delete all ratings by course id
   router.delete("/ratings/courseID/:courseID", ratings.deleteRatingsCourse);
 
+  // Delete all Ratings by ReviewID
+  router.delete("/ratings/reviewID/:reviewID", ratings.deleterRatingbyReview);
+
   // Set base route for the endpoints
   app.use('/api', router);
 };
