@@ -1,17 +1,17 @@
 
 <template>
   <div class="page-container" id="courselist">
-    <section class="section-app-face children-center grid-cover-container">
-      <div class="grid-cover-content children-center">
-        <div class="title">
+    
+     <router-link to="/admin">
+            <div id="AdminHome" class="admin-home-button card button-like card-1 text-center">Admin Home
+            </div>
+      </router-link>
+        <div class="title text-center">
           Approve Courses
         </div>
 
         
-        <router-link to="/admin">
-            <div id="AdminHome" class="admin-home-button card button-like card-1"><span class="font">Admin Home</span>
-            </div>
-          </router-link>
+       
 
         <div class="list" >
           <div class="col-md-8" >
@@ -20,17 +20,13 @@
 
           </div>
       </div>
-     </div>
-    </section>
 
-   <div id="inline1">
-    <div class="info-box">
-      <p> As an Admin of Course Critic, you are able to approve or deny which courses that were suggested
-          will be seen </p>
+    <div class="info-box text-center">
+      <p> Administrators are able to approve or deny suggested courses </p>
     </div>
 
 
-  </div>
+
       <table class="table" id="formtable">
       <thead>
         <tr id="header">
@@ -49,10 +45,10 @@
           <td>{{aggregatecourses.Faculty}}</td>
           <td>{{aggregatecourses.Description}}</td>
           <td>
-              <button @click="approve(aggregatecourses.ID)" type="submit" class="approve-deny-course">
+              <button @click="approve(aggregatecourses.ID)" type="submit" class="btn approve-course">
                   Approve
               </button>
-              <button @click="deny(aggregatecourses.ID)" type="submit" class="approve-deny-course">
+              <button @click="deny(aggregatecourses.ID)" type="submit" class=" btn deny-course">
                   Deny
               </button>
           </td>
@@ -208,6 +204,14 @@ data() {
 .title{
   font-weight: 300;
   font-size: 40px;
+  line-height: 60px;
+  color: #000000;
+  width: auto;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-right: -30px;
+  margin-left: -30px;
 }
 
 .list {
@@ -217,12 +221,7 @@ data() {
 }
 
 #AdminHome{
-  border-radius: 5px;
-  color: white;
-  background: #009B77;
-  transition: 500ms;
-  width: 200px;
-  margin-bottom: 30px
+  width: 50%;
 }
 
 #AdminHome:hover{
@@ -233,26 +232,38 @@ data() {
 }
 
 .admin-home-button{
-    text-decoration: none;
+  width: 10%;
+  text-decoration: none;
+  margin-left: 310px;
 }
 
 #inline1{
   border: 1px dotted grey;
   border-radius: 15px;
-  width: 60%;
+  width: 40%;
   background-color:white;
   display:flex;
-  margin-left: 255px;
+  margin-left: 375px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
   margin-bottom: 30px;
   color: black;
 }
 
 .info-box{
+  border: 1px dotted grey;
+  color: grey;
   text-align: cen;
-  font-size: 20px;
-  margin-left: 20px;
+  width: 50%;
+  font-size: 18px;
+  border-radius: 15px;
+  padding-top: 10px;
+  padding-bottom: -2px;
+  padding-top: 15px;
+  margin-left: 300px;
+  margin-bottom: 30px;
 }
 
 .filters-left{
@@ -293,13 +304,23 @@ tr:nth-child(even){
   background-color: #0c0926 !important;
 }
 
-.approve-deny-course{
-  border-radius: 5px;
-  color: white;
-  background: #009B77;
-  transition: 500ms;
-  width: 200px;
-  margin-bottom: 10px
+.approve-course{
+  border: 1px solid grey;
+  width: 100px;
+  height: 70px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  margin-left: 30px;
+}
+
+.deny-course{
+  border: 1px solid grey;
+  width: 100px;
+  height: 70px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  margin-left: 10px;
+
 }
 
 </style>

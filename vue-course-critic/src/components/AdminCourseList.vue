@@ -1,16 +1,17 @@
 
 <template>
   <div class="page-container" id="courselist">
-    <section class="section-app-face children-center grid-cover-container">
-      <div class="grid-cover-content children-center">
-        <div class="title">
+
+          <router-link to="/admin">
+            <div id="AdminHome" class="admin-home-btn card button-like card-1 text-center">Admin Home
+            </div>
+          </router-link>
+
+        <div class="title text-center">
           UCalgary Course List
         </div>
 
-        <router-link to="/admin">
-            <div id="AdminHome" class="admin-home-button card button-like card-1"><span class="font">Admin Home</span>
-            </div>
-          </router-link>
+        
 
         <div class="list" >
           <div class="col-md-8" >
@@ -19,14 +20,11 @@
 
           </div>
       </div>
-     </div>
-    </section>
 
    <div id="inline1">
     <div class="info-box">
-      <p> Course Critic offers an assortment of functions for filtering through courses.
-        You can filter the course list by Course Code, Course Number, Faculty or with the name
-          of the course! </p>
+      <p> Administrators are allowed to delete courses that have been added to the Course Critic database. The filtering options are still available 
+          for administrator use. </p>
     </div>
 
     <div class="filters-left">
@@ -78,15 +76,15 @@
           <td>{{aggregatecourses.CourseNo}}</td>
           <td>{{aggregatecourses.Title}}</td>
           <td>{{aggregatecourses.Faculty}}</td>
-          <td class="text-center">{{aggregatecourses.Difficulty}}</td>
-          <td>{{(Math.round(aggregatecourses.Enjoyment*100)/100).toFixed(2)}}</td>
-          <td>{{(Math.round(aggregatecourses.Workload*100)/100).toFixed(2)}}</td>
-          <td>{{(Math.round(aggregatecourses.NumReviews*100)/100).toFixed(2)}}</td>
+          <td class="text-center">{{(Math.round(aggregatecourses.Difficulty*100)/100).toFixed(2)}}</td>
+          <td class="text-center">{{(Math.round(aggregatecourses.Enjoyment*100)/100).toFixed(2)}}</td>
+          <td class="text-center">{{(Math.round(aggregatecourses.Workload*100)/100).toFixed(2)}}</td>
+          <td class="text-center">{{aggregatecourses.NumReviews}}</td>
           <button type=" button "  class="btn view-btn" @click="update(aggregatecourses.ID)">
             View Reviews
           </button>
           <td>
-              <button @click="remove(aggregatecourses.ID)" type="submit" class="remove">
+              <button @click="remove(aggregatecourses.ID)" type="submit" class="btn remove-btn">
                 Remove Course
               </button>
           </td>
@@ -288,15 +286,18 @@ data() {
 .title{
   font-weight: 300;
   font-size: 40px;
+  line-height: 60px;
+  color: #000000;
+  width: auto;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-right: -30px;
+  margin-left: -30px;
 }
 
 #AdminHome{
-  border-radius: 5px;
-  color: white;
-  background: #009B77;
-  transition: 500ms;
-  width: 200px;
-  margin-bottom: 30px
+  width: 50%;
 }
 
 #AdminHome:hover{
@@ -306,8 +307,10 @@ data() {
   transition: 500ms;
 }
 
-.admin-home-button{
-    text-decoration: none;
+.admin-home-btn{
+  width: 10%;
+  text-decoration: none;
+  margin-left: 325px;
 }
 
 
@@ -364,7 +367,15 @@ tr:nth-child(even){
 .view-btn{
   border: 1px solid grey;
   height: 70px;
-  background: blue;
+  margin-top:5px;
+  margin-bottom: -5px;
+}
+
+.remove-btn{
+  border: 1px solid grey;
+  height: 70px;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 .remove{
