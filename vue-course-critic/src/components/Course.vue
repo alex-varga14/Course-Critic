@@ -38,30 +38,30 @@
                   <label for="title">Enjoyment</label>
                   <div id="inline">
                   <div class="rating children-center text-center">
-                    <input type="radio" name="rating" value="5" id="16" v-model="newRating.Enjoyment">
+                    <input type="radio" name="rating" value="5" id="16" class="sr-only" required v-model="newRating.Enjoyment">
                     <label for="16">☆</label>
-                    <input type="radio" name="rating" value="4" id="17" v-model="newRating.Enjoyment">
+                    <input type="radio" name="rating" value="4" id="17" class="sr-only" required v-model="newRating.Enjoyment">
                     <label for="17">☆</label>
-                    <input type="radio" name="rating" value="3" id="18" v-model="newRating.Enjoyment">
+                    <input type="radio" name="rating" value="3" id="18" class="sr-only" required v-model="newRating.Enjoyment">
                     <label for="18">☆</label>
-                    <input type="radio" name="rating" value="2" id="19" v-model="newRating.Enjoyment">
+                    <input type="radio" name="rating" value="2" id="19" class="sr-only" required v-model="newRating.Enjoyment">
                     <label for="19">☆</label>
-                    <input type="radio" name="rating" value="1" id="20" v-model="newRating.Enjoyment">
+                    <input type="radio" name="rating" value="1" id="20" class="sr-only" required v-model="newRating.Enjoyment">
                     <label for="20">☆</label>
                   </div>
                 </div>
                   <label for="title">Difficulty</label>
                   <div id="inline">
                   <div class="rating1 children-center text-center">
-                    <input type="radio" name="rating1" value="5" id="21" v-model="newRating.Difficulty">
+                    <input type="radio" name="rating1" value="5" id="21" class="sr-only" v-model="newRating.Difficulty">
                     <label for="21">☆</label>
-                    <input type="radio" name="rating1" value="4" id="22" v-model="newRating.Difficulty">
+                    <input type="radio" name="rating1" value="4" id="22" class="sr-only" v-model="newRating.Difficulty">
                     <label for="22">☆</label>
-                    <input type="radio" name="rating1" value="3" id="23" v-model="newRating.Difficulty">
+                    <input type="radio" name="rating1" value="3" id="23" class="sr-only" v-model="newRating.Difficulty">
                     <label for="23">☆</label>
-                    <input type="radio" name="rating1" value="2" id="24" v-model="newRating.Difficulty">
+                    <input type="radio" name="rating1" value="2" id="24" class="sr-only" v-model="newRating.Difficulty">
                     <label for="24">☆</label>
-                    <input type="radio" name="rating1" value="1" id="25" v-model="newRating.Difficulty">
+                    <input type="radio" name="rating1" value="1" id="25" class="sr-only" v-model="newRating.Difficulty">
                     <label for="25">☆</label>
                   </div>
 
@@ -69,15 +69,15 @@
                   <label for="title">Workload</label>
                   <div id="inline">
                   <div class="rating2 children-center text-center">
-                    <input type="radio" name="rating2" value="5" id="26" v-model="newRating.Workload">
+                    <input type="radio" name="rating2" value="5" id="26" class="sr-only" v-model="newRating.Workload">
                     <label for="26">☆</label>
-                    <input type="radio" name="rating2" value="4" id="27" v-model="newRating.Workload">
+                    <input type="radio" name="rating2" value="4" id="27" class="sr-only" v-model="newRating.Workload">
                     <label for="27">☆</label>
-                    <input type="radio" name="rating2" value="3" id="28" v-model="newRating.Workload">
+                    <input type="radio" name="rating2" value="3" id="28" class="sr-only" v-model="newRating.Workload">
                     <label for="28">☆</label>
-                    <input type="radio" name="rating2" value="2" id="29" v-model="newRating.Workload">
+                    <input type="radio" name="rating2" value="2" id="29" class="sr-only" v-model="newRating.Workload">
                     <label for="29">☆</label>
-                    <input type="radio" name="rating2" value="1" id="30" v-model="newRating.Workload">
+                    <input type="radio" name="rating2" value="1" id="30" class="sr-only" v-model="newRating.Workload">
                     <label for="30">☆</label>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
           </div>
               <!-- Ratings with Reviews -->
               <div class="rating-form-body" v-for="reviewsWRatings in reviewsWRatings" v-bind:key="reviewsWRatings">
-                <div class="container border justify-content-center text-center">
+                <div class="container border review-container justify-content-center text-center">
                   <div class="row">
                       <div class="col">
                           <div class="row review-header bold-md">
@@ -118,11 +118,11 @@
                           </div>
                         </div>
                         <div class="col">
-                          <div class="row review-header bold-md">
+                          <div class="row review-header bold-md" id="rdate">
                             <label><span class="bold-md">Review Date:</span></label>
                           </div>
-                          <div class="row">
-                            <label>{{reviewsWRatings.Date}}</label>
+                          <div class="row" id="rdate">
+                            <label onload="stripDate()">{{reviewsWRatings.Date}}</label>
                           </div>
                         </div>
                         <div class="col">
@@ -170,10 +170,12 @@
                     </div>
                   </div>
                 </div>
+                <br>
+              <hr class="line2">
               </div>
 
               <!-- Ratings without Reviews -->
-              <div class="rating-form-body" v-for="courseReviews in courseReviews" v-bind:key="courseReviews">
+              <!-- <div class="rating-form-body" v-for="courseReviews in courseReviews" v-bind:key="courseReviews">
                 <div class="container pb-5 border justify-content-center text-center">
                   <div class="row">
                       <div class="col">
@@ -196,8 +198,8 @@
                         <div class="row review-header">
                           <label><span class="bold-md">Review Date:</span></label>
                         </div>
-                        <div class="row">
-                          <label>{{courseReviews.Date}}</label>
+                        <div class="row" id="rdate">
+                          <label onload="stripDate()">{{courseReviews.Date}}</label>
                         </div>
                         </div>
                   </div>
@@ -220,35 +222,14 @@
                         class="form-check-input me-2" 
                         type="checkbox" 
                         value="" 
-                        @click="plusHelpful(ourseReviews.HelpfulCount)"
+                        @click="plusHelpful(courseReviews.HelpfulCount)"
                         id="form6Example8" 
                         unchecked />
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <!-- <table class="table rating-form-body" id="formtable">
-                <thead>
-                  <tr id="header">
-                    <th scope="col">Comment</th>
-                    <th scope="col">Instructor</th>
-                    <th scope="col">Semester</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">HelpfulCount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="courseReviews in courseReviews" v-bind:key="courseReviews" id="rows">
-                    <td>{{courseReviews.Comment}}</td>
-                    <td>{{courseReviews.Instructor}}</td>
-                    <td class="text-center">{{courseReviews.Semester}}</td>
-                    <td >{{courseReviews.Date}}</td>
-                    <td>{{courseReviews.HelpfulCount}}</td>
-                  </tr>
-                </tbody>
-              </table> -->
+              </div> -->
 
       </div>
     </section>
@@ -262,7 +243,7 @@
             <hr class="line">
       </div>
       <div class="container border">
-      <div v-if="!submitted">
+      <!-- <div v-if="!submitted"> -->
         <div class="row">
           <div class="col">
               <div class="rating-form">
@@ -366,6 +347,7 @@
                   v-model="newReview.Instructor"
                   name="Instructor"
                   placeholder="ex: Joerg Denzinger"
+                  v-on:input="currentDate"
                    />
               </div>
             </div>
@@ -382,6 +364,7 @@
                   v-model="newReview.Semester"
                   name="Semester"
                   placeholder="ex: Fall 2001"
+                  v-on:input="currentDate"
                   />
               </div>
             </div>
@@ -391,22 +374,17 @@
               <div class="form-outline">
                 <label class="form-label" for="Date"><span class="bold-md">Review Date</span></label>
                     <input 
-                      id="Date" 
+                      id="date" 
                       class="form-control" 
                       type="Date" 
                       required
                       v-model="newReview.Date"
-                      name="Date"/>
+                      name="Date"
+                      disabled/>
                     <span id="dateSelected"></span>
               </div>
             </div>
           </div>
-
-          <!-- Checkbox -->
-          <!-- <div class="form-check d-flex justify-content-center mb-4">
-            <input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" checked />
-            <label class="form-check-label" for="form6Example8"> Create an account? </label>
-          </div> -->
 
           <!-- Submit button -->
           <button @click="saveReview" type="submit" class="btn btn-primary btn-block mb-4">Submit Review</button>
@@ -426,15 +404,16 @@
               v-model="newReview.Comment"
               name="Comment"
               placeholder="What Should Future Students Know about this Course?"
+              v-on:input="currentDate"
               ></textarea>
           </div>
         </div>
       </div>
-      </div>
-      <div v-else>
-          <h4 class ="title-big text-center">Review Submitted!</h4>
+      <!-- </div> -->
+      <!-- <div v-else>
+          <h4 class ="title-big text-center">Review Submitted!</h4> -->
           <!-- <button class="btn btn-success submit-btn text-center" @click="newCourse">Review Another Course</button> -->
-        </div>
+        <!-- </div> -->
         </div>
       </div>
     </section>
@@ -458,6 +437,7 @@ export default {
         },
         avgRatings: [],
       data: null,
+      lastRevID: null,
       courseReviews: [],
       reviewsWRatings: [],
       reviews: [],
@@ -494,16 +474,27 @@ export default {
           console.log(e);
         });
     },
-    retrieveReviews() {
-      ReviewDataService.getAll()
-        .then(response => {
-          this.reviews = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
+    // getLastRatingID() {
+    //   ReviewDataService.getLastReviewID()
+    //     .then(response => {
+    //       this.lastRevID = response.data;
+    //       console.log("LAST REV" + response.data);
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
+    
+    // retrieveReviews() {
+    //   ReviewDataService.getAll()
+    //     .then(response => {
+    //       this.reviews = response.data;
+    //       console.log(response.data);
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
     retrieveAvgRatings(id) {
       RatingDataService.getAllCourseAvgRating(id)
         .then(response => {
@@ -547,29 +538,55 @@ export default {
         Difficulty: this.newReview.Difficulty,
         Workload: this.newReview.Workload,
       };
-      ReviewDataService.create(data)
-        .then(response => {
-          this.newReview.id = response.data.id;
-          console.log(response.data);
-          this.submitted = true;
-        })
-        .catch(e => {
-          console.log(e);
-        });
-      var data1 = {
-        Enjoyment: this.newReview.Enjoyment,
-        Difficulty: this.newReview.Difficulty,
-        Workload: this.newReview.Workload,
-        CourseID: this.data,
-      };
-        RatingDataService.createRating(data1)
-        .then(response => {
-          this.newRating.id = response.data.id;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      if(this.newReview.Comment == undefined || this.newReview.Instructor == undefined || this.newReview.Semester == undefined)
+      {
+        alert("All Review Fields Must be Filled.");
+        this.postNewReview;
+      }
+      else if(this.newReview.Enjoyment == null || this.newReview.Enjoyment == null || this.newReview.Enjoyment == null)
+      {
+        alert("A Review Requires a Rating and Must be Between 1-5 Stars.");
+        this.postNewRating;
+      }
+      else {
+        ReviewDataService.create(data)
+          .then(response => {
+            //this.newReview.id = response.data.id;
+            ReviewDataService.getLastReviewID()
+              .then(response2 => {
+                this.lastRevID = response2.data;
+                console.log(response2.data);
+                console.log("HELLLLL");
+                var data1 = {
+                    Enjoyment: this.newReview.Enjoyment,
+                    Difficulty: this.newReview.Enjoyment,
+                    Workload: this.newReview.Enjoyment,
+                    CourseID: this.data,
+                    // ReviewID: ReviewDataService.getLastReviewID(),
+                    ReviewID: this.lastRevID,
+                  };
+                
+                  RatingDataService.createRating(data1)
+                  .then(response => {
+                    this.newRating.id = response.data.id;
+                    console.log(response.data);
+                  })
+                  .catch(e => {
+                    console.log(e);
+                  });
+              })
+              .catch(e => {
+              console.log(e);
+            });
+            // console.log(this.lastRevID);
+            console.log(response.data);
+            // this.submitted = true;
+          })
+          .catch(e => {
+            console.log(e);
+          });
+        
+        }
     },
     postNewReview() {
       this.submitted = false;
@@ -584,14 +601,22 @@ export default {
         CourseID: this.data,
         ReviewID: null,
       };
-      RatingDataService.createRating(data)
-        .then(response => {
-          this.newRating.id = response.data.id;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      if(this.newRating.Enjoyment == null || this.newRating.Difficulty == null || this.newRating.Workload == null)
+      {
+        alert("A Rating Must be Between 1-5 Stars and is Required for all Fields.");
+        this.postNewRating;
+      }
+      else {
+          RatingDataService.createRating(data)
+          .then(response => {
+            this.newRating.id = response.data.id;
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+          this.$router.go();
+      }
     },
     plusHelpful(data) {
       var data1 = {
@@ -606,16 +631,39 @@ export default {
         });
 
     },
+    currentDate: function(){
+        const dateInput = document.getElementById('date');
+
+        dateInput.value = formatDate();
+        console.log(formatDate());
+
+        function padTo2Digits(num) {
+          return num.toString().padStart(2, '0');
+          }
+        function formatDate(date = new Date()) {
+            return [
+                  date.getFullYear(),
+                  padTo2Digits(date.getMonth() + 1),
+                  padTo2Digits(date.getDate()),
+              ].join('-');
+          }
+    },
+    stripDate: function(){
+      var dateWTime = document.getElementById('rdate');
+      console.log(dateWTime);
+      return dateWTime.slice(0,10);
+    },
     postNewRating() {
       this.newRating = {};
     }
   },
   mounted() {
     this.getCourse(this.$route.params.id);
-    this.retrieveReviews();
+    // this.retrieveReviews();
     this.retrieveCoursesReviews(this.$route.params.id);
     this.retrieveAvgRatings(this.$route.params.id);
     this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+  //   this.getLastRatingID();
   }
 };
 </script>
@@ -624,7 +672,23 @@ export default {
 hr.line {
   border-top: 4px solid #000000;
   margin-top: -50px;
+  color: #000000;
+  background-color: #000000;
 }
+
+hr.line2 {
+  border-top: 0px solid #FFFFFF;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.review-container {
+    background-color: #cccccc;
+  }
 
 .page {
   font-weight: 50;
@@ -679,6 +743,7 @@ hr.line {
   color: #000000;
   margin-top: -40px;
 }
+
 .avgRatings {
   font-weight: 200;
   font-size: 20px;

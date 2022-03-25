@@ -79,9 +79,9 @@
           <td>{{aggregatecourses.Title}}</td>
           <td>{{aggregatecourses.Faculty}}</td>
           <td class="text-center">{{aggregatecourses.Difficulty}}</td>
-          <td>{{aggregatecourses.Enjoyment}}</td>
-          <td>{{aggregatecourses.Workload}}</td>
-          <td>{{aggregatecourses.NumReviews}}</td>
+          <td>{{(Math.round(aggregatecourses.Enjoyment*100)/100).toFixed(2)}}</td>
+          <td>{{(Math.round(aggregatecourses.Workload*100)/100).toFixed(2)}}</td>
+          <td>{{(Math.round(aggregatecourses.NumReviews*100)/100).toFixed(2)}}</td>
           <button type=" button "  class="btn view-btn" @click="update(aggregatecourses.ID)">
             View Reviews
           </button>

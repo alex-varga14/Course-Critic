@@ -18,11 +18,13 @@ class ReviewDataService {
     return http.get("http://localhost:8080/api/reviews/ratings/" + id);
   }
 
-  updateHelpful(id, data) {
-    return http.put("http://localhost:8080/api/reviews/" + id, data);
-  }
-  //reviews/:id/:helpfulCount
+  // updateHelpful(id, data) {
+  //   return http.put("http://localhost:8080/api/reviews/" + id + "/" + data);
+  // }
   
+  getLastReviewID() {
+    return http.get("http://localhost:8080/api/reviews/get/lastID");
+  }
 
 }
 export default new ReviewDataService();

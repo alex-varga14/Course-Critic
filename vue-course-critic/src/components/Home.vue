@@ -12,7 +12,7 @@
         </div>
 
         <div class="row-box-1">
-          <router-link to="/courses">
+          <router-link to="/courselist">
             <div class="card button-like card-1"><span class="font">Courses</span>
             </div>
           </router-link>
@@ -347,6 +347,8 @@ export default {
   padding: 0;
   list-style: none;
   color: var(--text-secondary-light);
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 .page-footer .group .links .link {
   font-size: 16px;
