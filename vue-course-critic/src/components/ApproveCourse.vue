@@ -49,10 +49,10 @@
           <td>{{aggregatecourses.Faculty}}</td>
           <td>{{aggregatecourses.Description}}</td>
           <td>
-              <button @click="approve" type="submit" class="approve-deny-course">
+              <button @click="approve(aggregatecourses.ID)" type="submit" class="approve-deny-course">
                   Approve
               </button>
-              <button @click="deny" type="submit" class="approve-deny-course">
+              <button @click="deny(aggregatecourses.ID)" type="submit" class="approve-deny-course">
                   Deny
               </button>
           </td>
@@ -66,6 +66,8 @@
 
 <script>
 import CourseDataService from "../services/CourseDataService";
+import RatingDataService from "../services/RatingDataService";
+import ReviewDataService from "../services/ReviewDataService";
 export default {
 name: "courses-list",
 data() {
@@ -78,13 +80,65 @@ data() {
     };
   },
   methods: {
-    approve(){
-        //Place Holder
-        window.alert("Course Approved!");
+    approve(id){
+         window.alert("Course Review Approved!");
+        CourseDataService.approveSuggested(id);
     },
-    deny(){
-        //Place Holder
-        window.alert("Course Denied!");
+   deny(id){
+      window.alert("Course Review Denied!");
+       RatingDataService.delete(id)
+          .then(response => {
+          console.log(response.data);
+          ReviewDataService.delete(id)
+          .then(responseTwo => {
+            console.log(responseTwo.data);
+            CourseDataService.delete(id)
+            .then(responseThree =>{
+              console.log(responseThree.data);
+              this.$router.go();
+            })
+            .catch(e => {
+            console.log(e);
+            });
+          })
+          .catch(e => {
+            console.log(e);
+            CourseDataService.delete(id)
+            .then(responseThree =>{
+              console.log(responseThree.data);
+              this.$router.go();
+            })
+            .catch(e => {
+            console.log(e);
+            });
+          });
+        })
+        .catch(e => {
+            console.log(e);
+            ReviewDataService.delete(id)
+            .then(responseTwo => {
+              console.log(responseTwo.data);
+              CourseDataService.delete(id)
+              .then(responseThree =>{
+                console.log(responseThree.data);
+                this.$router.go();
+              })
+              .catch(e => {
+              console.log(e);
+              });
+            })
+            .catch(e => {
+              console.log(e);
+              CourseDataService.delete(id)
+              .then(responseThree =>{
+                console.log(responseThree.data);
+                this.$router.go();
+              })
+              .catch(e => {
+              console.log(e);
+              });
+            });
+        });
     },
     retrieveCourses() {
       CourseDataService.getAll()
