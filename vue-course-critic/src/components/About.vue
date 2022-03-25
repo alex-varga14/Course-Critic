@@ -1,6 +1,6 @@
 <template>
 
-    <div class = "page-container">
+    <div class = "page-container-about">
         <div class = "about text-center">
             About Course Critic
         </div>
@@ -46,7 +46,7 @@ p {
     
 }
 
-.page-container {
+.page-container-about {
     margin-top: 50px;
     margin-left: 200px;
     margin-right: 200px;
