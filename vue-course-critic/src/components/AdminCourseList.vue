@@ -86,7 +86,7 @@
             View Reviews
           </button>
           <td>
-              <button @click="remove" type="submit" class="remove">
+              <button @click="remove(aggregatecourses.ID)" type="submit" class="remove">
                 Remove Course
               </button>
           </td>
@@ -100,6 +100,8 @@
 
 <script>
 import CourseDataService from "../services/CourseDataService";
+import RatingDataService from "../services/RatingDataService";
+import ReviewDataService from "../services/ReviewDataService"
 export default {
 name: "courses-list",
 data() {
@@ -112,9 +114,61 @@ data() {
     };
   },
   methods: {
-      remove(){
-          //Placeholder
+      remove(id){
           window.alert("Course Removed!");
+          RatingDataService.delete(id)
+          .then(response => {
+          console.log(response.data);
+          ReviewDataService.delete(id)
+          .then(responseTwo => {
+            console.log(responseTwo.data);
+            CourseDataService.delete(id)
+            .then(responseThree =>{
+              console.log(responseThree.data);
+              this.$router.go();
+            })
+            .catch(e => {
+            console.log(e);
+            });
+          })
+          .catch(e => {
+            console.log(e);
+            CourseDataService.delete(id)
+            .then(responseThree =>{
+              console.log(responseThree.data);
+              this.$router.go();
+            })
+            .catch(e => {
+            console.log(e);
+            });
+          });
+        })
+        .catch(e => {
+            console.log(e);
+            ReviewDataService.delete(id)
+            .then(responseTwo => {
+              console.log(responseTwo.data);
+              CourseDataService.delete(id)
+              .then(responseThree =>{
+                console.log(responseThree.data);
+                this.$router.go();
+              })
+              .catch(e => {
+              console.log(e);
+              });
+            })
+            .catch(e => {
+              console.log(e);
+              CourseDataService.delete(id)
+              .then(responseThree =>{
+                console.log(responseThree.data);
+                this.$router.go();
+              })
+              .catch(e => {
+              console.log(e);
+              });
+            });
+        });
       },
     retrieveCourses() {
       CourseDataService.getAll()
@@ -154,11 +208,9 @@ data() {
       CourseDataService.deleteAll()
       .then(response => {
           console.log(response.data);
+
           this.refreshList();
         })
-        .catch(e => {
-          console.log(e);
-        });
     },
     filterCode: function(){
     var text, table, tableRows, td, i, txtValue,tdTwo,textTwo;

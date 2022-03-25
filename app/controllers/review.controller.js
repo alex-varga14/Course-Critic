@@ -196,13 +196,13 @@ exports.deleteReviewbyCourse = (req, res) => {
             });
         } else {
             res.send({
-                message: `Cannot delete Review with CourseID = ${id}. Maybe Review was not found!`
+                message: `Cannot delete Review with CourseID = ${req.params.courseID}. Maybe Review was not found!`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
-            message: "Could not delete Review with CourseID = " + id
+            message: "Could not delete Review with CourseID = " + req.params.courseID 
         });
     });
 }

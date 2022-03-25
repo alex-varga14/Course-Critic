@@ -9,6 +9,11 @@ class ReviewDataService {
   getCourseReviews(id){
     return http.get("http://localhost:8080/api/reviews/courseID/" + id);
   }
+
+  delete(id) {
+    return http.delete("http://localhost:8080/api/reviews/courseID/" +id);
+  }
+
   getCourseReviewsWRatings(id) {
     return http.get("http://localhost:8080/api/reviews/ratings/" + id);
   }
@@ -18,5 +23,6 @@ class ReviewDataService {
   }
   //reviews/:id/:helpfulCount
   
+
 }
 export default new ReviewDataService();
