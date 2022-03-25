@@ -7,6 +7,9 @@ class CourseDataService {
   getSuggested() {
     return http.get("http://localhost:8080/api/courses/suggested/1");
   }
+  approveSuggested(id) {
+    return http.put('http://localhost:8080/api/courses/suggested/'+id, false);
+  }
   getCourseAggregateInfo(){
     return http.get("http://localhost:8080/api/courses/get/all/aggregates");
   }
