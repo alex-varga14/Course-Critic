@@ -80,65 +80,14 @@ data() {
     };
   },
   methods: {
-    approve(id){
-         window.alert("Course Review Approved!");
+      window.alert("Course Review Approved!");
         CourseDataService.approveSuggested(id);
+        this.$router.go();
     },
    deny(id){
-      window.alert("Course Review Denied!");
-       RatingDataService.delete(id)
-          .then(response => {
-          console.log(response.data);
-          ReviewDataService.delete(id)
-          .then(responseTwo => {
-            console.log(responseTwo.data);
-            CourseDataService.delete(id)
-            .then(responseThree =>{
-              console.log(responseThree.data);
-              this.$router.go();
-            })
-            .catch(e => {
-            console.log(e);
-            });
-          })
-          .catch(e => {
-            console.log(e);
-            CourseDataService.delete(id)
-            .then(responseThree =>{
-              console.log(responseThree.data);
-              this.$router.go();
-            })
-            .catch(e => {
-            console.log(e);
-            });
-          });
-        })
-        .catch(e => {
-            console.log(e);
-            ReviewDataService.delete(id)
-            .then(responseTwo => {
-              console.log(responseTwo.data);
-              CourseDataService.delete(id)
-              .then(responseThree =>{
-                console.log(responseThree.data);
-                this.$router.go();
-              })
-              .catch(e => {
-              console.log(e);
-              });
-            })
-            .catch(e => {
-              console.log(e);
-              CourseDataService.delete(id)
-              .then(responseThree =>{
-                console.log(responseThree.data);
-                this.$router.go();
-              })
-              .catch(e => {
-              console.log(e);
-              });
-            });
-        });
+       window.alert("Course Review Denied!");
+      CourseDataService.delete(id);
+      this.$router.go();
     },
     retrieveCourses() {
       CourseDataService.getAll()
