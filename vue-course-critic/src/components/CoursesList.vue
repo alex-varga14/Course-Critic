@@ -123,7 +123,7 @@ data() {
     },
     update(data){
       this.$router.push({name: "courses",
-        params: { data }
+        params: { id:data }
       });
     },
     refreshList() {

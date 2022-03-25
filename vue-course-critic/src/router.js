@@ -17,7 +17,7 @@ const routes =  [
     component: () => import("./components/CoursesList")
   },
   {
-    path: "/courses",
+    path: "/courses/:id",
     name: "courses",
     component: () => import("./components/Course"),
     meta: {
