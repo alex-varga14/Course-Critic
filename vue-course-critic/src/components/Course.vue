@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <button @click="saveRating" type="submit" class="btn btn-primary btn-block mb-4">Submit Rating</button>
+            <button @click="saveRating" type="button" class="btn btn-primary btn-block mb-4">Submit Rating</button>
           </div>
       </div>
     </section>
@@ -348,7 +348,6 @@
                   v-model="newReview.Instructor"
                   name="Instructor"
                   placeholder="ex: Joerg Denzinger"
-                  v-on:input="currentDate"
                    />
               </div>
             </div>
@@ -365,7 +364,6 @@
                   v-model="newReview.Semester"
                   name="Semester"
                   placeholder="ex: Fall 2001"
-                  v-on:input="currentDate"
                   />
               </div>
             </div>
@@ -374,21 +372,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Date"><span class="bold-md">Review Date</span></label>
-                    <input 
-                      id="date" 
-                      class="form-control" 
-                      type="Date" 
-                      required
-                      v-model="newReview.Date"
-                      name="Date"
-                      disabled/>
-                    <span id="dateSelected"></span>
+                    <label class="form-label" for="DateReal"><span >{{this.Date}}</span></label>
               </div>
             </div>
           </div>
 
           <!-- Submit button -->
-          <button @click="saveReview" type="submit" class="btn btn-primary btn-block mb-4">Submit Review</button>
+          <button @click="saveReview"  type ="button" class="btn btn-primary btn-block mb-4">Submit Review</button>
         </form>
       </div>
       </div>
@@ -405,7 +395,6 @@
               v-model="newReview.Comment"
               name="Comment"
               placeholder="What Should Future Students Know about this Course?"
-              v-on:input="currentDate"
               ></textarea>
           </div>
         </div>
@@ -429,6 +418,7 @@ export default {
   name: "course",
   data() {
     return {
+      Date: new Date(),
       currentCourse: {
         Title: null,
         Description: null,
@@ -532,7 +522,7 @@ export default {
         Comment: this.newReview.Comment,
         Instructor: this.newReview.Instructor,
         Semester: this.newReview.Semester,
-        Date: this.newReview.Date,
+        Date: new Date(),
         HelpfulCount: 0,
         CourseID: this.data,
         Enjoyment: this.newReview.Enjoyment,
@@ -552,9 +542,13 @@ export default {
       else {
         ReviewDataService.create(data)
           .then(response => {
+            console.log("here");
             //this.newReview.id = response.data.id;
             ReviewDataService.getLastReviewID()
               .then(response2 => {
+                var temp = response2.data[0];
+                this.lastRevID = temp["LAST_INSERT_ID()"];
+                console.log(temp["LAST_INSERT_ID()"]);
                 this.lastRevID = response2.data;
                 console.log(response2.data);
                 var data1 = {
@@ -567,9 +561,10 @@ export default {
                   };
                 
                   RatingDataService.createRating(data1)
-                  .then(response => {
+                  .then(responsethree => {
                     this.newRating.id = response.data.id;
-                    console.log(response.data);
+                    this.$router.go();
+                    console.log(responsethree);
                   })
                   .catch(e => {
                     console.log(e);
@@ -578,9 +573,6 @@ export default {
               .catch(e => {
               console.log(e);
             });
-            // console.log(this.lastRevID);
-            console.log(response.data);
-            // this.submitted = true;
           })
           .catch(e => {
             console.log(e);
@@ -611,11 +603,11 @@ export default {
           .then(response => {
             this.newRating.id = response.data.id;
             console.log(response.data);
+             this.$router.go();
           })
           .catch(e => {
             console.log(e);
           });
-          this.$router.go();
       }
     },
     plusHelpful(data) {
