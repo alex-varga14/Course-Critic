@@ -17,11 +17,6 @@
             </div>
           </router-link>
 
-          <a href="https://www.ratemyprofessors.com/" rel="nofollow noopener noreferrer" target="_blank">
-            <div class="card button-like card-2 forsted-glass teal">
-              <span class="font">RateMyProf</span>
-            </div>
-          </a>
 
           <router-link to="/approve">
             <div class="card button-like card-1"><span class="font">Approve Course</span>
