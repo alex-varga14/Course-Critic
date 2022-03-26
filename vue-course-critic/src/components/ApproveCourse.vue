@@ -21,7 +21,7 @@
           </div>
       </div>
 
-    <div class="info-box text-center">
+    <div class="approve-info-box text-center">
       <p> Administrators are able to approve or deny suggested courses </p>
     </div>
 
@@ -252,7 +252,7 @@ data() {
   color: black;
 }
 
-.info-box{
+.approve-info-box{
   border: 1px dotted grey;
   color: grey;
   text-align: cen;

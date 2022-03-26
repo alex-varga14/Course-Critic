@@ -10,7 +10,7 @@
         <button type="submit" v-on:click="retry" class="btn btn-success submit-btn">Retry Login</button>
         </div>
         <form v-else>
-          <div class="message text-center">
+          <div class="login-message text-center">
               <p>Good news! Regular users don't need to create or use an account to leave reviews or 
                 search for a course. This login page is for registered site administrators only.</p>
           </div>
@@ -25,7 +25,7 @@
           </div>
         </div>
         
-        <button type="submit" v-on:click="login" class="btn btn-success submit-btn">Login</button>
+        <button type="submit" v-on:click="login" class="btn btn-success login-submit-btn">Login</button>
     </form>
   </div>
 </template>
@@ -115,7 +115,7 @@
   color: black;
 }
 
-.submit-btn{
+.login-submit-btn{
   width: 200px;
   margin-left: 350px;
   margin-bottom: 30px;
@@ -131,7 +131,7 @@
   margin-bottom: 40px;
 }
 
-.message{
+.login-message{
   width: 70%;
   color: grey;
   font-size: 15px;

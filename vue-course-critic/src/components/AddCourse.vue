@@ -1,5 +1,5 @@
 <template>
-  <div class="submit-form page">
+  <div class="submit-form whole-page">
  
   <div v-if="!submitted">
     <div class="title-big text-center">
@@ -178,7 +178,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.page { 
+.whole-page { 
   font-weight: 50;
   color: black;
 }
