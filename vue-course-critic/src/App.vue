@@ -16,27 +16,55 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><router-link to="/courselist" class="dropdown-item" href="#">All Courses</router-link></li>
-                        <li>  <router-link to="/add" class="dropdown-item" href="#">Suggest Course</router-link></li>
+                        <li v-if="!authenticated" to="/login"><router-link to="/courselist" class="dropdown-item" href="#">All Courses</router-link></li>
+                        <li v-else><router-link to="/coursesadmin" class="dropdown-item" v-on:click="stayAdmin()" href="#">Published Courses</router-link></li>
+
+                        <li v-if="!authenticated" to="/login">  <router-link to="/add" class="dropdown-item" href="#">Suggest Course</router-link></li>
+                        <li v-else><router-link to="/approve" class="dropdown-item" v-on:click="stayAdmin()" href="#">Suggested Courses</router-link></li>
+                        
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><router-link to="/login" class="dropdown-item" href="#">Admin Log In</router-link></li>
-                    </ul>
-                </li>
+
+                        <li v-if="!authenticated" to="/login"><router-link to="/login" class="dropdown-item" href="#">Admin Log In</router-link></li>
+                        <li v-else><router-link to="/home" class="dropdown-item" v-on:click="logout()" href="#">Logout</router-link></li>
+    
+                    </ul>  
+                </li> 
             </ul>
         </div>
     </div>
 </nav>
     <div class="container mt-3">
-      <router-view />
+      <router-view @authenticated="setAuthenticated"/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "app"
+  name: "app",
+  data(){
+    return{
+      authenticated: false
+    }
+  },
+  mounted(){
+    if(!this.authenticated){
+      this.$router.push("home");
+    }
+  },
+  methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            },
+            stayAdmin(){
+              this.$emit("authenticated", true);
+            }
+        }
 };
 </script>
 
