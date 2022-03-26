@@ -61,6 +61,7 @@
                   //valid credentials->forward to admin course list page
                   else{
                     this.invalid=false;
+                    this.$emit("authenticated", true);
                     this.$router.push({name: "admin"});
                   }
                 })
