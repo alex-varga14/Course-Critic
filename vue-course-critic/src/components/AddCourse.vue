@@ -22,7 +22,7 @@
       </div>
 
 
-    <div id="inline">
+    <div id="inline3">
 
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
@@ -202,7 +202,7 @@ input::-webkit-inner-spin-button {
   margin-bottom: 30px;
 }
 
-#inline{
+#inline3{
   width:100%;
   height:auto;
   background-color:white;

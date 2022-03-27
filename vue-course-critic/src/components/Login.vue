@@ -14,7 +14,7 @@
               <p>Good news! Regular users don't need to create or use an account to leave reviews or 
                 search for a course. This login page is for registered site administrators only.</p>
           </div>
-          <div id="inline">
+          <div id="inline4">
             <div class="form-group username">
             <label for="username">Username</label>
             <input type="text" class="form-control" name ="Username" id="username" v-model=Admin.username>
@@ -97,7 +97,7 @@
   margin-left: -30px;
 }
 
-#inline{
+#inline4{
   width:100%;
   height:auto;
   background-color:white;
