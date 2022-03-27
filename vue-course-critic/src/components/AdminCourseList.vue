@@ -21,7 +21,7 @@
           </div>
       </div>
 
-   <div id="inline1">
+   <div id="inline">
     <div class="info-box">
       <p> Administrators are allowed to delete courses that have been added to the Course Critic database. The filtering options are still available 
           for administrator use. </p>
@@ -320,7 +320,7 @@ data() {
   margin: auto;
 }
 
-#inline1{
+#inline{
   border: 1px dotted grey;
   border-radius: 15px;
   width: 60%;

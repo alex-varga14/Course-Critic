@@ -16,7 +16,7 @@
      </div>
     </section>
 
-   <div id="inline1">
+   <div id="inline2">
     <div class="info-box">
       <p> Course Critic offers an assortment of functions for filtering through courses.
         You can filter the course list by Course Code, Course Number, Faculty or with the name
@@ -235,7 +235,7 @@ data() {
   margin: auto;
 }
 
-#inline1{
+#inline2{
   border: 1px dotted grey;
   border-radius: 15px;
   width: 65%;
