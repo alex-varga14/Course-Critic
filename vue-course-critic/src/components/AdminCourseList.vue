@@ -189,8 +189,8 @@ data() {
         });
     },
     update(data){
-      this.$router.push({name: "courses",
-        params: { data }
+      this.$router.push({name: "reviewsAdmin",
+        params: { id:data }
       });
     },
     refreshList() {

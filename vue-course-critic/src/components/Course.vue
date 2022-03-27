@@ -14,7 +14,9 @@
               Department of {{currentCourse.Faculty}}
           </div>
           <div class="row course-description">
+            <div class="container border">
               {{currentCourse.Description}} 
+            </div>
           </div>
          </div>
          <div class="col avgRatings justify-content-center text-center" v-for="avgRatings in avgRatings" v-bind:key="avgRatings">
@@ -122,7 +124,7 @@
                             <label><span class="bold-md">Review Date:</span></label>
                           </div>
                           <div class="row" id="rdate">
-                            <label onload="stripDate()">{{reviewsWRatings.Date}}</label>
+                            <label onload="stripDate()">stripDate({{reviewsWRatings.Date}})</label>
                           </div>
                         </div>
                         <div class="col">
@@ -132,15 +134,15 @@
                           <div class="row">
                             <div class="row justify-content-center text-center">
                               <label for="title bold-md">Enjoyment</label>
-                              <span class="badge bg-secondary avgRating-badge"> {{reviewsWRatings.Enjoyment}} </span>
+                              <span class="badge bg-secondary Rating-badge"> {{reviewsWRatings.Enjoyment}} </span>
                             </div>
                             <div class="row justify-content-center text-center">
                                 <label for="title bold-md">Difficulty</label>
-                                <span class="badge bg-secondary avgRating-badge">{{reviewsWRatings.Difficulty}}</span>
+                                <span class="badge bg-secondary Rating-badge">{{reviewsWRatings.Difficulty}}</span>
                             </div>
                             <div class="row justify-content-center text-center">
                                 <label for="title bold-md">Workload</label>
-                                <span class="badge bg-secondary avgRating-badge">{{reviewsWRatings.Workload}}</span>
+                                <span class="badge bg-secondary Rating-badge">{{reviewsWRatings.Workload}}</span>
                             </div>
                           </div>
                         </div>
@@ -149,7 +151,7 @@
                     <div class="col">
                       <div class="row ">
                         <label><span class="bold-md">Comment:</span></label>
-                        <p>{{reviewsWRatings.Comment}}</p>
+                        <p>{{reviewsWRatings.Comment}} ReviewID: {{reviewsWRatings.ReviewID}}</p>
                       </div>
                     </div>
                   </div>
@@ -164,7 +166,7 @@
                         class="form-check-input me-2" 
                         type="checkbox" 
                         value="" 
-                        @click="plusHelpful(reviewsWRatings.HelpfulCount)"
+                        @click="plusHelpful(reviewsWRatings.ID, reviewsWRatings.HelpfulCount)"
                         id="form6Example8" 
                         unchecked />
                       </div>
@@ -173,65 +175,7 @@
                 </div>
                 <br>
               <hr class="line2">
-              </div>
-
-              <!-- Ratings without Reviews -->
-              <!-- <div class="rating-form-body" v-for="courseReviews in courseReviews" v-bind:key="courseReviews">
-                <div class="container pb-5 border justify-content-center text-center">
-                  <div class="row">
-                      <div class="col">
-                        <div class="row review-header bold-md">
-                          <label><span class="bold-md">Insturctor:</span></label>
-                        </div>
-                        <div class="row">
-                          <label>{{courseReviews.Instructor}}</label>
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="row review-header">
-                          <label><span class="bold-md">Semester:</span></label>
-                        </div>
-                        <div class="row">
-                          <label>{{courseReviews.Semester}}</label>
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="row review-header">
-                          <label><span class="bold-md">Review Date:</span></label>
-                        </div>
-                        <div class="row" id="rdate">
-                          <label onload="stripDate()">{{courseReviews.Date}}</label>
-                        </div>
-                        </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="row ">
-                        <label><span class="bold-md">Comment:</span></label>
-                        <p>{{courseReviews.Comment}}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-8">
-                      <label>{{courseReviews.HelpfulCount}} Users found this Review Helpful!</label>
-                    </div>
-                    <div class="col-4">
-                      <label class="form-check-label" for="form6Example8"> Was this Review Helpful? </label>
-                      <div class="form-check d-flex justify-content-center mb-4">
-                        <input 
-                        class="form-check-input me-2" 
-                        type="checkbox" 
-                        value="" 
-                        @click="plusHelpful(courseReviews.HelpfulCount)"
-                        id="form6Example8" 
-                        unchecked />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
+            </div>
       </div>
     </section>
     <section class="section-features children-center grid-cover-container">
@@ -244,7 +188,6 @@
             <hr class="line">
       </div>
       <div class="container border">
-      <!-- <div v-if="!submitted"> -->
         <div class="row">
           <div class="col">
               <div class="rating-form">
@@ -252,43 +195,43 @@
                   <div id="inline">
                   <div class="rating children-center text-center">
                     <input 
-                    type="radio" 
-                    name="rating" 
-                    value="5" 
-                    v-model="newReview.Enjoyment"
-                    id="5"
+                      type="radio" 
+                      name="rating" 
+                      value="5" 
+                      v-model="newReview.Enjoyment"
+                      id="5"
                     >
                     <label for="5">☆</label>
                     <input 
-                    type="radio" 
-                    name="rating" 
-                    value="4" 
-                    id="4"
-                    v-model="newReview.Enjoyment"
+                      type="radio" 
+                      name="rating" 
+                      value="4" 
+                      id="4"
+                      v-model="newReview.Enjoyment"
                     >
                     <label for="4">☆</label>
                     <input 
-                    type="radio" 
-                    name="rating" 
-                    value="3" 
-                    id="3"
-                    v-model="newReview.Enjoyment"
+                      type="radio" 
+                      name="rating" 
+                      value="3" 
+                      id="3"
+                      v-model="newReview.Enjoyment"
                     >
                     <label for="3">☆</label>
                     <input 
-                    type="radio" 
-                    name="rating" 
-                    value="2" 
-                    id="2"
-                    v-model="newReview.Enjoyment"
+                      type="radio" 
+                      name="rating" 
+                      value="2" 
+                      id="2"
+                      v-model="newReview.Enjoyment"
                     >
                     <label for="2">☆</label>
                     <input 
-                    type="radio" 
-                    name="rating" 
-                    value="1" 
-                    id="1"
-                    v-model="newReview.Enjoyment"
+                      type="radio" 
+                      name="rating" 
+                      value="1" 
+                      id="1"
+                      v-model="newReview.Enjoyment"
                     >
                     <label for="1">☆</label>
                   </div>
@@ -297,36 +240,89 @@
                   <div id="inline">
                   <div class="rating1 children-center text-center">
                     <input 
-                    type="radio" 
-                    name="rating1" 
-                    value="5" 
-                    id="10"
-                    v-model="newReview.Difficulty"
+                      type="radio" 
+                      name="rating1" 
+                      value="5" 
+                      id="10"
+                      v-model="newReview.Difficulty"
                     >
                     <label for="10">☆</label>
-                    <input type="radio" name="rating1" value="4" id="9" v-model="newReview.Difficulty">
+                    <input 
+                      type="radio" 
+                      name="rating1" 
+                      value="4" 
+                      id="9" 
+                      v-model="newReview.Difficulty"
+                    >
                     <label for="9">☆</label>
-                    <input type="radio" name="rating1" value="3" id="8" v-model="newReview.Difficulty">
+                    <input 
+                      type="radio" 
+                      name="rating1" 
+                      value="3" 
+                      id="8" 
+                      v-model="newReview.Difficulty"
+                    >
                     <label for="8">☆</label>
-                    <input type="radio" name="rating1" value="2" id="7" v-model="newReview.Difficulty">
+                    <input 
+                      type="radio" 
+                      name="rating1" 
+                      value="2" 
+                      id="7" 
+                      v-model="newReview.Difficulty"
+                    >
                     <label for="7">☆</label>
-                    <input type="radio" name="rating1" value="1" id="6" v-model="newReview.Difficulty">
+                    <input 
+                      type="radio" 
+                      name="rating1" 
+                      value="1" 
+                      id="6" 
+                      v-model="newReview.Difficulty"
+                    >
                     <label for="6">☆</label>
                   </div>
-
                 </div>
                   <label for="title"><span class="bold-md">Course Workload</span></label>
                   <div id="inline">
                   <div class="rating2 children-center text-center">
-                    <input type="radio" name="rating2" value="5" id="15" v-model="newReview.Workload">
+                    <input 
+                      type="radio" 
+                      name="rating2" 
+                      value="5" 
+                      id="15" 
+                      v-model="newReview.Workload"
+                    >
                     <label for="15">☆</label>
-                    <input type="radio" name="rating2" value="4" id="14" v-model="newReview.Workload">
+                    <input 
+                      type="radio" 
+                      name="rating2" 
+                      value="4" 
+                      id="14" 
+                      v-model="newReview.Workload"
+                    >
                     <label for="14">☆</label>
-                    <input type="radio" name="rating2" value="3" id="13" v-model="newReview.Workload">
+                    <input 
+                      type="radio" 
+                      name="rating2" 
+                      value="3" 
+                      id="13" 
+                      v-model="newReview.Workload"
+                    >
                     <label for="13">☆</label>
-                    <input type="radio" name="rating2" value="2" id="12" v-model="newReview.Workload">
+                    <input 
+                      type="radio" 
+                      name="rating2" 
+                      value="2" 
+                      id="12" 
+                      v-model="newReview.Workload"
+                    >
                     <label for="12">☆</label>
-                    <input type="radio" name="rating2" value="1" id="11" v-model="newReview.Workload">
+                    <input 
+                      type="radio" 
+                      name="rating2" 
+                      value="1" 
+                      id="11" 
+                      v-model="newReview.Workload"
+                    >
                     <label for="11">☆</label>
                   </div>
                 </div>
@@ -399,11 +395,6 @@
           </div>
         </div>
       </div>
-      <!-- </div> -->
-      <!-- <div v-else>
-          <h4 class ="title-big text-center">Review Submitted!</h4> -->
-          <!-- <button class="btn btn-success submit-btn text-center" @click="newCourse">Review Another Course</button> -->
-        <!-- </div> -->
         </div>
       </div>
     </section>
@@ -450,7 +441,6 @@ export default {
           Workload: null,
           CourseID: null,
         },
-        submitted: false
     };
   },
   methods: {
@@ -465,27 +455,6 @@ export default {
           console.log(e);
         });
     },
-    // getLastRatingID() {
-    //   ReviewDataService.getLastReviewID()
-    //     .then(response => {
-    //       this.lastRevID = response.data;
-    //       console.log("LAST REV" + response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
-    
-    // retrieveReviews() {
-    //   ReviewDataService.getAll()
-    //     .then(response => {
-    //       this.reviews = response.data;
-    //       console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
     retrieveAvgRatings(id) {
       RatingDataService.getAllCourseAvgRating(id)
         .then(response => {
@@ -554,7 +523,6 @@ export default {
                     Difficulty: this.newReview.Enjoyment,
                     Workload: this.newReview.Enjoyment,
                     CourseID: this.data,
-                    // ReviewID: ReviewDataService.getLastReviewID(),
                     ReviewID: this.lastRevID,
                   };
                 
@@ -608,34 +576,18 @@ export default {
           });
       }
     },
-    plusHelpful(data) {
+    plusHelpful(id, data) {
       var HelpfulCount = data + 1;
-      console.log("HELLLLLPFUL");
-       ReviewDataService.updateHelpful(this.data, HelpfulCount)
+      console.log("HELPFUL REVIEW W/ ID: " + id + " ALREADY HAS " + data + "HELPFULS!");
+       ReviewDataService.updateHelpful(id, HelpfulCount)
         .then(response => {
           console.log(response.data);
+          this.$router.go();
         })
         .catch(e => {
           console.log(e);
         });
 
-    },
-    currentDate: function(){
-        const dateInput = document.getElementById('date');
-
-        dateInput.value = formatDate();
-        console.log(formatDate());
-
-        function padTo2Digits(num) {
-          return num.toString().padStart(2, '0');
-          }
-        function formatDate(date = new Date()) {
-            return [
-                  date.getFullYear(),
-                  padTo2Digits(date.getMonth() + 1),
-                  padTo2Digits(date.getDate()),
-              ].join('-');
-          }
     },
     stripDate: function(){
       var dateWTime = document.getElementById('rdate');
@@ -648,11 +600,9 @@ export default {
   },
   mounted() {
     this.getCourse(this.$route.params.id);
-    // this.retrieveReviews();
     this.retrieveCoursesReviews(this.$route.params.id);
     this.retrieveAvgRatings(this.$route.params.id);
     this.retrieveCoursesReviewsWRatings(this.$route.params.id);
-  //   this.getLastRatingID();
   }
 };
 </script>
@@ -709,6 +659,7 @@ hr.line2 {
 
 .bold-md {
   font-weight: bold;
+  font-size: 20px;
   color: #000000;
   }
 
@@ -740,6 +691,14 @@ hr.line2 {
   /* line-height: 20px; */
   margin-top: -40px;
   margin-bottom: 20px;
+}
+
+.Rating-badge {
+  height: 25px;
+  width: 40px;
+  font-size: 15px;
+  justify-items: center;
+  align-items: center;
 }
 
 .avgRating-badge {

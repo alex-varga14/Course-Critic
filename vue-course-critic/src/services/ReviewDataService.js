@@ -19,7 +19,7 @@ class ReviewDataService {
   }
 
   updateHelpful(id, data) {
-    return http.put("http://localhost:8080/api/reviews/" + id + "/" + data, data);
+    return http.put("http://localhost:8080/api/reviews/" + id + "/" + data);
   }
 
   getLastReviewID() {

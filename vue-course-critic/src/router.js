@@ -64,6 +64,11 @@ const routes =  [
     path: "/about",
     name: "about",
     component: () => import("./components/About")
+  },
+  {
+    path: "/reviewsAdmin/:id",
+    name: "reviewsAdmin",
+    component: () => import("./components/AdminCourseView")
   }
 ];
 const router = createRouter({

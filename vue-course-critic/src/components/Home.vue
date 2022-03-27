@@ -52,9 +52,9 @@
             <div class="card icon-like forsted-glass teal">
               <img class="icon" src="../assets/icons/high-liquidity-launches.svg" />
             </div>
-            <div class="feature-title">Discussion</div>
+            <div class="feature-title">Courses</div>
             <div class="feature-description">
-                  Discussion Coming Soon...
+                  Insight into Courses...
             </div>
           </div>
         </div>
