@@ -58,6 +58,7 @@
             </div>
            </div>
           <div class="col quick-rating text-center">
+            <div v-if="!ratingSubmitted">
                <label> <span class="bold-md">Rate This Course</span></label>
               <div class="col">
               <div class="quick-rating-form">
@@ -111,6 +112,12 @@
             </div>
             <button @click="saveRating" type="button" class="btn btn-primary btn-block mb-4">Submit Rating</button>
           </div>
+          <div v-else>
+                <div class="col">
+                  <h4 class ="bold-md text-center">Rating Submitted!</h4>
+                  </div>
+            </div>
+          </div>
       </div>
     </section>
 
@@ -132,7 +139,7 @@
                             <div class="row userRatings justify-content-center text-center">
                               <label><span class="bold-md-review-rating">ENJOYMENT</span></label>
                               <div v-if="5.0 >= reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 3.5">
-                                <span class="badge bg-success Rating-badge>">{{reviewsWRatings.Enjoyment}}</span>
+                                <span class="badge bg-success Rating-badge">{{reviewsWRatings.Enjoyment}}</span>
                               </div>
                               <div v-else-if="3.5 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 2.0">
                                <span class="badge bg-warning Rating-badge">{{reviewsWRatings.Enjoyment}}</span>
@@ -221,6 +228,7 @@
             <br>
             <hr class="line">
       </div>
+      <div v-if="!reviewSubmitted">
       <div class="container border">
         <div class="row">
           <div class="col">
@@ -431,6 +439,12 @@
       </div>
         </div>
       </div>
+      <div v-else>
+            <div class="col">
+              <h4 class ="bold-md text-center">Review Submitted!</h4>
+            </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -444,6 +458,8 @@ export default {
   data() {
     return {
       Date: new Date(),
+      ratingSubmitted: false,
+      reviewSubmitted: false,
       currentCourse: {
         Title: null,
         Description: null,
@@ -552,8 +568,11 @@ export default {
                   .then(responsethree => {
                     this.newRating.id = response.data.id;
                     // this.$router.go();
-                    this.$router.push({name: "courses",
-                     params: { id:this.data }});
+                    this.reviewSubmitted = true;
+                     setTimeout(() => {  this.reviewSubmitted = false; }, 5000);
+                     this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+                    // this.$router.push({name: "courses",
+                    //  params: { id:this.data }});
                     console.log(responsethree);
                   })
                   .catch(e => {
@@ -592,9 +611,15 @@ export default {
           .then(response => {
             this.newRating.id = response.data.id;
             console.log(response.data);
-            //  this.$router.go();
-             this.$router.push({name: "courses",
-              params: { id:this.data }});
+             this.ratingSubmitted = true;
+             //this.$router.go(0);
+             //this.$router.go(this.$router.currentRoute);
+             setTimeout(() => {  this.ratingSubmitted = false; }, 5000);
+             //this.$forceUpdate();
+              this.retrieveAvgRatings(this.$route.params.id);
+             //this.$router.back();
+            //  this.$router.push({name: "courses",
+            //   params: { id:this.data }});
           })
           .catch(e => {
             console.log(e);
@@ -608,9 +633,10 @@ export default {
         .then(response => {
           console.log(response.data);
           // this.$router.go();
-          this.$router.push({name: "courses",
-           params: { id:this.data }
-           });
+          this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+          // this.$router.push({name: "courses",
+          //  params: { id:this.data }
+          //  });
         })
         .catch(e => {
           console.log(e);
@@ -745,8 +771,8 @@ input.helpful-box {
   font-weight: 200;
   font-size: 20px;
   color: #000000;
-  /* line-height: 20px; */
-  margin-top: -40px;
+  /* line-height: 20px; 
+  margin-top: -40px;*/
   margin-bottom: 20px;
 }
 
@@ -756,25 +782,21 @@ input.helpful-box {
   margin-bottom: 50px; 
 }
 
-
 .Rating-badge {
-  height: 50px;
+  height: 25px;
   width: 50px;
   font-size: 15px;
   justify-items: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .avgRating-badge {
-  height: 50px;
+  height: 25px;
   width: 50px;
   justify-items: center;
   align-items: center;
   font-weight: bold;
   color: #FFFFFF;
-
   }
 
 .title-container {

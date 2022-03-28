@@ -78,7 +78,7 @@
                             <div class="row userRatings justify-content-center text-center">
                               <label for="title"><span class="bold-md-review-rating">ENJOYMENT</span></label>
                               <div v-if="5.0 >= reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 4.0">
-                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Enjoyment}}</span>
+                                <span class="badge bg-success avgRating-badge">{{reviewsWRatings.Enjoyment}}</span>
                               </div>
                               <div v-else-if="4.0 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 2.5">
                                <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Enjoyment}}</span>
@@ -210,6 +210,7 @@ export default {
             ReviewDataService.deleteReview(id)
             .then(responseTwo => {
               console.log(responseTwo.data);
+               this.retrieveCoursesReviewsWRatings(this.$route.params.id);
             })
             .catch(e => {
               console.log(e);
