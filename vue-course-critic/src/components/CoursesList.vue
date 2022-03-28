@@ -1,9 +1,8 @@
-
 <template>
   <div class="page-container" id="courselist">
     <section class="section-app-face children-center grid-cover-container">
       <div class="grid-cover-content children-center">
-        <div class="title text-center">
+        <div class="title-list text-center">
           UCalgary Course List
         </div>
         <div class="list" >
@@ -194,7 +193,7 @@ data() {
 </script>
 
 <style>
-.title{
+.title-list{
   font-weight: 300;
   font-size: 40px;
   line-height: 60px;

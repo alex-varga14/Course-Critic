@@ -22,37 +22,37 @@
          <div class="col avgRatings text-center" v-for="avgRatings in avgRatings" v-bind:key="avgRatings">
            <div class="row justify-content-center">
               <label for="title">Average Enjoyment</label>
-              <div v-if="5.0 >= avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 4.0">
-                     <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+              <div v-if="5.0 >= avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 3.5">
+                 <span class="badge-pill bg-success avgRating-badge>">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
               </div>
-              <div v-else-if="4.0 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 2.5">
-                 <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+              <div v-else-if="3.5 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 2.0">
+                 <span class="badge-pill bg-warning avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
                  </div>
-              <div v-else-if="2.5 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 0.0" >
-                 <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+              <div v-else-if="2.0 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 0.0" >
+                 <span class="badge-pill bg-danger avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
               </div>
             </div>
             <div class="row justify-content-center">
                 <label for="title">Average Difficulty</label>
-                <div v-if="5.0 >= avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 4.0">
+                <div v-if="5.0 >= avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 3.5">
                      <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
               </div>
-              <div v-else-if="4.0 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 2.5">
+              <div v-else-if="3.5 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 2.0">
                  <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
                  </div>
-              <div v-else-if="2.5 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 0.0" >
+              <div v-else-if="2.0 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 0.0" >
                  <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
               </div>
             </div>
             <div class="row justify-content-center">
                 <label for="title">Average Workload</label>
-              <div v-if="5.0 >= avgRatings.avgWorkload && avgRatings.avgWorkload >= 4.0">
+              <div v-if="5.0 >= avgRatings.avgWorkload && avgRatings.avgWorkload >= 3.5">
                      <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
               </div>
-              <div v-else-if="4.0 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 2.5">
+              <div v-else-if="3.5 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 2.0">
                  <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
                  </div>
-              <div v-else-if="2.5 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 0.0" >
+              <div v-else-if="2.0 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 0.0" >
                  <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
               </div>
             </div>
@@ -130,41 +130,41 @@
                       <div class="col">
                           <div class="row">
                             <div class="row userRatings justify-content-center text-center">
-                              <label for="title"><span class="bold-md-review-rating">ENJOYMENT</span></label>
-                              <div v-if="5.0 >= reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 4.0">
-                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Enjoyment}}</span>
+                              <label><span class="bold-md-review-rating">ENJOYMENT</span></label>
+                              <div v-if="5.0 >= reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 3.5">
+                                <span class="badge bg-success Rating-badge>">{{reviewsWRatings.Enjoyment}}</span>
                               </div>
-                              <div v-else-if="4.0 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 2.5">
-                               <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Enjoyment}}</span>
+                              <div v-else-if="3.5 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 2.0">
+                               <span class="badge bg-warning Rating-badge">{{reviewsWRatings.Enjoyment}}</span>
                                </div>
-                              <div v-else-if="2.5 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 0.0" >
-                               <span class="badge bg-danger avgRating-badge">{{reviewsWRatings.Enjoyment}}</span>
+                              <div v-else-if="2.0 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 0.0" >
+                               <span class="badge bg-danger Rating-badge">{{reviewsWRatings.Enjoyment}}</span>
                               </div>
                             </div>
                             <br>
                             <div class="row userRatings justify-content-center text-center">
-                                <label for="title"><span class="bold-md-review-rating">DIFFICULTY</span></label>
-                                <div v-if="5.0 >= reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 4.0">
-                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Difficulty}}</span>
+                                <label><span class="bold-md-review-rating">DIFFICULTY</span></label>
+                                <div v-if="5.0 >= reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 3.5">
+                                <span class="badge bg-success Rating-badge>">{{reviewsWRatings.Difficulty}}</span>
                                 </div>
-                                <div v-else-if="4.0 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 2.5">
-                                <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Difficulty}}</span>
+                                <div v-else-if="3.5 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 2.0">
+                                <span class="badge bg-warning Rating-badge">{{reviewsWRatings.Difficulty}}</span>
                                 </div>
-                                <div v-else-if="2.5 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 0.0" >
-                                <span class="badge bg-danger avgRating-badge">{{reviewsWRatings.Difficulty}}</span>
+                                <div v-else-if="2.0 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 0.0" >
+                                <span class="badge bg-danger Rating-badge">{{reviewsWRatings.Difficulty}}</span>
                                </div>
                             </div>
                             <br>
                             <div class="row userRatings justify-content-center text-center">
-                                <label for="title"><span class="bold-md-review-rating">WORKLOAD</span></label>
-                                <div v-if="5.0 >= reviewsWRatings.Workload && reviewsWRatings.Workload >= 4.0">
-                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Workload}}</span>
+                                <label><span class="bold-md-review-rating">WORKLOAD</span></label>
+                                <div v-if="5.0 >= reviewsWRatings.Workload && reviewsWRatings.Workload >= 3.5">
+                                <span class="badge bg-success Rating-badge>">{{reviewsWRatings.Workload}}</span>
                                 </div>
-                                <div v-else-if="4.0 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 2.5">
-                                <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Workload}}</span>
+                                <div v-else-if="3.5 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 2.0">
+                                <span class="badge bg-warning Rating-badge">{{reviewsWRatings.Workload}}</span>
                                 </div>
-                                <div v-else-if="2.5 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 0.0" >
-                                <span class="badge bg-danger avgRating-badge">{{reviewsWRatings.Workload}}</span>
+                                <div v-else-if="2.0 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 0.0" >
+                                <span class="badge bg-danger Rating-badge">{{reviewsWRatings.Workload}}</span>
                                </div>
                             </div>
                           </div>
@@ -444,9 +444,6 @@ export default {
   data() {
     return {
       Date: new Date(),
-      reviewBadgeClasses: {
-        important: true,
-      },
       currentCourse: {
         Title: null,
         Description: null,
@@ -555,7 +552,8 @@ export default {
                   .then(responsethree => {
                     this.newRating.id = response.data.id;
                     // this.$router.go();
-                    this.$router.push({name: "courses" + this.id});
+                    this.$router.push({name: "courses",
+                     params: { id:this.data }});
                     console.log(responsethree);
                   })
                   .catch(e => {
@@ -595,7 +593,8 @@ export default {
             this.newRating.id = response.data.id;
             console.log(response.data);
             //  this.$router.go();
-             this.$router.push({name: "courses" + this.id});
+             this.$router.push({name: "courses",
+              params: { id:this.data }});
           })
           .catch(e => {
             console.log(e);
@@ -609,7 +608,9 @@ export default {
         .then(response => {
           console.log(response.data);
           // this.$router.go();
-          this.$router.push({name: "courses" + this.id});
+          this.$router.push({name: "courses",
+           params: { id:this.data }
+           });
         })
         .catch(e => {
           console.log(e);
@@ -633,11 +634,6 @@ hr.line {
   margin-top: -50px;
   color: #000000;
   background-color: #000000;
-}
-
-.important {
-  color: red;
-  background-color: red;
 }
 
 hr.line2 {
@@ -760,21 +756,25 @@ input.helpful-box {
   margin-bottom: 50px; 
 }
 
+
 .Rating-badge {
-  height: 25px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   font-size: 15px;
   justify-items: center;
   align-items: center;
-  /* margin-top: 20px;
-  margin-bottom: 5px; */
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .avgRating-badge {
-  height: 25px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
   justify-items: center;
   align-items: center;
+  font-weight: bold;
+  color: #FFFFFF;
+
   }
 
 .title-container {

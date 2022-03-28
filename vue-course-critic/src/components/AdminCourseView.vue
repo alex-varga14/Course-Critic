@@ -141,7 +141,7 @@
                     <div class="col-4">
                       <div class="col">
                         <div class="row ">
-                        <button @click="removeReview(reviewWRatings.ID)" type="submit" class="remove">
+                        <button @click="removeReview(reviewsWRatings.ID)" type="button" class="remove">
                             Remove Comment and Associated Review.
                         </button>
                       </div>
@@ -166,9 +166,6 @@ export default {
   data() {
     return {
       Date: new Date(),
-      reviewBadgeClasses: {
-        important: true,
-      },
       currentCourse: {
         Title: null,
         Description: null,
@@ -180,23 +177,6 @@ export default {
       data: null,
       lastRevID: null,
       reviewsWRatings: [],
-      newReview: {
-          Comment: null,
-          Instructor: null,
-          Semester: null,
-          Date: null,
-          HelpfulCount: null,
-          CourseID: null,
-          Enjoyment: null,
-          Difficulty: null,
-          Workload: null,
-        },
-      newRating: {
-          Enjoyment: null,
-          Difficulty: null,
-          Workload: null,
-          CourseID: null,
-        },
     };
   },
   methods: {
@@ -212,13 +192,28 @@ export default {
         });
     },
     removeReview(id) {
-        ReviewDataService.delete(id)
-        .then(response => {
-          this.deletedReview = response.data;
-          console.log(response.data);
+        console.log("DELETE REVIEW..." + id);
+          window.alert("Review Removed!");
+          RatingDataService.deleteRating(id)
+          .then(response => {
+            console.log(response.data);
+            ReviewDataService.deleteReview(id)
+            .then(responseTwo => {
+              console.log(responseTwo.data);
+            })
+          .catch(e => {
+            console.log(e);
+          });
         })
         .catch(e => {
-          console.log(e);
+            console.log(e);
+            ReviewDataService.deleteReview(id)
+            .then(responseTwo => {
+              console.log(responseTwo.data);
+            })
+            .catch(e => {
+              console.log(e);
+            });
         });
     },
     retrieveAvgRatings(id) {
@@ -257,11 +252,6 @@ hr.line {
   margin-top: -50px;
   color: #000000;
   background-color: #000000;
-}
-
-.important {
-  color: red;
-  background-color: red;
 }
 
 hr.line2 {
