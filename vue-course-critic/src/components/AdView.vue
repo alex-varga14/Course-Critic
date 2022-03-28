@@ -1,12 +1,11 @@
 <template>
-  <div class="page-container" id="adViewHome">
+  <div  id="adViewHome" class="page-container">
     <section class="section-app-face children-center grid-cover-container">
       <div class="image-1" />
       <div class="grid-cover-content children-center">
         <div class="title">
           <span class="defi-text">Admin Home Page</span>
         </div>
-
         <div class="row-box-1">
           <router-link to="/coursesAdmin">
             <div class="card button-like card-1">
@@ -31,7 +30,7 @@
 
 <script>
 export default {
-  name: 'adViewHome',
+  name: "adViewHome",
   props: {
     msg: String
   }
@@ -40,7 +39,6 @@ export default {
 
 <style scoped>
 /* utilities */
-
 .card {
   padding: 12px 24px;
   border-radius: 6px;
@@ -121,18 +119,6 @@ export default {
   margin-bottom: 16px;
   margin-top: 56px;
 }
-
- .section-app-face .red-yel {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 30px;
-  color: transparent;
-  background: radial-gradient(circle at top right, #f20f0f, #f2d00f);
-  background-clip: text;
-  margin-bottom: 24px;
-
-   }
 
 .section-app-face .defi-text {
   font-weight: 550;

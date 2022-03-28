@@ -1,23 +1,15 @@
 
 <template>
-  <div class="page-container" id="courselist">
-
+  <div id="adminCourseList" class="page-container">
           <router-link to="/admin">
             <div id="AdminHome" class="admin-home-btn card button-like card-1 text-center">Admin Home
             </div>
           </router-link>
-
         <div class="title text-center">
           UCalgary Course List
         </div>
-
-        
-
         <div class="list" >
           <div class="col-md-8" >
-
-              
-
           </div>
       </div>
 
@@ -28,7 +20,6 @@
     </div>
 
     <div class="filters-left">
-
         <label for="title filter">Course Title</label>
       <div class="title-filter">
         <input type="text" class="form-control" placeholder="Software Architecture" style="width:600px height:500p"
@@ -43,7 +34,6 @@
     </div>
 
     <div class="filters-right">
-
         <label for="code filter">Course Code</label>
       <div class="code-filter">
         <input type="text" class="form-control" placeholder="SENG" style="width:600px height:500p"
@@ -91,17 +81,15 @@
         </tr>
       </tbody>
     </table>
-
   </div>
 </template>
-
 
 <script>
 import CourseDataService from "../services/CourseDataService";
 import RatingDataService from "../services/RatingDataService";
 import ReviewDataService from "../services/ReviewDataService"
 export default {
-name: "courses-list",
+name: "adminCourseList",
 data() {
   return {
       courses: [],
@@ -123,7 +111,8 @@ data() {
             CourseDataService.delete(id)
             .then(responseThree =>{
               console.log(responseThree.data);
-              this.$router.go();
+              // this.$router.go();
+              this.$router.push({name: "coursesAdmin"});
             })
             .catch(e => {
             console.log(e);
@@ -134,7 +123,8 @@ data() {
             CourseDataService.delete(id)
             .then(responseThree =>{
               console.log(responseThree.data);
-              this.$router.go();
+              // this.$router.go();
+              this.$router.push({name: "coursesAdmin"});
             })
             .catch(e => {
             console.log(e);
@@ -149,7 +139,8 @@ data() {
               CourseDataService.delete(id)
               .then(responseThree =>{
                 console.log(responseThree.data);
-                this.$router.go();
+                // this.$router.go();
+                this.$router.push({name: "coursesAdmin"});
               })
               .catch(e => {
               console.log(e);
@@ -160,7 +151,8 @@ data() {
               CourseDataService.delete(id)
               .then(responseThree =>{
                 console.log(responseThree.data);
-                this.$router.go();
+                // this.$router.go();
+                this.$router.push({name: "coursesAdmin"});
               })
               .catch(e => {
               console.log(e);
@@ -197,10 +189,6 @@ data() {
       this.retrieveCourses();
       this.currentCourse = null;
       this.currentIndex = -1;
-    },
-    setActiveCourse(course, index) {
-      this.currentCourse = course;
-      this.currentIndex = course ? index : -1;
     },
     removeAllCourses() {
       CourseDataService.deleteAll()
@@ -264,17 +252,6 @@ data() {
         }
       }
     },
-  searchTitle() {
-    CourseDataService.findByTitle(this.title)
-      .then(response => {
-        this.courses = response.data;
-        this.setActiveCourse(null);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  },
   },
   mounted() {
     this.retrieveCourses();
@@ -282,6 +259,7 @@ data() {
   }
 };
 </script>
+
 <style>
 .title{
   font-weight: 300;
@@ -312,7 +290,6 @@ data() {
   text-decoration: none;
   margin-left: 325px;
 }
-
 
 .list {
   text-align: left;
@@ -391,71 +368,5 @@ tr:nth-child(even){
 }
 .ant-popover-inner-content {
   background-color: #0c0926 !important;
-}
-</style>
-<style scoped>
-/* utilities */
-
-.children-center {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: 1fr;
-}
-.children-center,
-.children-text-center > * {
-  text-align: center;
-}
-.children-center,
-.children-flex-content-center > * {
-  justify-content: center;
-}
-
-.grid-cover-container {
-  place-items: center;
-  display: grid;
-}
-.grid-cover-container > * {
-  max-width: 100%;
-  grid-area: 1 / 1;
-  overflow: auto;
-}
-
-.section-app-face {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  height: 100px;
-  position: relative;
-}
-
-.section-app-face .title {
-  font-weight: 300;
-  font-size: 40px;
-  line-height: 60px;
-  color: #000000;
-  margin-bottom: 16px;
-  margin-top: 0px;
-}
-
-@media (max-width: 1128px) {
-  /* is tablet */
-
-  .section-app-face {
-    margin-top: 116px;
-    height: 720px;
-  }
-
-  .section-app-face .title {
-    font-size: 48px;
-    line-height: 44px;
-  }
-}
-
-@media (max-width: 768px) {
-  /* is phone */
-  .section-app-face {
-    margin-top: 116px;
-    height: unset;
-  }
 }
 </style>

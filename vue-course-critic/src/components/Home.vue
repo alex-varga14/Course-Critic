@@ -10,7 +10,6 @@
         <div class="subtitle">
           Peer-to-Peer <b>review</b>. Honest <b>ratings</b>. {{ '\n' }} <span class="red-yel">Accurate</span> <b>workloads</b>.
         </div>
-
         <div class="row-box-1">
           <router-link to="/courselist">
             <div class="card button-like card-1"><span class="font">Courses</span>
@@ -26,7 +25,6 @@
           <div class="line" />
           <div class="text">CourseCritic provides past students honest Ratings and Reviews!</div>
         </div>
-
         <div class="boards">
           <div class="card children-center forsted-glass buriedlightsmoke">
             <div class="card icon-like forsted-glass teal">
@@ -37,7 +35,6 @@
                   Rate Courses with Ease.
             </div>
           </div>
-
           <div class="card children-center forsted-glass buriedlightsmoke">
             <div class="card icon-like forsted-glass teal">
               <img class="icon" src="../assets/icons/best-price-swaps.svg" />
@@ -47,7 +44,6 @@
                 View and Leave Candid Reviews.
             </div>
           </div>
-
           <div class="card children-center forsted-glass buriedlightsmoke">
             <div class="card icon-like forsted-glass teal">
               <img class="icon" src="../assets/icons/high-liquidity-launches.svg" />
@@ -58,7 +54,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -362,11 +357,6 @@ export default {
 }
 .page-footer .group .links .link:hover {
   color: white;
-}
-
-.page-footer .foot-logo {
-  margin: 16px auto 64px;
-  display: block;
 }
 
 .section-features .feature-title {

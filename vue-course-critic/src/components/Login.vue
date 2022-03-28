@@ -14,7 +14,7 @@
               <p>Good news! Regular users don't need to create or use an account to leave reviews or 
                 search for a course. This login page is for registered site administrators only.</p>
           </div>
-          <div id="inline4">
+          <div id="inline4" class="login-group">
             <div class="form-group username">
             <label for="username">Username</label>
             <input type="text" class="form-control" name ="Username" id="username" v-model=Admin.username>
@@ -33,7 +33,7 @@
 <script>
   import AdminDataService from "../services/AdminDataService";
     export default {
-        name: 'attempt-login',
+        name: 'login',
         data() {
             return {
                 Admin: [],
@@ -97,6 +97,10 @@
   margin-left: -30px;
 }
 
+.login-group {
+  margin-left: -75px;
+}
+
 #inline4{
   width:100%;
   height:auto;
@@ -117,7 +121,7 @@
 
 .login-submit-btn{
   width: 200px;
-  margin-left: 350px;
+  margin-left: 300px;
   margin-bottom: 30px;
 }
 
@@ -147,4 +151,3 @@
   background-color: #0c0926 !important;
 }
 </style>
-

@@ -1,9 +1,8 @@
 <template>
-    <div>
+    <div id="guidelines">
         <div class="guidelines text-center">
             Course Critic Guidelines
         </div>
-
         <div class="guidelines-info">
             <br><br>
             <p> We at Course Critic value respect and honesty, therefore we ask all contributors to adhere
@@ -18,7 +17,6 @@
                 <li> Kindly adhere to the format for suggesting courses as outlined for you.
                      This makes it easier for us to approve your suggestions! 
                 </li>
-
             </ul>
         </div>
     </div>
@@ -26,7 +24,7 @@
 
 <script>
 export default {
-  name: 'Guidelines'
+  name: "guidelines",
 }
 </script>
 

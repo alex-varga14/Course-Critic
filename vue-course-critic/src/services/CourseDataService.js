@@ -13,9 +13,6 @@ class CourseDataService {
   getCourseAggregateInfo(){
     return http.get("http://localhost:8080/api/courses/get/all/aggregates");
   }
-  // get(data) {
-  //   return http.get("http://localhost:8080/api/courses/"+ data);
-  // }
   get(id) {
     return http.get("http://localhost:8080/api/courses/" + id);
   }
@@ -30,9 +27,6 @@ class CourseDataService {
   }
   deleteAll() {
     return http.delete(`/courses`);
-  }
-  findByTitle(title) {
-    return http.get(`/courses?title=${title}`);
   }
 }
 export default new CourseDataService();

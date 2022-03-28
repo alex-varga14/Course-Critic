@@ -8,14 +8,10 @@
         </div>
         <div class="list" >
           <div class="col-md-8" >
-
-
-
           </div>
       </div>
      </div>
     </section>
-
    <div id="inline2">
     <div class="info-box">
       <p> Course Critic offers an assortment of functions for filtering through courses.
@@ -24,13 +20,11 @@
     </div>
 
     <div class="filters-left">
-
         <label for="title filter">Course Title</label>
       <div class="title-filter">
         <input type="text" class="form-control" placeholder="Software Architecture" style="width:600px height:500p"
         id="title filter" v-on:input="filterCode" />
       </div>
-
         <label for="faculty filter">Faculty</label>
       <div class="faculty-filter">
         <input type="text" class="form-control" placeholder="Software Engineering" style="width:600px height:500p"
@@ -39,13 +33,11 @@
     </div>
 
     <div class="filters-right">
-
         <label for="code filter">Course Code</label>
       <div class="code-filter">
         <input type="text" class="form-control" placeholder="SENG" style="width:600px height:500p"
           id="code filter" v-on:input="filterCode" />
       </div>
-
         <label for="number filter">Course Number</label>
       <div class="number-filter">
         <input type="number" class="form-control" placeholder="401" style="width:600px height:500p"
@@ -82,15 +74,13 @@
         </tr>
       </tbody>
     </table>
-
   </div>
 </template>
-
 
 <script>
 import CourseDataService from "../services/CourseDataService";
 export default {
-name: "courses-list",
+name: "courselist",
 data() {
   return {
       courses: [],
@@ -130,10 +120,6 @@ data() {
       this.retrieveCourses();
       this.currentCourse = null;
       this.currentIndex = -1;
-    },
-    setActiveCourse(course, index) {
-      this.currentCourse = course;
-      this.currentIndex = course ? index : -1;
     },
     removeAllCourses() {
       CourseDataService.deleteAll()
@@ -199,17 +185,6 @@ data() {
         }
       }
     },
-  searchTitle() {
-    CourseDataService.findByTitle(this.title)
-      .then(response => {
-        this.courses = response.data;
-        this.setActiveCourse(null);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  },
   },
   mounted() {
     this.retrieveCourses();
@@ -217,6 +192,7 @@ data() {
   }
 };
 </script>
+
 <style>
 .title{
   font-weight: 300;
@@ -300,4 +276,3 @@ tr:nth-child(even){
   background-color: #0c0926 !important;
 }
 </style>
-

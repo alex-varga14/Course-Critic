@@ -1,9 +1,8 @@
 <template>
-    <div>
+    <div id="terms">
         <div class = "terms text-center">
             Terms and Conditions
         </div>
-
         <div class = "terms-list ">
             <div class="row text-center">
                 CourseCode: Four-letter code representing the faculty name in which a course is being offered
@@ -15,7 +14,6 @@
                 CourseID: Unique ID for each course offering
             </div>
         </div>
-
         <div class = "terms-conditions">
             <p> 
                 These are the terms and conditions that govern the use of this service. All users must accept and comply with
@@ -34,9 +32,7 @@
                     <li> (a) You created the information with no plagiarism involved, and </li>
                     <li> (b) The review posted for a course does not reveal any personal details about a person, aside from their name and position within the faculty in which they teach. </li> 
                 </ul>
-                 
                 <br>
-
                 Violation of any of these terms within your post is subject to removal by the Administrators. 
             </p>
         </div>
@@ -45,7 +41,7 @@
 
 <script>
 export default {
-  name: 'Terms'
+  name: "terms",
 }
 </script>
 

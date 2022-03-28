@@ -1,11 +1,9 @@
 <template>
-  <div class="submit-form whole-page">
- 
+  <div id="addCourse" class="submit-form whole-page">
   <div v-if="!submitted">
     <div class="title-big text-center">
       Suggest A Course
     </div>
-    
 <!--       COURSE TITLE       -->
       <div class="form-group title-container">
         <label for="title">Course Title</label>
@@ -20,10 +18,7 @@
           placeholder="Computer Networks"
         />
       </div>
-
-
     <div id="inline3">
-
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
           <label for="faculty">Faculty</label>
@@ -38,7 +33,6 @@
             placeholder="Computer Science"
           />
         </div>
-
 <!--        COURSE CODE         -->
         <div class="form-group coursecode-container">
           <label for="coursecode">Course Code</label>
@@ -54,7 +48,6 @@
             maxlength="4"
           />
         </div>
-
 <!--        COURSE NUMBER          -->
         <div class="form-group courseno-container">
           <label for="courseno">Course Number</label>
@@ -69,9 +62,7 @@
             maxlength="3"
             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
         </div>
-
       </div>
-
 <!--      COURSE DESCRIPTION          -->
       <div class="form-group desc-container">
         <label for="description">Description</label>
@@ -84,16 +75,13 @@
           rows="5">
         </textarea>
       </div>
-
 <!--           SUBMIT BUTTON          -->
       <button @click="saveCourse" class="btn btn-success submit-btn text-center">Submit</button>
-
 <!--            MESSAGE               -->
       <div class="message">
         <p class="text-center"> Suggested courses are submitted to be reviewed by Course Critic administrators</p>
       </div>
     </div>
-
 <!--            SUBMITTED            -->
     <div v-else>
       <h4 class ="title-big text-center">Course Submitted!</h4>
@@ -103,19 +91,15 @@
                                 based on the number of suggestions for a course. 
         </p>
       </div>
-
       <button class="btn btn-success submit-btn text-center" @click="newCourse">Suggest Another Course</button>
     </div>
-
   </div>
-
 </template>
-
 
 <script>
 import CourseDataService from "../services/CourseDataService";
 export default {
-  name: "add-course",
+  name: "addCourse",
   data() {
     console.log("SAVING COURSE...");
     return {
@@ -165,12 +149,11 @@ export default {
           console.log(e);
         });
       }
-      
     },
-    
   }
 };
 </script>
+
 <style>
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -257,4 +240,3 @@ input::-webkit-inner-spin-button {
   margin: auto;
 }
 </style>
-<!-- This component calls 3 CourseDataService methods-->

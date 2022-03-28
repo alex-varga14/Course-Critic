@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="course">
     <section class="section-app-face">
       <div class="row">
         <div class="col-sm-4 title-big">
@@ -19,18 +19,42 @@
             </div>
           </div>
          </div>
-         <div class="col avgRatings justify-content-center text-center" v-for="avgRatings in avgRatings" v-bind:key="avgRatings">
-           <div class="row justify-content-center text-center">
+         <div class="col avgRatings text-center" v-for="avgRatings in avgRatings" v-bind:key="avgRatings">
+           <div class="row justify-content-center">
               <label for="title">Average Enjoyment</label>
-              <span class="badge bg-secondary avgRating-badge"> {{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}} </span>
+              <div v-if="5.0 >= avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 4.0">
+                     <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+              </div>
+              <div v-else-if="4.0 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 2.5">
+                 <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+                 </div>
+              <div v-else-if="2.5 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 0.0" >
+                 <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+              </div>
             </div>
-            <div class="row justify-content-center text-center">
+            <div class="row justify-content-center">
                 <label for="title">Average Difficulty</label>
-                <span class="badge bg-secondary avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
+                <div v-if="5.0 >= avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 4.0">
+                     <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
+              </div>
+              <div v-else-if="4.0 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 2.5">
+                 <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
+                 </div>
+              <div v-else-if="2.5 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 0.0" >
+                 <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
+              </div>
             </div>
-            <div class="row justify-content-center text-center">
+            <div class="row justify-content-center">
                 <label for="title">Average Workload</label>
-                <span class="badge bg-secondary avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
+              <div v-if="5.0 >= avgRatings.avgWorkload && avgRatings.avgWorkload >= 4.0">
+                     <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
+              </div>
+              <div v-else-if="4.0 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 2.5">
+                 <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
+                 </div>
+              <div v-else-if="2.5 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 0.0" >
+                 <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
+              </div>
             </div>
            </div>
           <div class="col quick-rating text-center">
@@ -101,73 +125,83 @@
           </div>
               <!-- Ratings with Reviews -->
               <div class="rating-form-body" v-for="reviewsWRatings in reviewsWRatings" v-bind:key="reviewsWRatings">
-                <div class="container border review-container justify-content-center text-center">
+                <div class="container border review-container">
                   <div class="row">
                       <div class="col">
-                          <div class="row review-header bold-md">
-                            <label><span class="bold-md">Insturctor:</span></label>
-                          </div>
                           <div class="row">
-                            <label>{{reviewsWRatings.Instructor}}</label>
+                            <div class="row userRatings justify-content-center text-center">
+                              <label for="title"><span class="bold-md-review-rating">ENJOYMENT</span></label>
+                              <div v-if="5.0 >= reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 4.0">
+                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Enjoyment}}</span>
+                              </div>
+                              <div v-else-if="4.0 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 2.5">
+                               <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Enjoyment}}</span>
+                               </div>
+                              <div v-else-if="2.5 > reviewsWRatings.Enjoyment && reviewsWRatings.Enjoyment >= 0.0" >
+                               <span class="badge bg-danger avgRating-badge">{{reviewsWRatings.Enjoyment}}</span>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="row userRatings justify-content-center text-center">
+                                <label for="title"><span class="bold-md-review-rating">DIFFICULTY</span></label>
+                                <div v-if="5.0 >= reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 4.0">
+                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Difficulty}}</span>
+                                </div>
+                                <div v-else-if="4.0 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 2.5">
+                                <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Difficulty}}</span>
+                                </div>
+                                <div v-else-if="2.5 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 0.0" >
+                                <span class="badge bg-danger avgRating-badge">{{reviewsWRatings.Difficulty}}</span>
+                               </div>
+                            </div>
+                            <br>
+                            <div class="row userRatings justify-content-center text-center">
+                                <label for="title"><span class="bold-md-review-rating">WORKLOAD</span></label>
+                                <div v-if="5.0 >= reviewsWRatings.Workload && reviewsWRatings.Workload >= 4.0">
+                                <span class="badge bg-success avgRating-badge>">{{reviewsWRatings.Workload}}</span>
+                                </div>
+                                <div v-else-if="4.0 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 2.5">
+                                <span class="badge bg-warning avgRating-badge">{{reviewsWRatings.Workload}}</span>
+                                </div>
+                                <div v-else-if="2.5 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 0.0" >
+                                <span class="badge bg-danger avgRating-badge">{{reviewsWRatings.Workload}}</span>
+                               </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class="row">
+                            <label class="review-header">Instructor: <span class="bold-md-prof">{{reviewsWRatings.Instructor}}</span></label>
+                          </div>
+                      </div>
+                        <div class="col">
+                          <div class="row">
+                            <label class="review-header">Semester: <span class="bold-md">{{reviewsWRatings.Semester}}</span></label>
                           </div>
                         </div>
                         <div class="col">
-                          <div class="row review-header bold-md">
-                            <label><span class="bold-md">Semester</span></label>
-                          </div>
-                          <div class="row">
-                            <label>{{reviewsWRatings.Semester}}</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="row review-header bold-md" id="rdate">
-                            <label><span class="bold-md">Review Date:</span></label>
-                          </div>
-                          <div class="row" id="rdate">
-                            <label onload="stripDate()">stripDate({{reviewsWRatings.Date}})</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="row review-header bold-md">
-                            <label><span class="bold-md">User Ratings:</span></label>
-                          </div>
-                          <div class="row">
-                            <div class="row justify-content-center text-center">
-                              <label for="title bold-md">Enjoyment</label>
-                              <span class="badge bg-secondary Rating-badge"> {{reviewsWRatings.Enjoyment}} </span>
-                            </div>
-                            <div class="row justify-content-center text-center">
-                                <label for="title bold-md">Difficulty</label>
-                                <span class="badge bg-secondary Rating-badge">{{reviewsWRatings.Difficulty}}</span>
-                            </div>
-                            <div class="row justify-content-center text-center">
-                                <label for="title bold-md">Workload</label>
-                                <span class="badge bg-secondary Rating-badge">{{reviewsWRatings.Workload}}</span>
-                            </div>
+                          <div class="row bold-md" >
+                            <label class="review-header"><span id="rdate" class="bold-md">{{new Date(reviewsWRatings.Date).toISOString().slice(0, 10)}}</span></label>
                           </div>
                         </div>
                   </div>
                   <div class="row">
-                    <div class="col">
-                      <div class="row ">
-                        <label><span class="bold-md">Comment:</span></label>
-                        <p>{{reviewsWRatings.Comment}} ReviewID: {{reviewsWRatings.ReviewID}}</p>
-                      </div>
-                    </div>
+                        <p class="review-comment">{{reviewsWRatings.Comment}}</p>
                   </div>
                   <div class="row">
                     <div class="col-8">
-                      <label><span class="bold-md">{{reviewsWRatings.HelpfulCount}}</span> Users found this Review Helpful!</label>
+                      <label><span class="bold-md">{{reviewsWRatings.HelpfulCount}} Users found this Review Helpful!</span> </label>
                     </div>
                     <div class="col-4">
-                      <label class="form-check-label" for="form6Example8"> Was this Review Helpful? </label>
+                      <label class="form-check-label larger-text" for="helpful-box"> Was this Review Helpful? </label>
                       <div class="form-check d-flex justify-content-center mb-4">
                         <input 
-                        class="form-check-input me-2" 
+                        class="helpful-box" 
+                        width
                         type="checkbox" 
                         value="" 
                         @click="plusHelpful(reviewsWRatings.ID, reviewsWRatings.HelpfulCount)"
-                        id="form6Example8" 
+                        id="helpful-box" 
                         unchecked />
                       </div>
                     </div>
@@ -385,7 +419,7 @@
             <textarea 
               class="form-control" 
               id="Comment" 
-              rows="4"
+              rows="8"
               type="Comment"
               required
               v-model="newReview.Comment"
@@ -410,6 +444,9 @@ export default {
   data() {
     return {
       Date: new Date(),
+      reviewBadgeClasses: {
+        important: true,
+      },
       currentCourse: {
         Title: null,
         Description: null,
@@ -420,9 +457,7 @@ export default {
         avgRatings: [],
       data: null,
       lastRevID: null,
-      courseReviews: [],
       reviewsWRatings: [],
-      reviews: [],
       newReview: {
           Comment: null,
           Instructor: null,
@@ -434,7 +469,6 @@ export default {
           Difficulty: null,
           Workload: null,
         },
-      ratings: [],
       newRating: {
           Enjoyment: null,
           Difficulty: null,
@@ -465,20 +499,11 @@ export default {
           console.log(e);
         });
     },
-    retrieveCoursesReviews(id){
-      ReviewDataService.getCourseReviews(id)
-      .then(response => {
-        this.courseReviews= response.data;
-        console.log(response.data);
-      })
-      .catch(e => {
-          console.log(e);
-        });
-    },
     retrieveCoursesReviewsWRatings(id){
       ReviewDataService.getCourseReviewsWRatings(id)
       .then(response => {
-        this.reviewsWRatings= response.data;
+        this.reviewsWRatings = response.data;
+        this.reviewsWRatings.Date = this.reviewsWRatings.Date.slice(0,10);
         console.log(response.data);
       })
       .catch(e => {
@@ -529,7 +554,8 @@ export default {
                   RatingDataService.createRating(data1)
                   .then(responsethree => {
                     this.newRating.id = response.data.id;
-                    this.$router.go();
+                    // this.$router.go();
+                    this.$router.push({name: "courses" + this.id});
                     console.log(responsethree);
                   })
                   .catch(e => {
@@ -543,7 +569,6 @@ export default {
           .catch(e => {
             console.log(e);
           });
-        
         }
     },
     postNewReview() {
@@ -569,7 +594,8 @@ export default {
           .then(response => {
             this.newRating.id = response.data.id;
             console.log(response.data);
-             this.$router.go();
+            //  this.$router.go();
+             this.$router.push({name: "courses" + this.id});
           })
           .catch(e => {
             console.log(e);
@@ -582,17 +608,12 @@ export default {
        ReviewDataService.updateHelpful(id, HelpfulCount)
         .then(response => {
           console.log(response.data);
-          this.$router.go();
+          // this.$router.go();
+          this.$router.push({name: "courses" + this.id});
         })
         .catch(e => {
           console.log(e);
         });
-
-    },
-    stripDate: function(){
-      var dateWTime = document.getElementById('rdate');
-      console.log(dateWTime);
-      return dateWTime.slice(0,10);
     },
     postNewRating() {
       this.newRating = {};
@@ -600,7 +621,6 @@ export default {
   },
   mounted() {
     this.getCourse(this.$route.params.id);
-    this.retrieveCoursesReviews(this.$route.params.id);
     this.retrieveAvgRatings(this.$route.params.id);
     this.retrieveCoursesReviewsWRatings(this.$route.params.id);
   }
@@ -615,6 +635,11 @@ hr.line {
   background-color: #000000;
 }
 
+.important {
+  color: red;
+  background-color: red;
+}
+
 hr.line2 {
   border-top: 0px solid #FFFFFF;
   margin-top: 25px;
@@ -626,7 +651,7 @@ hr.line2 {
 }
 
 .review-container {
-    background-color: #cccccc;
+    background-color: #e4e4e4;
   }
 
 .page {
@@ -663,6 +688,23 @@ hr.line2 {
   color: #000000;
   }
 
+  .bold-md-prof {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+  }
+
+.larger-text {
+  font-size: 20px;
+  color: #000000;
+}
+.bold-md-review-rating {
+  font-weight: bold;
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
 .course-description {
   font-weight: 100;
   font-size: 15px;
@@ -673,15 +715,34 @@ hr.line2 {
 .review-header {
   margin-top: 20px;
   font-weight: 200;
-  font-size: 15px;
+  font-size: 20px;
   color: #000000;
   }
+
+.review-date {
+  font-weight: 200;
+  font-size: 15px;
+  color: #000000;
+}
 
 .quick-rating {
   font-weight: 100;
   font-size: 20px;
   color: #000000;
   margin-top: -40px;
+}
+
+.review-comment {
+ margin-top: -250px;
+ /* margin-left: -50px; */
+ font-size: 25px;
+ font-weight: 200;
+ color: #000000;
+}
+
+input.helpful-box {
+  width: 30px;
+  height: 30px;
 }
 
 .avgRatings {
@@ -693,12 +754,20 @@ hr.line2 {
   margin-bottom: 20px;
 }
 
+.userRatings {
+  line-height: 150%;
+  margin-top: 25px; 
+  margin-bottom: 50px; 
+}
+
 .Rating-badge {
   height: 25px;
   width: 40px;
   font-size: 15px;
   justify-items: center;
   align-items: center;
+  /* margin-top: 20px;
+  margin-bottom: 5px; */
 }
 
 .avgRating-badge {

@@ -1,10 +1,8 @@
 <template>
-
-    <div class = "page-container-about">
+    <div id="about" class="page-container-about">
         <div class = "about text-center">
             About Course Critic
         </div>
-
         <div class = "about-paragraph">
             <p>
                 Gone are the days of going into your first day of classes without knowing what it's like. 
@@ -15,17 +13,19 @@
                 and one of our administrators will review it. You can also take a look at the entire collection of courses in our system 
                 by looking at our All Courses page. Contributors are NOT required to log into the system to enjoy the full benefits of 
                 this program. Only the administrators need to sign in to approve suggested courses from contributors. 
-                
             </p>
         </div>
     </div>
-
 </template>
 
+<script>
+export default {
+  name: "about",
+};
+</script>
 
 <!--CSS Section-->
 <style>
-
 p {
     color: black;
 }
@@ -51,5 +51,4 @@ p {
     margin-left: 200px;
     margin-right: 200px;
 }
-
 </style>
