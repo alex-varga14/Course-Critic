@@ -23,7 +23,7 @@ class CourseDataService {
     return http.put(`/courses/${id}`, data);
   }
   delete(id) {
-    return http.delete(`/courses/${id}`);
+    return http.delete("http://localhost:8080/api/courses/" + id);
   }
   deleteAll() {
     return http.delete(`/courses`);

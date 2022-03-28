@@ -64,11 +64,15 @@ data() {
   approve(id){
       window.alert("Course Review Approved!");
         CourseDataService.approveSuggested(id);
+        this.retrieveCourses();
+        this.retrieveSuggestedCourses();
         this.$router.push({name: "approve"});
     },
    deny(id){
        window.alert("Course Review Denied!");
       CourseDataService.delete(id);
+      this.retrieveCourses();
+      this.retrieveSuggestedCourses();
       this.$router.push({name: "approve"});
     },
     retrieveCourses() {
