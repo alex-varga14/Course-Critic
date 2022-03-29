@@ -7,7 +7,7 @@
         <div class="invalid text-center">
           The username or password you have entered is incorrect. Please try again
         </div>
-        <button type="submit" v-on:click="retry" class="btn btn-success submit-btn">Retry Login</button>
+        <button type="submit" v-on:click="retry" class="btn btn-success retry-btn">Retry Login</button>
         </div>
         <form v-else>
           <div class="login-message text-center">
@@ -110,7 +110,7 @@
 }
 
 .username{
-  margin-left: 220px;
+  margin-left: 290px;
   color: black;
 }
 
@@ -120,8 +120,8 @@
 }
 
 .login-submit-btn{
-  width: 200px;
-  margin-left: 300px;
+  width: 250px;
+  margin-left: 320px;
   margin-bottom: 30px;
 }
 
@@ -141,6 +141,12 @@
   font-size: 15px;
   margin-left: 120px;
   margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+.retry-btn{
+  width: 250px;
+  margin-left: 320px;
   margin-bottom: 30px;
 }
 

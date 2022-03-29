@@ -1,6 +1,6 @@
 <template>
   <div class="page-container" id="courselist">
-    <section class="section-app-face children-center grid-cover-container">
+    <!-- <section class="section-app-face children-center grid-cover-container"> -->
       <div class="grid-cover-content children-center">
         <div class="title-list text-center">
           UCalgary Course List
@@ -10,7 +10,7 @@
           </div>
       </div>
      </div>
-    </section>
+    <!-- </section> -->
    <div id="inline2">
     <div class="info-box">
       <p> Course Critic offers an assortment of functions for filtering through courses.

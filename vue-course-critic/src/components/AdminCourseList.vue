@@ -13,7 +13,7 @@
           </div>
       </div>
 
-   <div id="inline">
+   <div id="inline00">
     <div class="info-box">
       <p> Administrators are allowed to delete courses that have been added to the Course Critic database. The filtering options are still available 
           for administrator use. </p>
@@ -54,9 +54,9 @@
           <th scope="col">Course Number</th>
           <th scope="col">Title</th>
           <th scope="col">Faculty</th>
-          <th scope="col">Average Difficulty</th>
-          <th scope="col">Average Enjoyment</th>
-          <th scope="col">Average Workload</th>
+          <th class="text-center" scope="col">Average Difficulty</th>
+          <th class="text-center" scope="col">Average Enjoyment</th>
+          <th class="text-center" scope="col">Average Workload</th>
           <th scope="col">Reviews</th>
         </tr>
       </thead>
@@ -101,7 +101,9 @@ data() {
   },
   methods: {
       remove(id){
+          this.courses[id] = null;
           window.alert("Course Removed!");
+          this.refreshList();
           RatingDataService.delete(id)
           .then(response => {
           console.log(response.data);
@@ -111,8 +113,11 @@ data() {
             CourseDataService.delete(id)
             .then(responseThree =>{
               console.log(responseThree.data);
-              // this.$router.go();
-              this.$router.push({name: "coursesAdmin"});
+              // this.$emit("authenticated", true);
+              // // this.$router.go();
+              // this.$router.push({name: "coursesAdmin"});
+              this.retrieveAggregateCourses();
+              this.$delete(this.aggregatecourses, id);
             })
             .catch(e => {
             console.log(e);
@@ -123,8 +128,9 @@ data() {
             CourseDataService.delete(id)
             .then(responseThree =>{
               console.log(responseThree.data);
+              this.$emit("authenticated", true);
               // this.$router.go();
-              this.$router.push({name: "coursesAdmin"});
+               this.$router.push({name: "coursesAdmin"});
             })
             .catch(e => {
             console.log(e);
@@ -139,8 +145,9 @@ data() {
               CourseDataService.delete(id)
               .then(responseThree =>{
                 console.log(responseThree.data);
+                this.$emit("authenticated", true);
                 // this.$router.go();
-                this.$router.push({name: "coursesAdmin"});
+                 this.$router.push({name: "coursesAdmin"});
               })
               .catch(e => {
               console.log(e);
@@ -151,8 +158,9 @@ data() {
               CourseDataService.delete(id)
               .then(responseThree =>{
                 console.log(responseThree.data);
-                // this.$router.go();
-                this.$router.push({name: "coursesAdmin"});
+                // this.$emit("authenticated", true);
+                // this.$router.go(); 
+                 this.$router.push({name: "coursesAdmin"});
               })
               .catch(e => {
               console.log(e);
@@ -297,7 +305,7 @@ data() {
   margin: auto;
 }
 
-#inline{
+#inline00{
   border: 1px dotted grey;
   border-radius: 15px;
   width: 60%;
