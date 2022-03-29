@@ -129,7 +129,7 @@ exports.deleteAll = (req, res) => {
     truncate: false
   })
     .then(nums => {
-      res.send({ message: `All Courses were deleted successfully!` });
+      res.send({ message: `All Courses deleted successfully!` });
     })
     .catch(err => {
       res.status(500).send({
