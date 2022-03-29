@@ -132,7 +132,7 @@
                         </div>
                   </div>
                   <div class="row">
-                        <p class="review-comment">{{reviewsWRatings.Comment}}</p>
+                        <p class="review-comment" style="width:600px;">{{reviewsWRatings.Comment}}</p>
                   </div>
                   <div class="row">
                     <div class="col-8">
@@ -197,11 +197,11 @@ export default {
           RatingDataService.deleteRating(id)
           .then(response => {
             console.log(response.data);
-           // this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+            this.retrieveCoursesReviewsWRatings(this.$route.params.id);
             ReviewDataService.deleteReview(id)
             .then(responseTwo => {
               console.log(responseTwo.data);
-              //this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+              this.retrieveCoursesReviewsWRatings(this.$route.params.id);
             })
           .catch(e => {
             console.log(e);
@@ -351,7 +351,7 @@ hr.line2 {
 
 .review-comment {
  margin-top: -250px;
- /* margin-left: -50px; */
+ margin-left: 225px;
  font-size: 25px;
  font-weight: 200;
  color: #000000;
