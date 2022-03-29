@@ -34,14 +34,15 @@
           <td>{{aggregatecourses.Faculty}}</td>
           <td>{{aggregatecourses.Description}}</td>
           <td>
-              <button @click="approve(aggregatecourses.ID)" type="submit" class="btn approve-course">
+              <button @click="approve(aggregatecourses.ID)"  type="submit" class="btn approve-course">
                   Approve
               </button>
-              <button @click="deny(aggregatecourses.ID)" type="submit" class=" btn deny-course">
+              <button @click="deny(aggregatecourses.ID)"  type="submit" class=" btn deny-course">
                   Deny
               </button>
           </td>
         </tr>
+  
       </tbody>
     </table>
   </div>
@@ -58,22 +59,44 @@ data() {
       currentCourse: null,
       currentIndex: -1,
       title: "",
+      componentKey: 0
     };
   },
   methods: {
   approve(id){
-      window.alert("Course Review Approved!");
-        CourseDataService.approveSuggested(id);
-        this.retrieveCourses();
-        this.retrieveSuggestedCourses();
-        this.$router.push({name: "approve"});
+        window.alert("Course Review Approved!");
+        CourseDataService.approveSuggested(id)
+          .then( response => {
+            if(response){
+              this.retrieveCourses()
+              this.retrieveSuggestedCourses();
+              this.$delete(this.aggregatecourses, id);
+            }
+            
+          })
+          .catch( e => {
+             console.log(e);
+          });
+        
+        // this.refresh();
+        // this.$forceUpdate();        
     },
    deny(id){
-       window.alert("Course Review Denied!");
-      CourseDataService.delete(id);
-      this.retrieveCourses();
-      this.retrieveSuggestedCourses();
-      this.$router.push({name: "approve"});
+      window.alert("Course Review Denied!");
+      CourseDataService.delete(id)
+          .then( response => {
+            if(response){
+              this.retrieveCourses();
+              this.retrieveSuggestedCourses();
+              this.$delete(this.aggregatecourses, id);
+            }
+          })
+          .catch( e => {
+             console.log(e);
+          });
+      
+      // this.refresh();
+      // this.$forceUpdate();
     },
     retrieveCourses() {
       CourseDataService.getAll()
@@ -95,7 +118,11 @@ data() {
           console.log(e);
         });
     },
+    refresh(){
+      this.componentKey +=1;
+    }
   },
+  
   mounted() {
     this.retrieveCourses();
     this.retrieveSuggestedCourses();

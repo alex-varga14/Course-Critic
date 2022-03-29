@@ -1,6 +1,6 @@
 <template>
   <div  id="adViewHome" class="page-container">
-    <section class="section-app-face children-center grid-cover-container">
+    <section class="section-app-face0 children-center grid-cover-container">
       <div class="image-1" />
       <div class="grid-cover-content children-center">
         <div class="title">
@@ -98,20 +98,20 @@ export default {
   --text-secondary: hsl(35deg, 100%, 75%);
 }
 
-.section-app-face {
+.section-app-face0 {
   margin-top: 80px;
   margin-bottom: 72px;
   height: 804px;
   position: relative;
 }
 
-.section-app-face .image-1 {
+.section-app-face0 .image-1 {
   background-image: url('../assets/background/cc-svg-logo.svg');
   background-repeat: no-repeat;
   height: 100%;
   width: 744px;
 }
-.section-app-face .title {
+.section-app-face0 .title {
   font-weight: 300;
   font-size: 48px;
   line-height: 50px;
@@ -120,19 +120,19 @@ export default {
   margin-top: 56px;
 }
 
-.section-app-face .defi-text {
+.section-app-face0 .defi-text {
   font-weight: 550;
   color: transparent;
   background: radial-gradient(circle at top right, #e8b338, #f2800f);
   background-clip: text;
 }
-.section-app-face .row-box-1 {
+.section-app-face0 .row-box-1 {
   display: grid;
   grid-auto-flow: column;
   gap: 32px;
   margin-bottom: 68px;
 }
-.section-app-face .row-box-1 .card-1 {
+.section-app-face0 .row-box-1 .card-1 {
   border-radius: 12px;
   color: white;
   background: linear-gradient(245.22deg, #fc2808 35%, #ed871a 65.17%, #f7f143 92.1%);
@@ -140,7 +140,7 @@ export default {
   background-size: 150% 150%;
   transition: 500ms;
 }
-.section-app-face .row-box-1 .card-1:hover {
+.section-app-face0 .row-box-1 .card-1:hover {
   border-radius: 12px;
   color: white;
   background-position: 99% 50%;

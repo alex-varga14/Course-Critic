@@ -11,6 +11,15 @@
                 <li class="nav-item">
                       <router-link to="/about" class="nav-link active" aria-current="page" href="#">About</router-link>
                 </li>
+                <li class="nav-item">
+                      <router-link to="/contact" class="nav-link active" aria-current="page" href="#">Contact Us</router-link>
+                </li>
+                <li class="nav-item">
+                      <router-link to="/guidelines" class="nav-link active" aria-current="page" href="#">Guidelines</router-link>
+                </li>
+                <li class="nav-item">
+                      <router-link to="/terms" class="nav-link active" aria-current="page" href="#">Terms</router-link>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">

@@ -1,6 +1,6 @@
 <template>
   <div class="page-container" id="home">
-    <section class="section-app-face children-center grid-cover-container">
+    <section class="section-app-face1 children-center grid-cover-container">
       <div class="image-1" />
       <div class="grid-cover-content children-center">
         <div class="title">
@@ -221,7 +221,7 @@ export default {
   --text-secondary: hsl(35deg, 100%, 75%);
 }
 
-.section-app-face {
+.section-app-face1 {
   margin-top: 80px;
   margin-bottom: 72px;
   height: 804px;
@@ -235,13 +235,13 @@ export default {
   position: relative;
 }
 
-.section-app-face .image-1 {
+.section-app-face1 .image-1 {
   background-image: url('../assets/background/cc-svg-logo.svg');
   background-repeat: no-repeat;
   height: 100%;
   width: 744px;
 }
-.section-app-face .title {
+.section-app-face1 .title {
   font-weight: 300;
   font-size: 64px;
   line-height: 60px;
@@ -249,7 +249,7 @@ export default {
   margin-bottom: 16px;
   margin-top: 56px;
 }
-.section-app-face .subtitle {
+.section-app-face1 .subtitle {
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -259,7 +259,7 @@ export default {
   background-clip: text;
   margin-bottom: 24px;
 }
- .section-app-face .red-yel {
+ .section-app-face1 .red-yel {
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -271,19 +271,19 @@ export default {
 
    }
 
-.section-app-face .defi-text {
+.section-app-face1 .defi-text {
   font-weight: 700;
   color: transparent;
   background: radial-gradient(circle at top right, #e8b338, #f2800f);
   background-clip: text;
 }
-.section-app-face .row-box-1 {
+.section-app-face1 .row-box-1 {
   display: grid;
   grid-auto-flow: column;
   gap: 32px;
   margin-bottom: 68px;
 }
-.section-app-face .row-box-1 .card-1 {
+.section-app-face1 .row-box-1 .card-1 {
   border-radius: 12px;
   color: white;
   background: linear-gradient(245.22deg, #fc2808 35%, #ed871a 65.17%, #f7f143 92.1%);
@@ -291,23 +291,23 @@ export default {
   background-size: 150% 150%;
   transition: 500ms;
 }
-.section-app-face .row-box-1 .card-1:hover {
+.section-app-face1 .row-box-1 .card-1:hover {
   border-radius: 12px;
   color: white;
   background-position: 99% 50%;
 }
 
-.section-app-face .row-box-2 {
+.section-app-face1 .row-box-2 {
   display: grid;
   grid-auto-flow: column;
   gap: 32px;
   margin-bottom: 36px;
 }
-.section-app-face .row-box-2 .card {
+.section-app-face1 .row-box-2 .card {
   width: 260px;
   padding: 24px;
 }
-.section-app-face .row-box-2 .card .card-title {
+.section-app-face1 .row-box-2 .card .card-title {
   font-size: 14px;
   line-height: 18px;
   color: var(--text-secondary);
