@@ -12,6 +12,6 @@
     "supertest": "^6.2.2"
   },
   "scripts": {
-    "test": "mocha 'test/*.js' --recursive"
+    "test": "mocha test/admin.test.js test/courses.test.js test/ratings.test.js test/reviews.test.js test/joint.test.js --recursive"
   }
 }

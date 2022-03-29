@@ -1,8 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const chaiSubset = require('chai-subset');
-const res = require('express/lib/response');
-const request = require('supertest');
 
 const { expect } = chai.expect;
 
@@ -11,6 +9,40 @@ chai.should();
 
 chai.use(chaiHttp);
 chai.use(chaiSubset);
+
+
+describe('GetSuggestedCourses', () => {
+    describe('GET http://localhost:8080/api/courses/suggested/1', () => {
+
+        it('Should get all course records where the Suggested attribute is true', (done) => {
+            chai.request('http://localhost:8080')
+            .get('/api/courses/suggested/1')
+            .end((err, response) => {
+                response.should.have.status(200);
+                response.should.be.json;
+                chai.expect(response.body).to.containSubset([{"Title":"Database Management Systems","Description":"Some Description of the Course",
+                    "Faculty":"Computer Science","CourseCode":"CPSC","CourseNo":471,"Suggested":true}]);
+                done();
+            });
+        });
+    });
+});
+
+describe('ApproveSuggestedCourse', () => {
+    describe('PUT http://localhost:8080/api/courses/suggested/:id', () => {
+        const id = 1;
+        it('Should change the Suggested attribute of a course record to false using the API', (done) => {
+            chai.request('http://localhost:8080')
+            .put(`/api/courses/suggested/${id}`)
+            .end((err, response) => {
+                response.should.have.status(200);
+                response.should.be.an('object');
+                response.body.should.have.property('message').eq('Course was updated successfully.');
+                done();
+            });
+        });
+    });
+});
 
 describe('GetOneCourse', () => {
     describe('GET http://localhost:8080/api/courses/:id', () => {
@@ -59,8 +91,6 @@ describe('GetAllCourses', () => {
                     done();
                 });
             });
-
-            
         });
     });
 });
@@ -84,8 +114,6 @@ describe('CreateCourse', () => {
             .end((err, response) => {
                 response.should.have.status(200);
                 response.body.should.be.an('object');
-                // chai.expect(response.body).to.include({"Title":"A Test Course Title","Description":"A Test Course Description",
-                //     "Faculty":"A Test Course Faculty","CourseCode":"A Test Course Code","CourseNo":"123","Suggested":false});
                 response.body.should.have.property('Title').eq('A Test Course Title');
                 response.body.should.have.property('Description').eq('A Test Course Description');
                 response.body.should.have.property('Faculty').eq('A Test Course Faculty');
@@ -101,7 +129,7 @@ describe('CreateCourse', () => {
 
 describe('DeleteCourse', () => {
     describe('DELETE http://localhost:8080/api/courses/:id', () => {
-        const id = 1;   //Gotta be real careful with this one. Gotta make sure that ID # is actually used
+        const id = 1;
         it('Should delete the course record with ID = 1 using the API', (done) => {
             chai.request("http://localhost:8080")
             .delete(`/api/courses/${id}`)
