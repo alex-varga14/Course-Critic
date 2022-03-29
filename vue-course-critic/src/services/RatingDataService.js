@@ -8,7 +8,7 @@ class RatingDataService {
     return http.delete("http://localhost:8080/api/ratings/courseID/" +id);
   }
   deleteRating(id) {
-    return http.delete("http://localhost:8080/api/ratings/" + id);
+    return http.delete("http://localhost:8080/api/ratings/reviewID/" + id);
   }
   getAllCourseAvgRating(id) {
     return http.get("http://localhost:8080/api/ratings/avg/" + id);

@@ -23,19 +23,19 @@
            <div class="row justify-content-center">
               <label for="title">Average Enjoyment</label>
               <div v-if="5.0 >= avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 3.5">
-                 <span class="badge-pill bg-success avgRating-badge>">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+                 <span class="badge bg-success avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
               </div>
               <div v-else-if="3.5 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 2.0">
-                 <span class="badge-pill bg-warning avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+                 <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
                  </div>
               <div v-else-if="2.0 > avgRatings.avgEnjoyment && avgRatings.avgEnjoyment >= 0.0" >
-                 <span class="badge-pill bg-danger avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
+                 <span class="badge bg-danger avgRating-badge">{{(Math.round(avgRatings.avgEnjoyment*100)/100).toFixed(2)}}</span>
               </div>
             </div>
             <div class="row justify-content-center">
                 <label for="title">Average Difficulty</label>
                 <div v-if="5.0 >= avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 3.5">
-                     <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
+                     <span class="badge bg-success avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
               </div>
               <div v-else-if="3.5 > avgRatings.avgDifficulty && avgRatings.avgDifficulty >= 2.0">
                  <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgDifficulty*100)/100).toFixed(2)}}</span>
@@ -47,7 +47,7 @@
             <div class="row justify-content-center">
                 <label for="title">Average Workload</label>
               <div v-if="5.0 >= avgRatings.avgWorkload && avgRatings.avgWorkload >= 3.5">
-                     <span class="badge bg-success avgRating-badge>">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
+                     <span class="badge bg-success avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
               </div>
               <div v-else-if="3.5 > avgRatings.avgWorkload && avgRatings.avgWorkload >= 2.0">
                  <span class="badge bg-warning avgRating-badge">{{(Math.round(avgRatings.avgWorkload*100)/100).toFixed(2)}}</span>
@@ -152,7 +152,7 @@
                             <div class="row userRatings justify-content-center text-center">
                                 <label><span class="bold-md-review-rating">DIFFICULTY</span></label>
                                 <div v-if="5.0 >= reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 3.5">
-                                <span class="badge bg-success Rating-badge>">{{reviewsWRatings.Difficulty}}</span>
+                                <span class="badge bg-success Rating-badge">{{reviewsWRatings.Difficulty}}</span>
                                 </div>
                                 <div v-else-if="3.5 > reviewsWRatings.Difficulty && reviewsWRatings.Difficulty >= 2.0">
                                 <span class="badge bg-warning Rating-badge">{{reviewsWRatings.Difficulty}}</span>
@@ -165,7 +165,7 @@
                             <div class="row userRatings justify-content-center text-center">
                                 <label><span class="bold-md-review-rating">WORKLOAD</span></label>
                                 <div v-if="5.0 >= reviewsWRatings.Workload && reviewsWRatings.Workload >= 3.5">
-                                <span class="badge bg-success Rating-badge>">{{reviewsWRatings.Workload}}</span>
+                                <span class="badge bg-success Rating-badge">{{reviewsWRatings.Workload}}</span>
                                 </div>
                                 <div v-else-if="3.5 > reviewsWRatings.Workload && reviewsWRatings.Workload >= 2.0">
                                 <span class="badge bg-warning Rating-badge">{{reviewsWRatings.Workload}}</span>
@@ -193,8 +193,9 @@
                         </div>
                   </div>
                   <div class="row">
-                        <p class="review-comment">{{reviewsWRatings.Comment}}</p>
+                        <p class="review-comment" style="width:600px;">{{reviewsWRatings.Comment}}</p>
                   </div>
+                  <div v-if="!helpful">
                   <div class="row">
                     <div class="col-8">
                       <label><span class="bold-md">{{reviewsWRatings.HelpfulCount}} Users found this Review Helpful!</span> </label>
@@ -213,6 +214,12 @@
                       </div>
                     </div>
                   </div>
+                  </div>
+                  <div v-else>
+                      <div class="col">
+                        <h4 class ="bold-md text-center">Thanks for Providing Feedback!</h4>
+                      </div>
+                    </div>
                 </div>
                 <br>
               <hr class="line2">
@@ -460,6 +467,7 @@ export default {
       Date: new Date(),
       ratingSubmitted: false,
       reviewSubmitted: false,
+      helpful: false,
       currentCourse: {
         Title: null,
         Description: null,
@@ -632,7 +640,9 @@ export default {
        ReviewDataService.updateHelpful(id, HelpfulCount)
         .then(response => {
           console.log(response.data);
+          this.helpful = true;
           // this.$router.go();
+          setTimeout(() => {  this.helpful = false; }, 5000);
           this.retrieveCoursesReviewsWRatings(this.$route.params.id);
           // this.$router.push({name: "courses",
           //  params: { id:this.data }
@@ -756,7 +766,7 @@ hr.line2 {
 
 .review-comment {
  margin-top: -250px;
- /* margin-left: -50px; */
+ margin-left: 225px;
  font-size: 25px;
  font-weight: 200;
  color: #000000;

@@ -2,8 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const chaiSubset = require('chai-subset');
 
-const request = require('supertest');
-
 const { expect } = chai.expect;
 
 //Assertion Style
