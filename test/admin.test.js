@@ -10,7 +10,7 @@ chai.should();
 
 chai.use(chaiHttp);
 
-describe('Admin Login Test', () => {
+describe('AuthenticateLogin', () => {
 
     // Test the GET route for admin login
     describe('GET http://localhost:8080/api/admins/:username/:password', () => {
