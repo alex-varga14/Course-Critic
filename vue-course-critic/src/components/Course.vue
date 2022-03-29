@@ -195,6 +195,7 @@
                   <div class="row">
                         <p class="review-comment">{{reviewsWRatings.Comment}}</p>
                   </div>
+                  <div v-if="!helpful">
                   <div class="row">
                     <div class="col-8">
                       <label><span class="bold-md">{{reviewsWRatings.HelpfulCount}} Users found this Review Helpful!</span> </label>
@@ -213,6 +214,12 @@
                       </div>
                     </div>
                   </div>
+                  </div>
+                  <div v-else>
+                      <div class="col">
+                        <h4 class ="bold-md text-center">Thanks for Providing Feedback!</h4>
+                      </div>
+                    </div>
                 </div>
                 <br>
               <hr class="line2">
@@ -460,6 +467,7 @@ export default {
       Date: new Date(),
       ratingSubmitted: false,
       reviewSubmitted: false,
+      helpful: false,
       currentCourse: {
         Title: null,
         Description: null,
@@ -632,7 +640,9 @@ export default {
        ReviewDataService.updateHelpful(id, HelpfulCount)
         .then(response => {
           console.log(response.data);
+          this.helpful = true;
           // this.$router.go();
+          setTimeout(() => {  this.helpful = false; }, 5000);
           this.retrieveCoursesReviewsWRatings(this.$route.params.id);
           // this.$router.push({name: "courses",
           //  params: { id:this.data }
