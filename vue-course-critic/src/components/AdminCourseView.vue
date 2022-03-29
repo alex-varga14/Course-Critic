@@ -197,11 +197,11 @@ export default {
           RatingDataService.deleteRating(id)
           .then(response => {
             console.log(response.data);
-           // this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+            this.retrieveCoursesReviewsWRatings(this.$route.params.id);
             ReviewDataService.deleteReview(id)
             .then(responseTwo => {
               console.log(responseTwo.data);
-              //this.retrieveCoursesReviewsWRatings(this.$route.params.id);
+              this.retrieveCoursesReviewsWRatings(this.$route.params.id);
             })
           .catch(e => {
             console.log(e);
