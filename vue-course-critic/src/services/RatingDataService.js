@@ -13,5 +13,8 @@ class RatingDataService {
   getAllCourseAvgRating(id) {
     return http.get("http://localhost:8080/api/ratings/avg/" + id);
   }
+  deleteRatingWReview(id) {
+    return http.delete("http//localhost:8080/ratings/reviewID/" + id);
+  }
 }
 export default new RatingDataService();
